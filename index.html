@@ -20,26 +20,10 @@
   </script>
   <style>
     .material-symbols-outlined{font-variation-settings:'FILL'0,'wght'400,'GRAD'0,'opsz'24}
-    body{min-height:100dvh}
     
     /* Smooth scrolling */
     html {
       scroll-behavior: smooth;
-    }
-    
-    /* Ensure proper spacing for fixed footer */
-    .content-wrapper {
-      padding-bottom: 5rem;
-    }
-    
-    /* Responsive typography */
-    @media (min-width: 768px) {
-      .responsive-title {
-        font-size: 2.5rem;
-      }
-      .responsive-subtitle {
-        font-size: 1.25rem;
-      }
     }
     
     /* Contact card hover effect */
@@ -62,7 +46,7 @@
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-secondary">
-  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+  <div class="relative flex min-h-screen w-full flex-col">
 
     <!-- HEADER -->
     <div class="p-4 sm:p-6 md:p-8 lg:p-10 @container">
@@ -76,10 +60,10 @@
 
             <!-- Name and Title -->
             <div class="flex flex-col items-center justify-center gap-2">
-              <h1 class="text-primary dark:text-background-light text-2xl md:text-3xl lg:text-4xl font-bold text-center responsive-title">
+              <h1 class="text-primary dark:text-background-light text-2xl md:text-3xl lg:text-4xl font-bold text-center">
                 Abdullahi Nur Ahmad
               </h1>
-              <p class="text-secondary dark:text-gray-400 text-base md:text-lg lg:text-xl text-center max-w-2xl responsive-subtitle px-4">
+              <p class="text-secondary dark:text-gray-400 text-base md:text-lg lg:text-xl text-center max-w-2xl px-4">
                 Information Management &amp; Data Analysis Specialist
               </p>
             </div>
@@ -131,7 +115,7 @@
     </div>
 
     <!-- BODY -->
-    <div class="content-wrapper flex flex-col p-4 sm:p-6 md:p-8 lg:p-10">
+    <div class="flex flex-col p-4 sm:p-6 md:p-8 lg:p-10 pb-32 md:pb-36">
       <div class="max-w-6xl mx-auto w-full">
 
         <!-- PROFILE -->
@@ -239,58 +223,116 @@
           </summary>
 
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 p-2 md:p-4">
+            <!-- Catchment Map Dashboard -->
             <a href="https://imcccmcluster.shinyapps.io/CatchmentMap/" target="_blank" rel="noopener"
                class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
               <div class="flex items-start gap-3 mb-3">
                 <span class="material-symbols-outlined text-primary text-2xl">map</span>
                 <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Catchment Map Dashboard</h3>
               </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">CCCM catchment areas and service coverage across Somalia.</p>
+              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Interactive R Shiny dashboard mapping CCCM catchment areas, service coverage, and partner presence across Somalia.</p>
+              <div class="mt-3 text-xs text-accent flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                <span>imcccmcluster.shinyapps.io</span>
+              </div>
             </a>
 
-            <a href="https://imsom.shinyapps.io/Dashabord_ZM/" target="_blank" rel="noopener"
+            <!-- Facility Mapping System -->
+            <a href="https://imcccmcluster.shinyapps.io/FacilityMap_Baydhaba/" target="_blank" rel="noopener"
                class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
               <div class="flex items-start gap-3 mb-3">
-                <span class="material-symbols-outlined text-primary text-2xl">dashboard</span>
-                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Zite Manager Dashboard</h3>
+                <span class="material-symbols-outlined text-primary text-2xl">location_on</span>
+                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Facility Mapping System – Baydhaba</h3>
               </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Comprehensive CCCM dashboard for site-level coordination.</p>
+              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Displays key facilities and services (Health, WASH, Education, Nutrition) across Baydhaba with interactive filters and geospatial data layers.</p>
+              <div class="mt-3 text-xs text-accent flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                <span>imcccmcluster.shinyapps.io</span>
+              </div>
             </a>
 
+            <!-- Incident Reporting Platform -->
+            <a href="https://imcccmcluster.shinyapps.io/IncidentReport/" target="_blank" rel="noopener"
+               class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
+              <div class="flex items-start gap-3 mb-3">
+                <span class="material-symbols-outlined text-primary text-2xl">report</span>
+                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Incident Reporting Platform</h3>
+              </div>
+              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Centralized digital platform for partners to report, track, and visualize site-level incidents in real time.</p>
+              <div class="mt-3 text-xs text-accent flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                <span>imcccmcluster.shinyapps.io</span>
+              </div>
+            </a>
+
+            <!-- CCCM Cluster Portal -->
+            <a href="https://cccmclustersomalia.org/" target="_blank" rel="noopener"
+               class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
+              <div class="flex items-start gap-3 mb-3">
+                <span class="material-symbols-outlined text-primary text-2xl">public</span>
+                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">CCCM Cluster Somalia Information Portal</h3>
+              </div>
+              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Official CCCM coordination and information portal featuring assessments, dashboards, service mapping, and partner updates.</p>
+              <div class="mt-3 text-xs text-accent flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                <span>cccmclustersomalia.org</span>
+              </div>
+            </a>
+
+            <!-- Excel Merger App -->
             <a href="https://imsom.shinyapps.io/ExcelMerger_App/" target="_blank" rel="noopener"
                class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
               <div class="flex items-start gap-3 mb-3">
                 <span class="material-symbols-outlined text-primary text-2xl">merge</span>
                 <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Excel Workbooks Merger App</h3>
               </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Automates merging and validation of multiple Excel datasets.</p>
+              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Automates merging, validation, and cleaning of multiple Excel datasets to support harmonized reporting.</p>
+              <div class="mt-3 text-xs text-accent flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                <span>imsom.shinyapps.io</span>
+              </div>
             </a>
 
+            <!-- Zite Manager Dashboard -->
+            <a href="https://imsom.shinyapps.io/Dashabord_ZM/" target="_blank" rel="noopener"
+               class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
+              <div class="flex items-start gap-3 mb-3">
+                <span class="material-symbols-outlined text-primary text-2xl">dashboard</span>
+                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Zite Manager Dashboard</h3>
+              </div>
+              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Comprehensive CCCM site management tool integrating site profiles, partner presence, and dynamic analytics.</p>
+              <div class="mt-3 text-xs text-accent flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                <span>imsom.shinyapps.io</span>
+              </div>
+            </a>
+
+            <!-- New Arrivals Dashboard -->
             <a href="https://imsom.shinyapps.io/New_Arrivals/" target="_blank" rel="noopener"
                class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
               <div class="flex items-start gap-3 mb-3">
                 <span class="material-symbols-outlined text-primary text-2xl">trending_up</span>
                 <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">New Arrivals Dashboard</h3>
               </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Displacement trends and population movements.</p>
+              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Visualizes population movements, new displacements, and settlement arrivals across Somalia with trend analysis.</p>
+              <div class="mt-3 text-xs text-accent flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                <span>imsom.shinyapps.io</span>
+              </div>
             </a>
 
+            <!-- Floods Risk Dashboard -->
             <a href="https://floods-banadir.som-imcccmcluster.com/" target="_blank" rel="noopener"
                class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
               <div class="flex items-start gap-3 mb-3">
                 <span class="material-symbols-outlined text-primary text-2xl">water_damage</span>
-                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Floods Risk Dashboard – Banadir</h3>
+                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Floods Risk Dashboard – Banadir Region</h3>
               </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Maps flash flood risks for emergency planning.</p>
-            </a>
-
-            <a href="https://cccmclustersomalia.org/" target="_blank" rel="noopener"
-               class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
-              <div class="flex items-start gap-3 mb-3">
-                <span class="material-symbols-outlined text-primary text-2xl">public</span>
-                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">CCCM Cluster Somalia Portal</h3>
+              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Assesses flash flood risks in the Banadir region with layered spatial data to support early warning and response planning.</p>
+              <div class="mt-3 text-xs text-accent flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                <span>floods-banadir.som-imcccmcluster.com</span>
               </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">National coordination portal for partners and stakeholders.</p>
             </a>
           </div>
 
@@ -301,15 +343,19 @@
               <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
                      href="https://imcccmcluster.shinyapps.io/CatchmentMap/">Catchment Map Dashboard</a> — interactive R Shiny publication for CCCM service coverage.</li>
               <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
-                     href="https://imsom.shinyapps.io/Dashabord_ZM/">Zite Manager Dashboard</a> — site management and coordination analytics.</li>
+                     href="https://imcccmcluster.shinyapps.io/FacilityMap_Baydhaba/">Facility Mapping System – Baydhaba</a> — geospatial facility mapping and service visualization.</li>
+              <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
+                     href="https://imcccmcluster.shinyapps.io/IncidentReport/">Incident Reporting Platform</a> — real-time incident tracking and management system.</li>
+              <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
+                     href="https://cccmclustersomalia.org/">CCCM Cluster Somalia Information Portal</a> — national data portal and coordination hub.</li>
               <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
                      href="https://imsom.shinyapps.io/ExcelMerger_App/">Excel Workbooks Merger App</a> — data processing utility (R Shiny).</li>
               <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
+                     href="https://imsom.shinyapps.io/Dashabord_ZM/">Zite Manager Dashboard</a> — site management and coordination analytics.</li>
+              <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
                      href="https://imsom.shinyapps.io/New_Arrivals/">New Arrivals Dashboard</a> — displacement trend analytics.</li>
               <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
-                     href="https://floods-banadir.som-imcccmcluster.com/">Floods Risk Dashboard – Banadir</a> — risk mapping / early warning.</li>
-              <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
-                     href="https://cccmclustersomalia.org/">CCCM Cluster Somalia Information Portal</a> — national data portal.</li>
+                     href="https://floods-banadir.som-imcccmcluster.com/">Floods Risk Dashboard – Banadir</a> — risk mapping and early warning system.</li>
             </ul>
           </div>
         </details>
