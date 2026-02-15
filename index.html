@@ -1,398 +1,279 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html data-theme="light" lang="en" style="">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Abdullahi Nur Ahmad - Portfolio</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-  <script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: { extend: {
-        colors:{ primary:"#359EFF", secondary:"#8492A6", accent:"#00A99D",
-                 "background-light":"#f5f7f8","background-dark":"#0f1923"},
-        fontFamily:{display:"Inter"},
-        borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"}
-      }}
-    };
-  </script>
-  <style>
-    .material-symbols-outlined{font-variation-settings:'FILL'0,'wght'400,'GRAD'0,'opsz'24}
-    
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    /* Contact card hover effect */
-    .contact-card {
-      transition: all 0.3s ease;
-    }
-    .contact-card:hover {
-      transform: translateY(-4px);
-    }
-    
-    /* Project card animation */
-    .project-card {
-      transition: all 0.3s ease;
-    }
-    .project-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdullahi Nur Ahmad - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#359EFF',
+              secondary: '#8492A6',
+              accent: '#00A99D',
+              'background-light': '#f5f7f8',
+              'background-dark': '#0f1923',
+            },
+            fontFamily: {
+              inter: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .profile-image {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        background-image: url('https://imagizer.imageshack.com/img924/6578/v3k7U2.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
 </head>
+<body class="bg-background-light text-secondary min-h-screen pb-20">
+    <!-- Header Section -->
+    <div class="text-center py-8">
+      <div class="profile-image mx-auto mb-6 ring-4 ring-white shadow-lg"></div>
+      <h1 class="text-2xl font-bold text-primary mb-2">Abdullahi Nur Ahmad</h1>
+      <p class="text-lg text-secondary mb-6">Information Management &amp; Data Analysis Specialist</p>
 
-<body class="bg-background-light dark:bg-background-dark font-display text-secondary">
-  <div class="relative flex min-h-screen w-full flex-col">
-
-    <!-- HEADER -->
-    <div class="p-4 sm:p-6 md:p-8 lg:p-10 @container">
-      <div class="max-w-6xl mx-auto">
-        <div class="flex w-full flex-col gap-6 md:gap-8 items-center">
-          <div class="flex gap-4 md:gap-6 flex-col items-center">
-            <!-- Profile Image -->
-            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32 md:min-h-40 md:w-40 lg:min-h-48 lg:w-48 ring-4 ring-white/60 dark:ring-gray-700/60 shadow-lg"
-                 data-alt="Professional headshot of Abdullahi Nur Ahmad"
-                 style='background-image:url("https://imagizer.imageshack.com/img924/6578/v3k7U2.jpg");'></div>
-
-            <!-- Name and Title -->
-            <div class="flex flex-col items-center justify-center gap-2">
-              <h1 class="text-primary dark:text-background-light text-2xl md:text-3xl lg:text-4xl font-bold text-center">
-                Abdullahi Nur Ahmad
-              </h1>
-              <p class="text-secondary dark:text-gray-400 text-base md:text-lg lg:text-xl text-center max-w-2xl px-4">
-                Information Management &amp; Data Analysis Specialist
-              </p>
-            </div>
+      <!-- Contact Icons -->
+      <div class="flex flex-wrap justify-center gap-6 max-w-2xl mx-auto">
+        <a href="mailto:abdullahi.nur@example.com" class="flex flex-col items-center text-center">
+          <div class="bg-primary/10 rounded-full p-3 mb-2">
+            <span class="material-symbols-outlined text-primary">mail</span>
           </div>
-
-          <!-- CONTACTS -->
-          <div class="flex w-full max-w-5xl gap-4 md:gap-6 lg:gap-8 justify-center flex-wrap px-4">
-            <!-- Work email -->
-            <a id="workEmail" class="contact-card flex flex-col items-center gap-2 text-center min-w-[120px] md:min-w-[140px]"
-               data-user="abdahamed" data-domain="iom.int" aria-label="Work email">
-              <div class="rounded-full bg-primary/10 dark:bg-primary/20 p-3 md:p-3.5">
-                <span class="material-symbols-outlined text-primary dark:text-accent text-2xl md:text-3xl">mail</span>
-              </div>
-              <span class="text-[10px] md:text-[11px] uppercase tracking-wide font-semibold">Work</span>
-              <span class="text-xs md:text-sm break-all" id="workEmailTxt"></span>
-            </a>
-
-            <!-- Personal email -->
-            <a id="personalEmail" class="contact-card flex flex-col items-center gap-2 text-center min-w-[120px] md:min-w-[140px]"
-               data-user="anurahmed7869" data-domain="gmail.com" aria-label="Personal email">
-              <div class="rounded-full bg-primary/10 dark:bg-primary/20 p-3 md:p-3.5">
-                <span class="material-symbols-outlined text-primary dark:text-accent text-2xl md:text-3xl">alternate_email</span>
-              </div>
-              <span class="text-[10px] md:text-[11px] uppercase tracking-wide font-semibold">Personal</span>
-              <span class="text-xs md:text-sm break-all" id="personalEmailTxt"></span>
-            </a>
-
-            <!-- Phone -->
-            <a href="tel:+252619601895" class="contact-card flex flex-col items-center gap-2 text-center min-w-[120px] md:min-w-[140px]" aria-label="Phone number">
-              <div class="rounded-full bg-primary/10 dark:bg-primary/20 p-3 md:p-3.5">
-                <span class="material-symbols-outlined text-primary dark:text-accent text-2xl md:text-3xl">phone</span>
-              </div>
-              <span class="text-[10px] md:text-[11px] uppercase tracking-wide font-semibold">Phone</span>
-              <span class="text-xs md:text-sm">+252 619 601 895</span>
-            </a>
-
-            <!-- Portal -->
-            <a href="https://cccmclustersomalia.org" target="_blank" rel="noopener"
-               class="contact-card flex flex-col items-center gap-2 text-center min-w-[120px] md:min-w-[140px]" aria-label="CCCM Portal">
-              <div class="rounded-full bg-primary/10 dark:bg-primary/20 p-3 md:p-3.5">
-                <span class="material-symbols-outlined text-primary dark:text-accent text-2xl md:text-3xl">open_in_new</span>
-              </div>
-              <span class="text-[10px] md:text-[11px] uppercase tracking-wide font-semibold">Portal</span>
-              <span class="text-xs md:text-sm">CCCM Portal</span>
-            </a>
+          <span class="text-xs">Email</span>
+        </a>
+        <a href="mailto:abdullahi.nur2@example.com" class="flex flex-col items-center text-center">
+          <div class="bg-primary/10 rounded-full p-3 mb-2">
+            <span class="material-symbols-outlined text-primary">alternate_email</span>
           </div>
-        </div>
+          <span class="text-xs">Alt Email</span>
+        </a>
+        <a href="tel:+252619601895" class="flex flex-col items-center text-center">
+          <div class="bg-primary/10 rounded-full p-3 mb-2">
+            <span class="material-symbols-outlined text-primary">phone</span>
+          </div>
+          <span class="text-xs">+252 619 601 895</span>
+        </a>
+        <a href="https://cccmclustersomalia.org" target="_blank" class="flex flex-col items-center text-center">
+          <div class="bg-primary/10 rounded-full p-3 mb-2">
+            <span class="material-symbols-outlined text-primary">open_in_new</span>
+          </div>
+          <span class="text-xs">CCCM Portal</span>
+        </a>
       </div>
     </div>
 
-    <!-- BODY -->
-    <div class="flex flex-col p-4 sm:p-6 md:p-8 lg:p-10 pb-32 md:pb-36">
-      <div class="max-w-6xl mx-auto w-full">
-
-        <!-- PROFILE -->
-        <details class="flex flex-col border-t border-gray-200 dark:border-gray-700 py-3 md:py-4 group" open>
-          <summary class="flex items-center justify-between py-2 md:py-3 cursor-pointer hover:text-primary transition-colors">
-            <h2 class="text-primary dark:text-background-light text-sm md:text-base lg:text-lg font-bold uppercase tracking-wide">Profile</h2>
-            <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform duration-300">expand_more</span>
-          </summary>
-          <p class="text-secondary dark:text-gray-400 text-sm md:text-base lg:text-lg leading-relaxed pb-2 pt-2">
-            Information Management and Data Analysis Specialist with 7+ years designing dashboards, data systems, and
-            reporting platforms for humanitarian operations. Skilled in R, Python, SQL, Power BI, and GIS with proven success
-            improving data accuracy, automating workflows, and enhancing evidence-based decision-making.
+    <!-- Body Sections -->
+    <div class="max-w-4xl mx-auto px-6">
+      <!-- Profile Section -->
+      <details class="border-t border-gray-200 py-4 group" open="">
+        <summary class="flex items-center justify-between cursor-pointer">
+          <h2 class="text-sm font-bold text-primary uppercase tracking-wide">Profile</h2>
+          <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+        </summary>
+        <div class="mt-4">
+          <p class="text-secondary leading-relaxed">
+            Information Management and Data Analysis Specialist with 7+ years of experience designing dashboards, data
+            systems, and reporting platforms for humanitarian operations. Skilled in R, Python, SQL, Power BI, and GIS
+            with proven success improving data accuracy, automating workflows, and enhancing evidence-based
+            decision-making across complex operational environments.
           </p>
-        </details>
+        </div>
+      </details>
 
-        <!-- EXPERTISE -->
-        <details class="flex flex-col border-t border-gray-200 dark:border-gray-700 py-3 md:py-4 group">
-          <summary class="flex items-center justify-between py-2 md:py-3 cursor-pointer hover:text-primary transition-colors">
-            <h2 class="text-primary dark:text-background-light text-sm md:text-base lg:text-lg font-bold uppercase tracking-wide">Areas of Expertise</h2>
-            <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform duration-300">expand_more</span>
-          </summary>
-          <div class="flex gap-2 md:gap-3 p-2 flex-wrap">
-            <span class="px-3 md:px-4 h-8 md:h-10 rounded-lg bg-accent/90 hover:bg-accent text-white text-xs md:text-sm font-medium grid place-items-center transition-colors">Information Management</span>
-            <span class="px-3 md:px-4 h-8 md:h-10 rounded-lg bg-accent/90 hover:bg-accent text-white text-xs md:text-sm font-medium grid place-items-center transition-colors">Power BI &amp; R Shiny</span>
-            <span class="px-3 md:px-4 h-8 md:h-10 rounded-lg bg-accent/90 hover:bg-accent text-white text-xs md:text-sm font-medium grid place-items-center transition-colors">Data Analysis (R/Python/SQL)</span>
-            <span class="px-3 md:px-4 h-8 md:h-10 rounded-lg bg-accent/90 hover:bg-accent text-white text-xs md:text-sm font-medium grid place-items-center transition-colors">GIS &amp; Mapping</span>
-            <span class="px-3 md:px-4 h-8 md:h-10 rounded-lg bg-accent/90 hover:bg-accent text-white text-xs md:text-sm font-medium grid place-items-center transition-colors">Monitoring &amp; Evaluation</span>
-            <span class="px-3 md:px-4 h-8 md:h-10 rounded-lg bg-accent/90 hover:bg-accent text-white text-xs md:text-sm font-medium grid place-items-center transition-colors">Capacity Building</span>
-          </div>
-        </details>
+      <!-- Areas of Expertise -->
+      <details class="border-t border-gray-200 py-4 group">
+        <summary class="flex items-center justify-between cursor-pointer">
+          <h2 class="text-sm font-bold text-primary uppercase tracking-wide">Areas of Expertise</h2>
+          <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+        </summary>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="px-4 py-2 bg-accent text-white text-sm rounded-lg">Information Management</span>
+          <span class="px-4 py-2 bg-accent text-white text-sm rounded-lg">Power BI &amp; R Shiny</span>
+          <span class="px-4 py-2 bg-accent text-white text-sm rounded-lg">Data Analysis (R/Python/SQL)</span>
+          <span class="px-4 py-2 bg-accent text-white text-sm rounded-lg">GIS &amp; Mapping</span>
+          <span class="px-4 py-2 bg-accent text-white text-sm rounded-lg">Monitoring &amp; Evaluation</span>
+          <span class="px-4 py-2 bg-accent text-white text-sm rounded-lg">Capacity Building</span>
+        </div>
+      </details>
 
-        <!-- EXPERIENCE -->
-        <details class="flex flex-col border-t border-gray-200 dark:border-gray-700 py-3 md:py-4 group">
-          <summary class="flex items-center justify-between py-2 md:py-3 cursor-pointer hover:text-primary transition-colors">
-            <h2 class="text-primary dark:text-background-light text-sm md:text-base lg:text-lg font-bold uppercase tracking-wide">Professional Experience</h2>
-            <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform duration-300">expand_more</span>
-          </summary>
-          <div class="p-2 md:p-4 space-y-6 md:space-y-8">
-            <div class="border-l-4 border-primary pl-4 md:pl-6">
-              <h3 class="text-primary dark:text-background-light text-base md:text-lg lg:text-xl font-bold">Senior CCCM Cluster Information Management Associate</h3>
-              <p class="text-secondary dark:text-gray-400 text-sm md:text-base mt-1">IOM Somalia • Aug 2023 – Present</p>
-              <ul class="list-disc pl-5 pt-3 text-sm md:text-base text-secondary dark:text-gray-400 space-y-2 leading-relaxed">
-                <li>Lead national IM strategy, dashboards, and data workflows for CCCM operations.</li>
-                <li>Developed R Shiny and Power BI platforms improving visibility and coordination.</li>
-                <li>Trained 100+ staff on IM tools, enhancing reporting quality and speed.</li>
-              </ul>
-            </div>
-
-            <div class="border-l-4 border-primary pl-4 md:pl-6">
-              <h3 class="text-primary dark:text-background-light text-base md:text-lg lg:text-xl font-bold">Senior Information Management Officer</h3>
-              <p class="text-secondary dark:text-gray-400 text-sm md:text-base mt-1">ACTED Somalia • Jan 2022 – Jul 2023</p>
-              <ul class="list-disc pl-5 pt-3 text-sm md:text-base text-secondary dark:text-gray-400 space-y-2 leading-relaxed">
-                <li>Implemented donor reporting dashboards reducing turnaround by 30%.</li>
-                <li>Supervised IM team, ensured accuracy and standardization across projects.</li>
-              </ul>
-            </div>
-
-            <div class="border-l-4 border-primary pl-4 md:pl-6">
-              <h3 class="text-primary dark:text-background-light text-base md:text-lg lg:text-xl font-bold">Information Management Officer</h3>
-              <p class="text-secondary dark:text-gray-400 text-sm md:text-base mt-1">ACTED Puntland/Somaliland • Jan 2021 – Jan 2022</p>
-              <ul class="list-disc pl-5 pt-3 text-sm md:text-base text-secondary dark:text-gray-400 space-y-2 leading-relaxed">
-                <li>Designed IM workflows improving partner accountability and reporting.</li>
-              </ul>
-            </div>
-
-            <div class="border-l-4 border-primary pl-4 md:pl-6">
-              <h3 class="text-primary dark:text-background-light text-base md:text-lg lg:text-xl font-bold">Information Management Assistant</h3>
-              <p class="text-secondary dark:text-gray-400 text-sm md:text-base mt-1">ACTED Garowe • Mar 2018 – Dec 2020</p>
-              <ul class="list-disc pl-5 pt-3 text-sm md:text-base text-secondary dark:text-gray-400 space-y-2 leading-relaxed">
-                <li>Supported Kobo/ODK data collection and data cleaning; trained enumerators.</li>
-              </ul>
-            </div>
-          </div>
-        </details>
-
-        <!-- EDUCATION -->
-        <details class="flex flex-col border-t border-gray-200 dark:border-gray-700 py-3 md:py-4 group">
-          <summary class="flex items-center justify-between py-2 md:py-3 cursor-pointer hover:text-primary transition-colors">
-            <h2 class="text-primary dark:text-background-light text-sm md:text-base lg:text-lg font-bold uppercase tracking-wide">Education</h2>
-            <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform duration-300">expand_more</span>
-          </summary>
-          <div class="p-2 md:p-4 space-y-4 md:space-y-6">
-            <div class="border-l-4 border-accent pl-4 md:pl-6">
-              <p class="text-primary dark:text-background-light text-base md:text-lg font-bold">MSc in Computer Science – Information Management &amp; Technology</p>
-              <p class="text-secondary dark:text-gray-400 text-sm md:text-base mt-1">Accord University, Mogadishu • Oct 2024 – Present</p>
-            </div>
-            
-            <div class="border-l-4 border-accent pl-4 md:pl-6">
-              <p class="text-primary dark:text-background-light text-base md:text-lg font-bold">BSc in Computer Science – Information Management &amp; Technology</p>
-              <p class="text-secondary dark:text-gray-400 text-sm md:text-base mt-1">Puntland State University, Garowe • Nov 2019</p>
-            </div>
-            
-            <div class="border-l-4 border-accent pl-4 md:pl-6">
-              <p class="text-primary dark:text-background-light text-base md:text-lg font-bold">Diploma in Accountability, Monitoring &amp; Evaluation (AME)</p>
-              <p class="text-secondary dark:text-gray-400 text-sm md:text-base mt-1">UNHCR / ACTED / Concern Worldwide, Hargeisa • Feb 2022</p>
-            </div>
-          </div>
-        </details>
-
-        <!-- PROJECTS & PUBLICATIONS -->
-        <details class="flex flex-col border-t border-gray-200 dark:border-gray-700 py-3 md:py-4 group">
-          <summary class="flex items-center justify-between py-2 md:py-3 cursor-pointer hover:text-primary transition-colors">
-            <h2 class="text-primary dark:text-background-light text-sm md:text-base lg:text-lg font-bold uppercase tracking-wide">Projects &amp; Digital Platforms</h2>
-            <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform duration-300">expand_more</span>
-          </summary>
-
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 p-2 md:p-4">
-            <!-- Catchment Map Dashboard -->
-            <a href="https://imcccmcluster.shinyapps.io/CatchmentMap/" target="_blank" rel="noopener"
-               class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
-              <div class="flex items-start gap-3 mb-3">
-                <span class="material-symbols-outlined text-primary text-2xl">map</span>
-                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Catchment Map Dashboard</h3>
-              </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Interactive R Shiny dashboard mapping CCCM catchment areas, service coverage, and partner presence across Somalia.</p>
-              <div class="mt-3 text-xs text-accent flex items-center gap-1">
-                <span class="material-symbols-outlined text-sm">open_in_new</span>
-                <span>imcccmcluster.shinyapps.io</span>
-              </div>
-            </a>
-
-            <!-- Facility Mapping System -->
-            <a href="https://imcccmcluster.shinyapps.io/FacilityMap_Baydhaba/" target="_blank" rel="noopener"
-               class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
-              <div class="flex items-start gap-3 mb-3">
-                <span class="material-symbols-outlined text-primary text-2xl">location_on</span>
-                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Facility Mapping System – Baydhaba</h3>
-              </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Displays key facilities and services (Health, WASH, Education, Nutrition) across Baydhaba with interactive filters and geospatial data layers.</p>
-              <div class="mt-3 text-xs text-accent flex items-center gap-1">
-                <span class="material-symbols-outlined text-sm">open_in_new</span>
-                <span>imcccmcluster.shinyapps.io</span>
-              </div>
-            </a>
-
-            <!-- Incident Reporting Platform -->
-            <a href="https://imcccmcluster.shinyapps.io/IncidentReport/" target="_blank" rel="noopener"
-               class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
-              <div class="flex items-start gap-3 mb-3">
-                <span class="material-symbols-outlined text-primary text-2xl">report</span>
-                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Incident Reporting Platform</h3>
-              </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Centralized digital platform for partners to report, track, and visualize site-level incidents in real time.</p>
-              <div class="mt-3 text-xs text-accent flex items-center gap-1">
-                <span class="material-symbols-outlined text-sm">open_in_new</span>
-                <span>imcccmcluster.shinyapps.io</span>
-              </div>
-            </a>
-
-            <!-- CCCM Cluster Portal -->
-            <a href="https://cccmclustersomalia.org/" target="_blank" rel="noopener"
-               class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
-              <div class="flex items-start gap-3 mb-3">
-                <span class="material-symbols-outlined text-primary text-2xl">public</span>
-                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">CCCM Cluster Somalia Information Portal</h3>
-              </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Official CCCM coordination and information portal featuring assessments, dashboards, service mapping, and partner updates.</p>
-              <div class="mt-3 text-xs text-accent flex items-center gap-1">
-                <span class="material-symbols-outlined text-sm">open_in_new</span>
-                <span>cccmclustersomalia.org</span>
-              </div>
-            </a>
-
-            <!-- Excel Merger App -->
-            <a href="https://imsom.shinyapps.io/ExcelMerger_App/" target="_blank" rel="noopener"
-               class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
-              <div class="flex items-start gap-3 mb-3">
-                <span class="material-symbols-outlined text-primary text-2xl">merge</span>
-                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Excel Workbooks Merger App</h3>
-              </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Automates merging, validation, and cleaning of multiple Excel datasets to support harmonized reporting.</p>
-              <div class="mt-3 text-xs text-accent flex items-center gap-1">
-                <span class="material-symbols-outlined text-sm">open_in_new</span>
-                <span>imsom.shinyapps.io</span>
-              </div>
-            </a>
-
-            <!-- Zite Manager Dashboard -->
-            <a href="https://imsom.shinyapps.io/Dashabord_ZM/" target="_blank" rel="noopener"
-               class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
-              <div class="flex items-start gap-3 mb-3">
-                <span class="material-symbols-outlined text-primary text-2xl">dashboard</span>
-                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Zite Manager Dashboard</h3>
-              </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Comprehensive CCCM site management tool integrating site profiles, partner presence, and dynamic analytics.</p>
-              <div class="mt-3 text-xs text-accent flex items-center gap-1">
-                <span class="material-symbols-outlined text-sm">open_in_new</span>
-                <span>imsom.shinyapps.io</span>
-              </div>
-            </a>
-
-            <!-- New Arrivals Dashboard -->
-            <a href="https://imsom.shinyapps.io/New_Arrivals/" target="_blank" rel="noopener"
-               class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
-              <div class="flex items-start gap-3 mb-3">
-                <span class="material-symbols-outlined text-primary text-2xl">trending_up</span>
-                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">New Arrivals Dashboard</h3>
-              </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Visualizes population movements, new displacements, and settlement arrivals across Somalia with trend analysis.</p>
-              <div class="mt-3 text-xs text-accent flex items-center gap-1">
-                <span class="material-symbols-outlined text-sm">open_in_new</span>
-                <span>imsom.shinyapps.io</span>
-              </div>
-            </a>
-
-            <!-- Floods Risk Dashboard -->
-            <a href="https://floods-banadir.som-imcccmcluster.com/" target="_blank" rel="noopener"
-               class="project-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 md:p-6 hover:border-primary/60 dark:hover:border-primary/60">
-              <div class="flex items-start gap-3 mb-3">
-                <span class="material-symbols-outlined text-primary text-2xl">water_damage</span>
-                <h3 class="font-semibold text-primary dark:text-background-light text-base md:text-lg">Floods Risk Dashboard – Banadir Region</h3>
-              </div>
-              <p class="text-sm md:text-base text-secondary dark:text-gray-400 leading-relaxed">Assesses flash flood risks in the Banadir region with layered spatial data to support early warning and response planning.</p>
-              <div class="mt-3 text-xs text-accent flex items-center gap-1">
-                <span class="material-symbols-outlined text-sm">open_in_new</span>
-                <span>floods-banadir.som-imcccmcluster.com</span>
-              </div>
-            </a>
-          </div>
-
-          <!-- Publications subsection -->
-          <div class="p-2 md:p-4 mt-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
-            <h3 class="uppercase text-xs md:text-sm tracking-wider font-bold text-primary dark:text-background-light mb-3 md:mb-4">Publications</h3>
-            <ul class="list-disc pl-5 text-sm md:text-base leading-relaxed space-y-2">
-              <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
-                     href="https://imcccmcluster.shinyapps.io/CatchmentMap/">Catchment Map Dashboard</a> — interactive R Shiny publication for CCCM service coverage.</li>
-              <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
-                     href="https://imcccmcluster.shinyapps.io/FacilityMap_Baydhaba/">Facility Mapping System – Baydhaba</a> — geospatial facility mapping and service visualization.</li>
-              <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
-                     href="https://imcccmcluster.shinyapps.io/IncidentReport/">Incident Reporting Platform</a> — real-time incident tracking and management system.</li>
-              <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
-                     href="https://cccmclustersomalia.org/">CCCM Cluster Somalia Information Portal</a> — national data portal and coordination hub.</li>
-              <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
-                     href="https://imsom.shinyapps.io/ExcelMerger_App/">Excel Workbooks Merger App</a> — data processing utility (R Shiny).</li>
-              <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
-                     href="https://imsom.shinyapps.io/Dashabord_ZM/">Zite Manager Dashboard</a> — site management and coordination analytics.</li>
-              <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
-                     href="https://imsom.shinyapps.io/New_Arrivals/">New Arrivals Dashboard</a> — displacement trend analytics.</li>
-              <li><a class="text-primary hover:underline font-medium" target="_blank" rel="noopener"
-                     href="https://floods-banadir.som-imcccmcluster.com/">Floods Risk Dashboard – Banadir</a> — risk mapping and early warning system.</li>
+      <!-- Professional Experience -->
+      <details class="border-t border-gray-200 py-4 group">
+        <summary class="flex items-center justify-between cursor-pointer">
+          <h2 class="text-sm font-bold text-primary uppercase tracking-wide">Professional Experience</h2>
+          <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+        </summary>
+        <div class="mt-4 space-y-6">
+          <div>
+            <h3 class="text-lg font-bold text-primary">Senior CCCM Cluster Information Management Associate</h3>
+            <p class="text-secondary text-sm mb-2">IOM Somalia &bull; Aug 2023 &ndash; Present</p>
+            <ul class="list-disc pl-6 text-sm text-secondary space-y-1">
+              <li>Led national IM strategy, dashboards, and data workflows for CCCM operations across Somalia</li>
+              <li>Developed R Shiny and Power BI platforms improving operational visibility and coordination effectiveness</li>
+              <li>Trained 100+ staff on IM tools, enhancing reporting quality and speed across partner organizations</li>
             </ul>
           </div>
-        </details>
+          <div>
+            <h3 class="text-lg font-bold text-primary">Senior Information Management Officer</h3>
+            <p class="text-secondary text-sm mb-2">ACTED Somalia &bull; Jan 2022 &ndash; Jul 2023</p>
+            <ul class="list-disc pl-6 text-sm text-secondary space-y-1">
+              <li>Implemented donor reporting dashboards reducing turnaround time by 30%</li>
+              <li>Supervised IM team, ensuring data accuracy and standardization across multiple projects</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-primary">Information Management Officer</h3>
+            <p class="text-secondary text-sm mb-2">ACTED Puntland/Somaliland &bull; Jan 2021 &ndash; Jan 2022</p>
+            <ul class="list-disc pl-6 text-sm text-secondary space-y-1">
+              <li>Designed IM workflows improving partner accountability and reporting mechanisms</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-primary">Information Management Assistant</h3>
+            <p class="text-secondary text-sm mb-2">ACTED Garowe &bull; Mar 2018 &ndash; Dec 2020</p>
+            <ul class="list-disc pl-6 text-sm text-secondary space-y-1">
+              <li>Supported Kobo/ODK data collection and data cleaning processes; trained field enumerators</li>
+            </ul>
+          </div>
+        </div>
+      </details>
 
-        <!-- Bottom border -->
-        <div class="border-t border-gray-200 dark:border-gray-700 mt-4"></div>
-      </div>
+      <!-- Education -->
+      <details class="border-t border-gray-200 py-4 group">
+        <summary class="flex items-center justify-between cursor-pointer">
+          <h2 class="text-sm font-bold text-primary uppercase tracking-wide">Education</h2>
+          <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+        </summary>
+        <div class="mt-4 space-y-3 text-sm text-secondary">
+          <div>
+            <p class="font-semibold text-primary">MSc in Computer Science &ndash; Information Management &amp; Technology</p>
+            <p>Accord University, Mogadishu &bull; Oct 2024 &ndash; Present</p>
+          </div>
+          <div>
+            <p class="font-semibold text-primary">BSc in Computer Science &ndash; Information Management &amp; Technology</p>
+            <p>Puntland State University, Garowe &bull; Nov 2019</p>
+          </div>
+          <div>
+            <p class="font-semibold text-primary">Diploma in Accountability, Monitoring &amp; Evaluation (AME)</p>
+            <p>UNHCR / ACTED / Concern Worldwide, Hargeisa &bull; Feb 2022</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- Projects & Digital Platforms -->
+      <details class="border-t border-gray-200 py-4 group">
+        <summary class="flex items-center justify-between cursor-pointer">
+          <h2 class="text-sm font-bold text-primary uppercase tracking-wide">Projects &amp; Digital Platforms</h2>
+          <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+        </summary>
+        <div class="mt-4 grid md:grid-cols-2 gap-4">
+
+          <!-- NEW: Somalia Arrivals Dashboard -->
+          <a href="https://imcccmcluster.shinyapps.io/somalia-arrivals-dashboard/" target="_blank" class="border border-gray-200 rounded-xl p-4 hover:border-primary/50 transition-colors relative overflow-hidden">
+            <div class="flex items-start justify-between">
+              <h3 class="font-semibold text-primary mb-2">Somalia Arrivals Dashboard</h3>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">New</span>
+            </div>
+            <p class="text-sm text-secondary">
+              National-level dashboard tracking IDP arrivals, displacement trends, and population movement patterns across Somalia.
+            </p>
+          </a>
+
+          <!-- NEW: CCCM Site Monitoring Dashboard -->
+          <a href="https://imcccmcluster.shinyapps.io/cccm-site-monitoring/" target="_blank" class="border border-gray-200 rounded-xl p-4 hover:border-primary/50 transition-colors relative overflow-hidden">
+            <div class="flex items-start justify-between">
+              <h3 class="font-semibold text-primary mb-2">CCCM Site Monitoring Dashboard</h3>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">New</span>
+            </div>
+            <p class="text-sm text-secondary">
+              Comprehensive site monitoring platform for tracking service delivery, infrastructure status, and needs assessments across CCCM-managed sites.
+            </p>
+          </a>
+
+          <!-- Existing: Catchment Map -->
+          <a href="https://imcccmcluster.shinyapps.io/CatchmentMap/" target="_blank" class="border border-gray-200 rounded-xl p-4 hover:border-primary/50 transition-colors">
+            <h3 class="font-semibold text-primary mb-2">Catchment Map Dashboard</h3>
+            <p class="text-sm text-secondary">
+              CCCM catchment areas and service coverage mapping across Somalia regions.
+            </p>
+          </a>
+
+          <!-- Existing: Zite Manager -->
+          <a href="https://imsom.shinyapps.io/Dashabord_ZM/" target="_blank" class="border border-gray-200 rounded-xl p-4 hover:border-primary/50 transition-colors">
+            <h3 class="font-semibold text-primary mb-2">Zite Manager Dashboard</h3>
+            <p class="text-sm text-secondary">
+              Comprehensive CCCM dashboard for site-level coordination and management.
+            </p>
+          </a>
+
+          <!-- Existing: Excel Merger -->
+          <a href="https://imsom.shinyapps.io/ExcelMerger_App/" target="_blank" class="border border-gray-200 rounded-xl p-4 hover:border-primary/50 transition-colors">
+            <h3 class="font-semibold text-primary mb-2">Excel Workbooks Merger App</h3>
+            <p class="text-sm text-secondary">
+              Automated R Shiny application for merging and validating Excel datasets.
+            </p>
+          </a>
+
+          <!-- Existing: New Arrivals -->
+          <a href="https://imsom.shinyapps.io/New_Arrivals/" target="_blank" class="border border-gray-200 rounded-xl p-4 hover:border-primary/50 transition-colors">
+            <h3 class="font-semibold text-primary mb-2">New Arrivals Dashboard</h3>
+            <p class="text-sm text-secondary">Real-time tracking of displacement trends and population movements.</p>
+          </a>
+
+          <!-- Existing: Floods Banadir (full width) -->
+          <a href="https://floods-banadir.som-imcccmcluster.com/" target="_blank" class="border border-gray-200 rounded-xl p-4 hover:border-primary/50 transition-colors md:col-span-2">
+            <h3 class="font-semibold text-primary mb-2">Floods Risk Dashboard &ndash; Banadir</h3>
+            <p class="text-sm text-secondary">
+              Interactive mapping of flash flood risks to support emergency response planning and preparedness.
+            </p>
+          </a>
+        </div>
+      </details>
+
+      <!-- Key Achievements -->
+      <details class="border-t border-gray-200 py-4 group">
+        <summary class="flex items-center justify-between cursor-pointer">
+          <h2 class="text-sm font-bold text-primary uppercase tracking-wide">Key Achievements</h2>
+          <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+        </summary>
+        <div class="mt-4">
+          <ul class="list-disc pl-6 text-sm text-secondary space-y-2">
+            <li>Increased organizational data accuracy by 40% through implementation of automated validation and quality assurance tools</li>
+            <li>Reduced reporting turnaround time by 40% using interactive dashboards and streamlined data workflows</li>
+            <li>Developed and deployed 8+ national-level dashboards supporting humanitarian coordination efforts</li>
+            <li>Successfully trained 250+ humanitarian staff in data visualization, statistical analysis, and GIS mapping techniques</li>
+          </ul>
+        </div>
+      </details>
     </div>
 
-    <!-- FOOTER -->
-    <div class="fixed bottom-0 left-0 right-0 p-4 md:p-6 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 shadow-lg z-50">
-      <div class="max-w-6xl mx-auto">
-        <a id="contactBtn" href="mailto:abdahamed@iom.int"
-           class="w-full flex items-center justify-center rounded-lg h-12 md:h-14 px-6 bg-accent hover:bg-accent/90 text-white text-sm md:text-base lg:text-lg font-bold tracking-wide transition-all shadow-md hover:shadow-lg">
-          <span class="material-symbols-outlined mr-2">send</span>
+    <!-- Fixed Footer -->
+    <div class="fixed bottom-0 left-0 right-0 bg-background-light/90 backdrop-blur-sm border-t border-gray-200 p-4">
+      <div class="max-w-4xl mx-auto">
+        <a href="mailto:abdullahi.nur@example.com" class="block w-full bg-accent text-white text-center py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
           Contact Me
         </a>
       </div>
     </div>
-  </div>
-
-  <!-- Email rendering + contact button script -->
-  <script>
-    function writeEmail(anchorId, textId){
-      const a = document.getElementById(anchorId);
-      const t = document.getElementById(textId);
-      if(!a || !t) return;
-      const email = a.dataset.user + "@" + a.dataset.domain;
-      a.href = "mailto:" + email;
-      t.textContent = email;
-      return email;
-    }
-    const work = writeEmail("workEmail","workEmailTxt");
-    const personal = writeEmail("personalEmail","personalEmailTxt");
-
-    const btn = document.getElementById("contactBtn");
-    if (btn && work) btn.href = "mailto:" + work;
-  </script>
 </body>
 </html>
