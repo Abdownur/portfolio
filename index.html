@@ -15,20 +15,20 @@
       theme: {
         extend: {
           colors: {
-            brand: '#0F4C5C',       // deep professional teal
-            brandDark: '#083344',   // dark navy teal
-            brandSoft: '#EAF6F8',   // clean soft blue background
-            accent: '#0EA5B7',      // calm cyan accent
-            mint: '#67E8F9',        // light cyan highlight
-            ink: '#0F172A',         // slate black text
-            muted: '#64748B',       // readable secondary text
-            line: '#E2E8F0',        // soft borders
-            page: '#F8FAFC',        // clean page background
-            cream: '#F1F5F9'        // neutral hover background
+            brand: '#0F4C5C',
+            brandDark: '#083344',
+            brandSoft: '#EAF6F8',
+            accent: '#0EA5B7',
+            mint: '#67E8F9',
+            ink: '#0F172A',
+            muted: '#64748B',
+            line: '#E2E8F0',
+            page: '#F8FAFC',
+            cream: '#F1F5F9'
           },
           fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
           boxShadow: {
-            glow: '0 22px 60px rgba(15, 76, 92, 0.16)',
+            glow: '0 22px 60px rgba(15, 76, 92, 0.18)',
             soft: '0 16px 40px rgba(15, 23, 42, 0.08)',
             card: '0 8px 24px rgba(15, 23, 42, 0.06)'
           }
@@ -41,185 +41,291 @@
     body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; background: linear-gradient(180deg, #F8FAFC 0%, #EEF6F8 100%); }
     .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
     .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+
+    /* Scroll Progress */
+    #scrollProgress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #0EA5B7, #0F4C5C, #67E8F9); z-index: 9999; width: 0%; transition: width 80ms linear; border-radius: 0 2px 2px 0; }
+
+    /* Hero */
     .hero-grid {
       background-image:
         radial-gradient(circle at 16% 18%, rgba(14,165,183,0.24), transparent 32%),
         radial-gradient(circle at 82% 12%, rgba(103,232,249,0.14), transparent 28%),
         linear-gradient(135deg, #0F4C5C 0%, #083344 58%, #0F172A 100%);
     }
+    .hero-grid::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 30px 30px; pointer-events: none; }
     .glass { background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(16px); }
-    .project-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease; }
-    .project-card:hover { transform: translateY(-4px); box-shadow: 0 18px 42px rgba(15, 23, 42, 0.10); border-color: rgba(15,76,92,.32); background: #FFFFFF; }
+
+    /* Floating orbs */
+    @keyframes floatOrb1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-20px) scale(1.05)} 66%{transform:translate(-15px,15px) scale(.97)} }
+    @keyframes floatOrb2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-25px,25px) scale(1.08)} }
+    @keyframes floatOrb3 { 0%,100%{transform:translate(0,0)} 40%{transform:translate(20px,15px)} 80%{transform:translate(-10px,-10px)} }
+    .orb-1 { animation: floatOrb1 8s ease-in-out infinite; }
+    .orb-2 { animation: floatOrb2 10s ease-in-out infinite; }
+    .orb-3 { animation: floatOrb3 12s ease-in-out infinite; }
+
+    /* Profile glow */
+    @keyframes profileGlow { 0%,100%{box-shadow:0 0 20px rgba(14,165,183,0.3),0 0 60px rgba(14,165,183,0.1)} 50%{box-shadow:0 0 30px rgba(14,165,183,0.5),0 0 80px rgba(14,165,183,0.2)} }
+    .profile-glow { animation: profileGlow 4s ease-in-out infinite; }
+
+    /* Typing cursor */
+    @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
+    .typing-cursor { display: inline-block; width: 3px; height: 1em; background: #67E8F9; margin-left: 4px; animation: blink 1s step-end infinite; vertical-align: text-bottom; border-radius: 2px; }
+
+    /* Counter pulse */
+    @keyframes countPulse { 0%{transform:scale(1)} 50%{transform:scale(1.06)} 100%{transform:scale(1)} }
+    .count-animated { animation: countPulse 0.4s ease-out; }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-d1{transition-delay:.07s} .reveal-d2{transition-delay:.14s} .reveal-d3{transition-delay:.21s} .reveal-d4{transition-delay:.28s} .reveal-d5{transition-delay:.35s} .reveal-d6{transition-delay:.42s}
+
+    /* Project cards */
+    .project-card { transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease, border-color .3s ease; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 22px 48px rgba(15,23,42,.12); border-color: rgba(15,76,92,.3); }
+    .project-card:hover .card-arrow { transform: translate(3px,-3px); }
+    .card-arrow { transition: transform .3s cubic-bezier(.16,1,.3,1); }
+
+    /* Animated gradient border */
+    @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    .gradient-border { position: relative; }
+    .gradient-border::before { content:''; position:absolute; inset:-2px; border-radius:inherit; padding:2px; background:linear-gradient(135deg,#0EA5B7,#0F4C5C,#67E8F9,#0F4C5C); background-size:300% 300%; animation:gradientShift 6s ease infinite; -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; opacity:0; transition:opacity .3s ease; }
+    .gradient-border:hover::before { opacity:1; }
+
+    /* Skill pill */
+    .skill-pill { transition: all .2s ease; cursor: default; }
+    .skill-pill:hover { background: #0F4C5C !important; color: #fff !important; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(15,76,92,.2); }
+
+    /* Timeline */
     .timeline-item { position: relative; padding-left: 2rem; }
-    .timeline-item::before { content: ''; position: absolute; left: 0.45rem; top: 1.8rem; bottom: -1rem; width: 2px; background: #E2E8F0; }
-    .timeline-item:last-child::before { display: none; }
-    .timeline-dot { position: absolute; left: 0; top: 0.35rem; width: 1rem; height: 1rem; border-radius: 999px; background: white; border: 3px solid #1B657C; }
+    .timeline-item::before { content:''; position:absolute; left:.45rem; top:1.8rem; bottom:-1rem; width:2px; background:linear-gradient(180deg,#CBD5E1,#E2E8F0); }
+    .timeline-item:last-child::before { display:none; }
+    .timeline-dot { position:absolute; left:0; top:.35rem; width:1rem; height:1rem; border-radius:999px; background:white; border:3px solid #0F4C5C; transition:all .3s ease; }
+    .timeline-item:hover .timeline-dot { background:#0F4C5C; box-shadow:0 0 0 4px rgba(15,76,92,.15); }
 
-    .section-control-panel {
-      position: sticky;
-      top: 72px;
-      z-index: 40;
-      border: 1px solid #E2E8F0;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-    }
-    .section-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: .75rem;
-      margin-bottom: .85rem;
-      padding: .75rem .85rem;
-      border: 1px solid #E2E8F0;
-      background: rgba(255,255,255,.78);
-      border-radius: 1rem;
-    }
-    .section-toolbar-title {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      min-width: 0;
-      color: #0F172A;
-      font-size: .8rem;
-      font-weight: 900;
-    }
-    .section-toggle-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .35rem;
-      border: 1px solid #CBD5E1;
-      background: #F8FAFC;
-      color: #0F4C5C;
-      padding: .5rem .75rem;
-      border-radius: .85rem;
-      font-size: .75rem;
-      font-weight: 900;
-      transition: all .2s ease;
-      white-space: nowrap;
-    }
-    .section-toggle-btn:hover { background: #EAF6F8; border-color: rgba(15,76,92,.35); transform: translateY(-1px); }
-    .section-content { overflow: hidden; transition: max-height .35s ease, opacity .25s ease, transform .25s ease; }
-    main > section.is-collapsed { padding: .15rem 0; }
-    main > section.is-collapsed .section-content { max-height: 0 !important; opacity: 0; transform: translateY(-4px); pointer-events: none; }
-    main > section.is-collapsed .section-toolbar { margin-bottom: 0; background: linear-gradient(135deg, #FFFFFF 0%, #EAF6F8 100%); }
-    .section-status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: .35rem;
-      padding: .35rem .6rem;
-      border-radius: 999px;
-      background: #EAF6F8;
-      color: #0F4C5C;
-      font-size: .7rem;
-      font-weight: 900;
-    }
+    /* Nav active */
+    .nav-link { position:relative; transition:color .2s ease; padding-bottom:2px; }
+    .nav-link::after { content:''; position:absolute; bottom:-4px; left:50%; width:0; height:2px; background:#0F4C5C; border-radius:2px; transition:all .3s cubic-bezier(.16,1,.3,1); transform:translateX(-50%); }
+    .nav-link.active { color:#0F4C5C; font-weight:700; }
+    .nav-link.active::after { width:100%; }
+    .nav-link:hover::after { width:60%; }
 
-    @media print {
-      .no-print { display: none !important; }
-      body { background: #fff !important; }
-      section { break-inside: avoid; }
-    }
+    /* Section toggle system */
+    .section-toolbar { display:flex; align-items:center; justify-content:space-between; gap:.75rem; padding:.7rem .9rem; border:1px solid #E2E8F0; background:rgba(255,255,255,.85); border-radius:1rem; margin-bottom:1rem; transition:all .3s ease; cursor:pointer; user-select:none; }
+    .section-toolbar:hover { border-color:rgba(15,76,92,.25); background:rgba(234,246,248,.6); }
+    .section-toolbar-title { display:inline-flex; align-items:center; gap:.5rem; color:#0F172A; font-size:.8rem; font-weight:900; }
+    .section-toggle-icon { transition:transform .3s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:8px; background:#EAF6F8; color:#0F4C5C; }
+    .is-collapsed .section-toggle-icon { transform:rotate(180deg); }
+    .section-body { overflow:hidden; transition:max-height .4s cubic-bezier(.16,1,.3,1), opacity .3s ease, padding .3s ease; opacity:1; }
+    .is-collapsed .section-body { max-height:0 !important; opacity:0; padding-top:0; padding-bottom:0; }
+    .section-status-dot { width:8px; height:8px; border-radius:50%; background:#0EA5B7; transition:background .3s ease; }
+    .is-collapsed .section-status-dot { background:#CBD5E1; }
+
+    /* Filter buttons */
+    .filter-btn { transition:all .2s ease; }
+    .filter-btn.active { background:#0F4C5C; color:#fff; border-color:#0F4C5C; }
+    .filter-btn:not(.active):hover { background:#EAF6F8; border-color:rgba(15,76,92,.3); }
+
+    /* Dashboard card enter animation */
+    .dash-card { transition:all .35s cubic-bezier(.16,1,.3,1); }
+    .dash-card.hidden-by-filter { opacity:0; transform:scale(.92); pointer-events:none; position:absolute; visibility:hidden; }
+
+    /* Toast */
+    @keyframes toastIn { from{transform:translateY(20px) scale(.95);opacity:0} to{transform:translateY(0) scale(1);opacity:1} }
+    @keyframes toastOut { from{transform:translateY(0) scale(1);opacity:1} to{transform:translateY(20px) scale(.95);opacity:0} }
+    .toast { animation:toastIn .3s cubic-bezier(.16,1,.3,1) forwards; }
+    .toast.hiding { animation:toastOut .25s ease forwards; }
+
+    /* Back to top */
+    #backToTop { position:fixed; bottom:2rem; right:2rem; z-index:50; width:48px; height:48px; border-radius:50%; background:#0F4C5C; color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(15,76,92,.3); opacity:0; transform:translateY(20px); transition:all .3s cubic-bezier(.16,1,.3,1); pointer-events:none; cursor:pointer; border:none; }
+    #backToTop.visible { opacity:1; transform:translateY(0); pointer-events:all; }
+    #backToTop:hover { background:#083344; transform:translateY(-3px); box-shadow:0 12px 32px rgba(15,76,92,.4); }
+
+    /* Mobile nav */
+    .mobile-nav { position:fixed; inset:0; z-index:100; background:rgba(8,51,68,.97); backdrop-filter:blur(20px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; opacity:0; pointer-events:none; transition:opacity .3s ease; }
+    .mobile-nav.open { opacity:1; pointer-events:all; }
+    .mobile-nav a { color:#fff; font-size:1.25rem; font-weight:700; opacity:0; transform:translateY(15px); transition:all .3s ease; }
+    .mobile-nav.open a { opacity:1; transform:translateY(0); }
+
+    /* Stat hover */
+    .stat-card { transition:all .3s cubic-bezier(.16,1,.3,1); }
+    .stat-card:hover { transform:scale(1.04); background:rgba(255,255,255,.18); }
+
+    /* Cap card */
+    .cap-card { transition:all .3s cubic-bezier(.16,1,.3,1); }
+    .cap-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(15,23,42,.08); border-color:rgba(15,76,92,.2); }
+
+    /* Quick nav floating */
+    .quick-nav { position:fixed; left:1.5rem; top:50%; transform:translateY(-50%); z-index:45; display:flex; flex-direction:column; gap:.5rem; }
+    .quick-nav-dot { width:10px; height:10px; border-radius:50%; background:#CBD5E1; transition:all .3s ease; cursor:pointer; border:none; padding:0; }
+    .quick-nav-dot:hover { background:#0EA5B7; transform:scale(1.3); }
+    .quick-nav-dot.active { background:#0F4C5C; transform:scale(1.4); box-shadow:0 0 0 3px rgba(15,76,92,.15); }
+    .quick-nav-dot .quick-tooltip { position:absolute; left:1.5rem; top:50%; transform:translateY(-50%); background:#0F172A; color:#fff; font-size:.7rem; font-weight:700; padding:.3rem .6rem; border-radius:.5rem; white-space:nowrap; opacity:0; pointer-events:none; transition:all .2s ease; }
+    .quick-nav-dot:hover .quick-tooltip { opacity:1; left:2rem; }
+
+    /* Ripple effect */
+    .ripple { position:relative; overflow:hidden; }
+    .ripple::after { content:''; position:absolute; top:50%; left:50%; width:0; height:0; border-radius:50%; background:rgba(255,255,255,.3); transform:translate(-50%,-50%); transition:width .5s ease,height .5s ease,opacity .5s ease; opacity:0; }
+    .ripple:active::after { width:200px; height:200px; opacity:1; transition:0s; }
+
+    @media(max-width:1024px) { .quick-nav{display:none} }
+    @media print { .no-print{display:none!important} body{background:#fff!important} section{break-inside:avoid} }
   </style>
 </head>
 <body class="bg-page text-ink">
 
+  <div id="scrollProgress" class="no-print"></div>
+
+  <button type="button" id="backToTop" class="no-print" aria-label="Back to top">
+    <span class="material-symbols-outlined" style="font-size:24px">keyboard_arrow_up</span>
+  </button>
+
+  <!-- Toast container -->
+  <div id="toastContainer" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[200] flex flex-col items-center gap-2 pointer-events-none"></div>
+
+  <!-- Quick side navigation -->
+  <nav class="quick-nav no-print" aria-label="Quick section navigation">
+    <button class="quick-nav-dot" data-target="profile"><span class="quick-tooltip">Profile</span></button>
+    <button class="quick-nav-dot" data-target="featured"><span class="quick-tooltip">Featured</span></button>
+    <button class="quick-nav-dot" data-target="dashboards"><span class="quick-tooltip">Dashboards</span></button>
+    <button class="quick-nav-dot" data-target="developer"><span class="quick-tooltip">Developer</span></button>
+    <button class="quick-nav-dot" data-target="skills"><span class="quick-tooltip">Skills</span></button>
+    <button class="quick-nav-dot" data-target="experience"><span class="quick-tooltip">Experience</span></button>
+    <button class="quick-nav-dot" data-target="contact"><span class="quick-tooltip">Contact</span></button>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div id="mobileNav" class="mobile-nav no-print">
+    <button type="button" id="closeMobileNav" class="absolute top-5 right-5 text-white/70 hover:text-white" aria-label="Close menu">
+      <span class="material-symbols-outlined" style="font-size:32px">close</span>
+    </button>
+    <a href="#profile" class="mobile-nav-link">Profile</a>
+    <a href="#featured" class="mobile-nav-link">Featured Work</a>
+    <a href="#dashboards" class="mobile-nav-link">Dashboards</a>
+    <a href="#developer" class="mobile-nav-link">Developer</a>
+    <a href="#skills" class="mobile-nav-link">Skills</a>
+    <a href="#experience" class="mobile-nav-link">Experience</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+  </div>
+
   <!-- Top Navigation -->
-  <nav class="no-print sticky top-0 z-50 bg-white/92 backdrop-blur-xl border-b border-line">
+  <nav class="no-print sticky top-0 z-50 bg-white/90 backdrop-blur-2xl border-b border-line/60">
     <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
-      <a href="#top" class="flex items-center gap-2 font-extrabold text-brand tracking-tight">
-        <span class="w-9 h-9 rounded-xl bg-brand text-white flex items-center justify-center">AN</span>
-        <span class="hidden sm:block">Abdullahi Nur Ahmad</span>
+      <a href="#top" class="flex items-center gap-2.5 font-extrabold text-brand tracking-tight group">
+        <span class="w-9 h-9 rounded-xl bg-brand text-white flex items-center justify-center text-sm font-black group-hover:bg-brandDark transition-colors">AN</span>
+        <span class="hidden sm:block group-hover:text-brandDark transition-colors">Abdullahi Nur Ahmad</span>
       </a>
-      <div class="hidden md:flex items-center gap-5 text-sm font-medium text-muted">
-        <a class="hover:text-brand" href="#profile">Profile</a>
-        <a class="hover:text-brand" href="#featured">Featured Work</a>
-        <a class="hover:text-brand" href="#dashboards">Dashboards</a>
-        <a class="hover:text-brand" href="#developer">Developer</a>
-        <a class="hover:text-brand" href="#skills">Skills</a>
-        <a class="hover:text-brand" href="#experience">Experience</a>
-        <a class="hover:text-brand" href="#contact">Contact</a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-muted">
+        <a class="nav-link hover:text-brand" href="#profile" data-nav>Profile</a>
+        <a class="nav-link hover:text-brand" href="#featured" data-nav>Featured</a>
+        <a class="nav-link hover:text-brand" href="#dashboards" data-nav>Dashboards</a>
+        <a class="nav-link hover:text-brand" href="#developer" data-nav>Developer</a>
+        <a class="nav-link hover:text-brand" href="#skills" data-nav>Skills</a>
+        <a class="nav-link hover:text-brand" href="#experience" data-nav>Experience</a>
+        <a class="nav-link hover:text-brand" href="#contact" data-nav>Contact</a>
       </div>
-      <a href="mailto:abdullahi.nur@iom.int" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand text-white text-sm font-semibold hover:bg-brandDark transition shadow-sm">
-        <span class="material-symbols-outlined" style="font-size:18px">mail</span>
-        Contact
-      </a>
+      <div class="flex items-center gap-3">
+        <button type="button" id="openMobileNav" class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl border border-line text-muted hover:text-brand hover:border-brand/30 transition" aria-label="Open menu">
+          <span class="material-symbols-outlined" style="font-size:22px">menu</span>
+        </button>
+        <a href="mailto:abdullahi.nur@iom.int" class="ripple inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand text-white text-sm font-bold hover:bg-brandDark transition-all hover:shadow-lg">
+          <span class="material-symbols-outlined" style="font-size:18px">mail</span>
+          <span class="hidden sm:inline">Contact</span>
+        </a>
+      </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <header id="top" class="hero-grid text-white">
-    <div class="max-w-6xl mx-auto px-5 py-14 lg:py-20 grid lg:grid-cols-[1.15fr_.85fr] gap-8 items-center">
+  <header id="top" class="hero-grid text-white relative overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div class="orb-1 absolute top-[10%] left-[5%] w-72 h-72 bg-accent/10 rounded-full blur-3xl"></div>
+      <div class="orb-2 absolute bottom-[5%] right-[10%] w-96 h-96 bg-mint/8 rounded-full blur-3xl"></div>
+      <div class="orb-3 absolute top-[50%] left-[60%] w-64 h-64 bg-brand/15 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-6xl mx-auto px-5 py-14 lg:py-20 grid lg:grid-cols-[1.15fr_.85fr] gap-8 items-center">
       <div>
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-sm font-semibold mb-5">
+        <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full glass text-sm font-semibold mb-6 reveal">
           <span class="material-symbols-outlined filled text-mint" style="font-size:18px">verified</span>
-          Senior Developer | Data Systems & Information Management Specialist
+          Senior Developer | Data Systems & IM Specialist
         </div>
-        <h1 class="text-3xl sm:text-5xl font-black leading-tight tracking-tight">
-          Senior developer building data systems, dashboards, APIs, GIS tools, and digital products.
+        <h1 class="text-3xl sm:text-5xl lg:text-[3.2rem] font-black leading-[1.1] tracking-tight reveal reveal-d1">
+          <span id="typingTarget"></span><span class="typing-cursor"></span>
         </h1>
-        <p class="mt-5 text-white/82 text-base sm:text-lg leading-relaxed max-w-3xl">
+        <p class="mt-6 text-white/80 text-base sm:text-lg leading-relaxed max-w-3xl reveal reveal-d2">
           I design, code, deploy, and maintain practical digital systems that transform raw field data into secure, reliable, and decision-ready platforms for humanitarian coordination, market intelligence, reporting, and operational planning.
         </p>
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a href="#featured" class="inline-flex items-center gap-2 bg-white text-brand px-5 py-3 rounded-xl font-bold shadow-soft hover:bg-cream transition">
-            View portfolio
+        <div class="mt-8 flex flex-wrap gap-3 reveal reveal-d3">
+          <a href="#featured" class="ripple inline-flex items-center gap-2 bg-white text-brand px-6 py-3.5 rounded-xl font-bold shadow-soft hover:bg-cream transition-all hover:shadow-glow">
+            Explore my work
             <span class="material-symbols-outlined" style="font-size:18px">arrow_downward</span>
           </a>
-          <a href="https://so.linkedin.com/in/abdullahi-n-519674174" target="_blank" rel="noopener" class="inline-flex items-center gap-2 glass px-5 py-3 rounded-xl font-bold hover:bg-white/20 transition">
+          <a href="https://so.linkedin.com/in/abdullahi-n-519674174" target="_blank" rel="noopener" class="ripple inline-flex items-center gap-2 glass px-6 py-3.5 rounded-xl font-bold hover:bg-white/20 transition-all">
             LinkedIn
             <span class="material-symbols-outlined" style="font-size:18px">arrow_outward</span>
+          </a>
+          <a href="#contact" class="ripple inline-flex items-center gap-2 glass px-6 py-3.5 rounded-xl font-bold hover:bg-white/20 transition-all">
+            Get in touch
+            <span class="material-symbols-outlined" style="font-size:18px">handshake</span>
           </a>
         </div>
       </div>
 
-      <aside class="glass rounded-[2rem] p-5 sm:p-6 shadow-soft">
+      <aside class="glass rounded-[2rem] p-5 sm:p-6 shadow-soft reveal reveal-d4">
         <div class="flex items-center gap-4">
-          <div class="w-24 h-24 rounded-3xl bg-white/20 bg-cover bg-center ring-4 ring-white/20" style="background-image:url('https://imagizer.imageshack.com/img924/6578/v3k7U2.jpg')"></div>
-          <div>
-            <h2 class="text-2xl font-black">Abdullahi Nur Ahmad</h2>
-            <p class="text-white/75 text-sm mt-1">Senior Developer | IOM | CCCM Cluster Somalia</p>
-            <p class="text-white/75 text-sm">Mogadishu, Somalia</p>
+          <div class="w-24 h-24 rounded-3xl bg-cover bg-center ring-4 ring-white/20 profile-glow shrink-0" style="background-image:url('https://imagizer.imageshack.com/img922/3194/40Cqh4.jpg')"></div>
+          <div class="min-w-0">
+            <h2 class="text-2xl font-black truncate">Abdullahi Nur Ahmad</h2>
+            <p class="text-white/75 text-sm mt-1">Senior Developer | IOM | CCCM Cluster</p>
+            <div class="flex items-center gap-1.5 mt-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <p class="text-white/75 text-xs">Available for collaboration</p>
+            </div>
           </div>
         </div>
         <div class="grid grid-cols-2 gap-3 mt-6">
-          <div class="rounded-2xl bg-white/12 p-4">
-            <p class="text-3xl font-black">8+</p>
-            <p class="text-xs text-white/70 mt-1">Years technical experience</p>
+          <div class="stat-card rounded-2xl bg-white/12 p-4 cursor-default text-center">
+            <p class="text-3xl font-black" data-count="8" data-suffix="+">0</p>
+            <p class="text-xs text-white/70 mt-1">Years experience</p>
           </div>
-          <div class="rounded-2xl bg-white/12 p-4">
-            <p class="text-3xl font-black">10+</p>
-            <p class="text-xs text-white/70 mt-1">Dashboards & apps built</p>
+          <div class="stat-card rounded-2xl bg-white/12 p-4 cursor-default text-center">
+            <p class="text-3xl font-black" data-count="10" data-suffix="+">0</p>
+            <p class="text-xs text-white/70 mt-1">Dashboards & apps</p>
           </div>
-          <div class="rounded-2xl bg-white/12 p-4">
-            <p class="text-3xl font-black">250+</p>
+          <div class="stat-card rounded-2xl bg-white/12 p-4 cursor-default text-center">
+            <p class="text-3xl font-black" data-count="250" data-suffix="+">0</p>
             <p class="text-xs text-white/70 mt-1">Staff trained</p>
           </div>
-          <div class="rounded-2xl bg-white/12 p-4">
-            <p class="text-3xl font-black">40%</p>
-            <p class="text-xs text-white/70 mt-1">Reporting efficiency gain</p>
+          <div class="stat-card rounded-2xl bg-white/12 p-4 cursor-default text-center">
+            <p class="text-3xl font-black" data-count="40" data-suffix="%">0</p>
+            <p class="text-xs text-white/70 mt-1">Efficiency gain</p>
           </div>
         </div>
       </aside>
     </div>
+    <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-page to-transparent pointer-events-none"></div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-5 py-10 lg:py-14 space-y-12">
+  <main class="max-w-6xl mx-auto px-5 py-10 lg:py-14 space-y-10">
 
-    <!-- Section visibility controls -->
-    <div class="no-print section-control-panel rounded-3xl p-4 sm:p-5">
+    <!-- Section controls -->
+    <div class="no-print bg-white/90 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-line shadow-card reveal">
       <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div>
-          <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Page controls</p>
-          <h2 class="text-lg sm:text-xl font-black text-ink mt-1">Show, hide, and reopen portfolio sections</h2>
-          <p class="text-sm text-muted mt-1">Visitors can collapse sections they do not need and reopen them anytime. The selection is saved in the browser.</p>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="material-symbols-outlined text-brand" style="font-size:20px">tune</span>
+            <p class="text-xs uppercase tracking-[.2em] font-black text-accent">Page controls</p>
+          </div>
+          <h2 class="text-lg font-black text-ink">Customize your viewing experience</h2>
+          <p class="text-sm text-muted mt-1">Collapse sections you don't need — your preferences are saved automatically.</p>
         </div>
         <div class="flex flex-wrap gap-2">
-          <button type="button" id="expandAllSections" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand text-white text-sm font-black hover:bg-brandDark transition">
+          <button type="button" id="expandAll" class="ripple inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand text-white text-sm font-black hover:bg-brandDark transition-all hover:shadow-lg">
             <span class="material-symbols-outlined" style="font-size:18px">unfold_more</span>
             Expand all
           </button>
-          <button type="button" id="collapseAllSections" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-line text-brand text-sm font-black hover:bg-brandSoft transition">
+          <button type="button" id="collapseAll" class="ripple inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-line text-brand text-sm font-black hover:bg-brandSoft transition-all">
             <span class="material-symbols-outlined" style="font-size:18px">unfold_less</span>
             Collapse all
           </button>
@@ -227,424 +333,571 @@
       </div>
     </div>
 
-    <!-- Profile -->
-    <section id="profile" data-section-title="Profile" class="grid lg:grid-cols-[.8fr_1.2fr] gap-6 items-start">
-      <div class="bg-white rounded-3xl p-6 shadow-card border border-line">
-        <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Professional focus</p>
-        <h2 class="mt-2 text-2xl font-black text-ink">Senior developer profile with humanitarian impact</h2>
-        <p class="mt-4 text-sm text-muted leading-relaxed">
-          My work combines software development, humanitarian information management, data engineering, GIS, dashboard design, and reporting automation. I build tools that help teams collect better data, automate analysis, identify service gaps, monitor response quality, and communicate evidence clearly.
-        </p>
-      </div>
-      <div class="bg-white rounded-3xl p-6 shadow-card border border-line">
-        <h3 class="text-lg font-black mb-3">Senior developer summary</h3>
-        <p class="text-sm text-muted leading-relaxed">
-          Senior Developer and Data Systems Specialist with a strong record designing and deploying operational platforms for humanitarian coordination and digital services. Skilled across R Shiny, Power BI, Python, SQL, JavaScript, APIs, GIS, KoBoToolbox, automation, data validation, and visualization. Experienced in translating business requirements into usable systems, building live dashboards, integrating field data sources, strengthening data quality, and delivering tools that support evidence-based decision-making across Somalia.
-        </p>
-        <div class="mt-5 grid sm:grid-cols-3 gap-3">
-          <div class="p-4 rounded-2xl bg-brandSoft">
-            <span class="material-symbols-outlined text-brand">dashboard</span>
-            <p class="font-bold text-sm mt-2">Dashboards</p>
-            <p class="text-xs text-muted mt-1">R Shiny, Power BI, React/Web apps</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-brandSoft">
-            <span class="material-symbols-outlined text-brand">map</span>
-            <p class="font-bold text-sm mt-2">GIS & mapping</p>
-            <p class="text-xs text-muted mt-1">Catchments, sites, severity</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-brandSoft">
-            <span class="material-symbols-outlined text-brand">database</span>
-            <p class="font-bold text-sm mt-2">Data systems</p>
-            <p class="text-xs text-muted mt-1">APIs, SQL, ETL, automation</p>
-          </div>
+    <!-- ============ PROFILE ============ -->
+    <section id="profile" data-section="Profile" class="scroll-mt-20">
+      <div class="section-toolbar no-print" role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Profile section">
+        <div class="section-toolbar-title">
+          <span class="section-status-dot"></span>
+          <span class="material-symbols-outlined text-brand" style="font-size:18px">person</span>
+          Profile
+        </div>
+        <div class="section-toggle-icon">
+          <span class="material-symbols-outlined" style="font-size:20px">expand_less</span>
         </div>
       </div>
-    </section>
-
-    <!-- Featured Work -->
-    <section id="featured" data-section-title="Featured Work">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-5">
-        <div>
-          <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Selected portfolio</p>
-          <h2 class="text-2xl sm:text-3xl font-black mt-1">Featured work</h2>
-        </div>
-        <p class="text-sm text-muted max-w-xl">A focused selection of platforms showing humanitarian coordination, service mapping, displacement tracking, and market information products.</p>
-      </div>
-
-      <div class="grid lg:grid-cols-3 gap-4">
-        <a href="https://imcccmcluster.shinyapps.io/CCCM-ServiceMap-Somalia-2026/" target="_blank" rel="noopener" class="project-card lg:col-span-2 rounded-3xl border border-brand/25 bg-white p-6 shadow-card relative overflow-hidden">
-          <div class="absolute -right-16 -top-16 w-44 h-44 bg-mint/20 rounded-full"></div>
-          <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-brand text-white text-xs font-black uppercase tracking-wider">Latest dashboard</span>
-          <div class="mt-5 flex items-start gap-4">
-            <div class="w-14 h-14 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-brand" style="font-size:28px">hub</span>
-            </div>
-            <div>
-              <h3 class="text-xl font-black">CCCM Cluster Service Mapping Dashboard 2026</h3>
-              <p class="mt-2 text-sm text-muted leading-relaxed">
-                Interactive service mapping dashboard for Somalia CCCM coordination, supporting analysis of service availability, partner coverage, site-level gaps, and cluster-level operational planning.
-              </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-full bg-brandSoft text-brand text-xs font-bold">R Shiny</span>
-                <span class="px-3 py-1 rounded-full bg-brandSoft text-brand text-xs font-bold">Service mapping</span>
-                <span class="px-3 py-1 rounded-full bg-brandSoft text-brand text-xs font-bold">CCCM</span>
-                <span class="px-3 py-1 rounded-full bg-brandSoft text-brand text-xs font-bold">Somalia</span>
+      <div class="section-body">
+        <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-6 items-start">
+          <div class="bg-white rounded-3xl p-6 shadow-card border border-line reveal">
+            <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Professional focus</p>
+            <h2 class="mt-2 text-2xl font-black text-ink">Senior developer profile with humanitarian impact</h2>
+            <p class="mt-4 text-sm text-muted leading-relaxed">
+              My work combines software development, humanitarian information management, data engineering, GIS, dashboard design, and reporting automation. I build tools that help teams collect better data, automate analysis, identify service gaps, monitor response quality, and communicate evidence clearly.
+            </p>
+            <div class="mt-6 pt-5 border-t border-line/60">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center">
+                  <span class="material-symbols-outlined text-brand" style="font-size:20px">location_on</span>
+                </div>
+                <div>
+                  <p class="text-sm font-bold">Based in Mogadishu, Somalia</p>
+                  <p class="text-xs text-muted">Available for remote & on-site engagement</p>
+                </div>
               </div>
-              <span class="inline-flex items-center gap-1 mt-5 text-sm font-black text-brand">Open live dashboard <span class="material-symbols-outlined" style="font-size:16px">arrow_outward</span></span>
             </div>
           </div>
-        </a>
-
-        <a href="https://www.som-imcccmcluster.com/" target="_blank" rel="noopener" class="project-card rounded-3xl border border-line bg-white p-6 shadow-card relative overflow-hidden">
-          <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-accent text-white text-xs font-black uppercase tracking-wider">Digital product</span>
-          <div class="mt-5 w-14 h-14 rounded-2xl bg-cyan-50 flex items-center justify-center">
-            <span class="material-symbols-outlined text-accent" style="font-size:28px">monitoring</span>
-          </div>
-          <h3 class="mt-4 text-xl font-black">Somalia Price Index</h3>
-          <p class="mt-2 text-sm text-muted leading-relaxed">
-            A full web product developed to help users compare market prices, track essential items, view vendor information, manage vendor submissions, and improve price transparency across Somalia.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-3 py-1 rounded-full bg-cyan-50 text-accent text-xs font-bold">Full-stack web app</span>
-            <span class="px-3 py-1 rounded-full bg-cyan-50 text-accent text-xs font-bold">Vendor workflow</span>
-            <span class="px-3 py-1 rounded-full bg-cyan-50 text-accent text-xs font-bold">Market data</span>
-            <span class="px-3 py-1 rounded-full bg-cyan-50 text-accent text-xs font-bold">Somalia</span>
-          </div>
-          <span class="inline-flex items-center gap-1 mt-5 text-sm font-black text-brand">Visit platform <span class="material-symbols-outlined" style="font-size:16px">arrow_outward</span></span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Portfolio Categories -->
-    <section id="impact" data-section-title="Impact Stats" class="grid md:grid-cols-4 gap-4">
-      <div class="bg-white rounded-3xl p-5 border border-line shadow-card">
-        <span class="material-symbols-outlined text-brand" style="font-size:28px">code_blocks</span>
-        <h3 class="font-black mt-3">Full-stack development</h3>
-        <p class="text-xs text-muted mt-1 leading-relaxed">Web apps, responsive interfaces, admin panels, APIs, and production-ready digital products.</p>
-      </div>
-      <div class="bg-white rounded-3xl p-5 border border-line shadow-card">
-        <span class="material-symbols-outlined text-brand" style="font-size:28px">dashboard_customize</span>
-        <h3 class="font-black mt-3">Dashboards & BI</h3>
-        <p class="text-xs text-muted mt-1 leading-relaxed">R Shiny and Power BI tools for operations, monitoring, service mapping, and coordination.</p>
-      </div>
-      <div class="bg-white rounded-3xl p-5 border border-line shadow-card">
-        <span class="material-symbols-outlined text-brand" style="font-size:28px">api</span>
-        <h3 class="font-black mt-3">APIs & automation</h3>
-        <p class="text-xs text-muted mt-1 leading-relaxed">KoBo API pipelines, Python scripts, SQL workflows, scheduled reports, and quality checks.</p>
-      </div>
-      <div class="bg-white rounded-3xl p-5 border border-line shadow-card">
-        <span class="material-symbols-outlined text-brand" style="font-size:28px">travel_explore</span>
-        <h3 class="font-black mt-3">GIS & data platforms</h3>
-        <p class="text-xs text-muted mt-1 leading-relaxed">Site maps, catchment analysis, district views, spatial severity, and service gap identification.</p>
-      </div>
-    </section>
-
-    <!-- Senior Developer Profile -->
-    <section id="developer" data-section-title="Senior Developer Capabilities" class="grid lg:grid-cols-[1fr_1fr] gap-6 items-stretch">
-      <div class="rounded-3xl bg-ink text-white p-6 shadow-card overflow-hidden relative">
-        <div class="absolute right-0 top-0 w-56 h-56 bg-brand/40 rounded-full blur-3xl translate-x-20 -translate-y-20"></div>
-        <div class="relative">
-          <p class="text-xs uppercase tracking-[.22em] font-black text-white/55">Senior developer capability</p>
-          <h2 class="text-2xl sm:text-3xl font-black mt-2">From requirements to deployed systems</h2>
-          <p class="text-sm text-white/75 leading-relaxed mt-4">
-            I work across the full delivery cycle: understanding operational needs, designing the data model, connecting APIs, building dashboards or web interfaces, testing data quality, deploying the product, and improving it based on user feedback.
-          </p>
-          <div class="mt-6 grid sm:grid-cols-2 gap-3 text-sm">
-            <div class="rounded-2xl bg-white/10 p-4 border border-white/10">
-              <span class="material-symbols-outlined text-mint">architecture</span>
-              <p class="font-black mt-2">System design</p>
-              <p class="text-white/65 text-xs mt-1">User flows, data structure, access logic, and scalable layouts.</p>
-            </div>
-            <div class="rounded-2xl bg-white/10 p-4 border border-white/10">
-              <span class="material-symbols-outlined text-mint">sync_alt</span>
-              <p class="font-black mt-2">Data integration</p>
-              <p class="text-white/65 text-xs mt-1">KoBo, Excel, SQL, APIs, spatial files, and automated refreshes.</p>
-            </div>
-            <div class="rounded-2xl bg-white/10 p-4 border border-white/10">
-              <span class="material-symbols-outlined text-mint">deployed_code</span>
-              <p class="font-black mt-2">Product delivery</p>
-              <p class="text-white/65 text-xs mt-1">R Shiny apps, web platforms, dashboards, and reporting tools.</p>
-            </div>
-            <div class="rounded-2xl bg-white/10 p-4 border border-white/10">
-              <span class="material-symbols-outlined text-mint">verified_user</span>
-              <p class="font-black mt-2">Quality assurance</p>
-              <p class="text-white/65 text-xs mt-1">Validation rules, cleaning routines, testing, and documentation.</p>
+          <div class="bg-white rounded-3xl p-6 shadow-card border border-line reveal reveal-d1">
+            <h3 class="text-lg font-black mb-3">Senior developer summary</h3>
+            <p class="text-sm text-muted leading-relaxed">
+              Senior Developer and Data Systems Specialist with a strong record designing and deploying operational platforms for humanitarian coordination and digital services. Skilled across R Shiny, Power BI, Python, SQL, JavaScript, APIs, GIS, KoBoToolbox, automation, data validation, and visualization. Experienced in translating business requirements into usable systems, building live dashboards, integrating field data sources, strengthening data quality, and delivering tools that support evidence-based decision-making across Somalia.
+            </p>
+            <div class="mt-5 grid sm:grid-cols-3 gap-3">
+              <div class="cap-card p-4 rounded-2xl bg-brandSoft border border-transparent cursor-default">
+                <span class="material-symbols-outlined text-brand">dashboard</span>
+                <p class="font-bold text-sm mt-2">Dashboards</p>
+                <p class="text-xs text-muted mt-1">R Shiny, Power BI, React</p>
+              </div>
+              <div class="cap-card p-4 rounded-2xl bg-brandSoft border border-transparent cursor-default">
+                <span class="material-symbols-outlined text-brand">map</span>
+                <p class="font-bold text-sm mt-2">GIS & mapping</p>
+                <p class="text-xs text-muted mt-1">Catchments, sites, severity</p>
+              </div>
+              <div class="cap-card p-4 rounded-2xl bg-brandSoft border border-transparent cursor-default">
+                <span class="material-symbols-outlined text-brand">database</span>
+                <p class="font-bold text-sm mt-2">Data systems</p>
+                <p class="text-xs text-muted mt-1">APIs, SQL, ETL, automation</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="bg-white rounded-3xl p-6 border border-line shadow-card">
-        <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Technical stack</p>
-        <h2 class="text-2xl sm:text-3xl font-black mt-2">Developer toolkit</h2>
-        <div class="mt-5 space-y-4">
+    <!-- ============ FEATURED ============ -->
+    <section id="featured" data-section="Featured Work" class="scroll-mt-20">
+      <div class="section-toolbar no-print" role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Featured Work section">
+        <div class="section-toolbar-title">
+          <span class="section-status-dot"></span>
+          <span class="material-symbols-outlined text-brand" style="font-size:18px">star</span>
+          Featured Work
+        </div>
+        <div class="section-toggle-icon">
+          <span class="material-symbols-outlined" style="font-size:20px">expand_less</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-5 reveal">
           <div>
-            <h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">web</span> Frontend & UI</h3>
-            <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand">
-              <span class="px-3 py-1.5 rounded-full bg-brandSoft">HTML</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">CSS</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">JavaScript</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">React</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Next.js</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Tailwind CSS</span>
+            <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Selected portfolio</p>
+            <h2 class="text-2xl sm:text-3xl font-black mt-1">Featured work</h2>
+          </div>
+          <p class="text-sm text-muted max-w-xl">A focused selection of platforms showing humanitarian coordination, service mapping, displacement tracking, and market information products.</p>
+        </div>
+        <div class="grid lg:grid-cols-3 gap-4">
+          <a href="https://imcccmcluster.shinyapps.io/CCCM-ServiceMap-Somalia-2026/" target="_blank" rel="noopener" class="project-card gradient-border lg:col-span-2 rounded-3xl border border-brand/25 bg-white p-6 shadow-card relative overflow-hidden reveal reveal-d1">
+            <div class="absolute -right-16 -top-16 w-44 h-44 bg-mint/20 rounded-full"></div>
+            <div class="absolute right-0 bottom-0 w-32 h-32 bg-accent/5 rounded-full translate-x-8 translate-y-8"></div>
+            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-brand text-white text-xs font-black uppercase tracking-wider">
+              <span class="material-symbols-outlined filled" style="font-size:14px">bolt</span>
+              Latest dashboard
+            </span>
+            <div class="mt-5 flex items-start gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-brand" style="font-size:28px">hub</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-black">CCCM Cluster Service Mapping Dashboard 2026</h3>
+                <p class="mt-2 text-sm text-muted leading-relaxed">Interactive service mapping dashboard for Somalia CCCM coordination, supporting analysis of service availability, partner coverage, site-level gaps, and cluster-level operational planning.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="skill-pill px-3 py-1 rounded-full bg-brandSoft text-brand text-xs font-bold">R Shiny</span>
+                  <span class="skill-pill px-3 py-1 rounded-full bg-brandSoft text-brand text-xs font-bold">Service mapping</span>
+                  <span class="skill-pill px-3 py-1 rounded-full bg-brandSoft text-brand text-xs font-bold">CCCM</span>
+                  <span class="skill-pill px-3 py-1 rounded-full bg-brandSoft text-brand text-xs font-bold">Somalia</span>
+                </div>
+                <span class="inline-flex items-center gap-1 mt-5 text-sm font-black text-brand">Open live dashboard <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://www.som-imcccmcluster.com/" target="_blank" rel="noopener" class="project-card gradient-border rounded-3xl border border-line bg-white p-6 shadow-card relative overflow-hidden reveal reveal-d2">
+            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-accent text-white text-xs font-black uppercase tracking-wider">
+              <span class="material-symbols-outlined filled" style="font-size:14px">language</span>
+              Digital product
+            </span>
+            <div class="mt-5 w-14 h-14 rounded-2xl bg-cyan-50 flex items-center justify-center">
+              <span class="material-symbols-outlined text-accent" style="font-size:28px">monitoring</span>
+            </div>
+            <h3 class="mt-4 text-xl font-black">Somalia Price Index</h3>
+            <p class="mt-2 text-sm text-muted leading-relaxed">A full web product developed to help users compare market prices, track essential items, view vendor information, manage vendor submissions, and improve price transparency across Somalia.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="skill-pill px-3 py-1 rounded-full bg-cyan-50 text-accent text-xs font-bold">Full-stack web app</span>
+              <span class="skill-pill px-3 py-1 rounded-full bg-cyan-50 text-accent text-xs font-bold">Vendor workflow</span>
+              <span class="skill-pill px-3 py-1 rounded-full bg-cyan-50 text-accent text-xs font-bold">Market data</span>
+            </div>
+            <span class="inline-flex items-center gap-1 mt-5 text-sm font-black text-brand">Visit platform <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ IMPACT ============ -->
+    <section id="impact" data-section="Capabilities" class="scroll-mt-20">
+      <div class="section-toolbar no-print" role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Capabilities section">
+        <div class="section-toolbar-title">
+          <span class="section-status-dot"></span>
+          <span class="material-symbols-outlined text-brand" style="font-size:18px">category</span>
+          Capabilities
+        </div>
+        <div class="section-toggle-icon">
+          <span class="material-symbols-outlined" style="font-size:20px">expand_less</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="grid md:grid-cols-4 gap-4">
+          <div class="cap-card bg-white rounded-3xl p-5 border border-line shadow-card reveal">
+            <div class="w-12 h-12 rounded-2xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand" style="font-size:24px">code_blocks</span></div>
+            <h3 class="font-black">Full-stack development</h3>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Web apps, responsive interfaces, admin panels, APIs, and production-ready digital products.</p>
+          </div>
+          <div class="cap-card bg-white rounded-3xl p-5 border border-line shadow-card reveal reveal-d1">
+            <div class="w-12 h-12 rounded-2xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand" style="font-size:24px">dashboard_customize</span></div>
+            <h3 class="font-black">Dashboards & BI</h3>
+            <p class="text-xs text-muted mt-1 leading-relaxed">R Shiny and Power BI tools for operations, monitoring, service mapping, and coordination.</p>
+          </div>
+          <div class="cap-card bg-white rounded-3xl p-5 border border-line shadow-card reveal reveal-d2">
+            <div class="w-12 h-12 rounded-2xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand" style="font-size:24px">api</span></div>
+            <h3 class="font-black">APIs & automation</h3>
+            <p class="text-xs text-muted mt-1 leading-relaxed">KoBo API pipelines, Python scripts, SQL workflows, scheduled reports, and quality checks.</p>
+          </div>
+          <div class="cap-card bg-white rounded-3xl p-5 border border-line shadow-card reveal reveal-d3">
+            <div class="w-12 h-12 rounded-2xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand" style="font-size:24px">travel_explore</span></div>
+            <h3 class="font-black">GIS & data platforms</h3>
+            <p class="text-xs text-muted mt-1 leading-relaxed">Site maps, catchment analysis, district views, spatial severity, and service gap identification.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DEVELOPER ============ -->
+    <section id="developer" data-section="Developer Capabilities" class="scroll-mt-20">
+      <div class="section-toolbar no-print" role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Developer Capabilities section">
+        <div class="section-toolbar-title">
+          <span class="section-status-dot"></span>
+          <span class="material-symbols-outlined text-brand" style="font-size:18px">terminal</span>
+          Developer Capabilities
+        </div>
+        <div class="section-toggle-icon">
+          <span class="material-symbols-outlined" style="font-size:20px">expand_less</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="grid lg:grid-cols-[1fr_1fr] gap-6 items-stretch">
+          <div class="rounded-3xl bg-ink text-white p-6 shadow-card overflow-hidden relative reveal">
+            <div class="orb-1 absolute right-0 top-0 w-56 h-56 bg-brand/40 rounded-full blur-3xl translate-x-20 -translate-y-20"></div>
+            <div class="orb-2 absolute bottom-0 left-0 w-40 h-40 bg-accent/20 rounded-full blur-3xl -translate-x-10 translate-y-10"></div>
+            <div class="relative">
+              <p class="text-xs uppercase tracking-[.22em] font-black text-white/55">Senior developer capability</p>
+              <h2 class="text-2xl sm:text-3xl font-black mt-2">From requirements to deployed systems</h2>
+              <p class="text-sm text-white/75 leading-relaxed mt-4">I work across the full delivery cycle: understanding operational needs, designing the data model, connecting APIs, building dashboards or web interfaces, testing data quality, deploying the product, and improving it based on user feedback.</p>
+              <div class="mt-6 grid sm:grid-cols-2 gap-3 text-sm">
+                <div class="rounded-2xl bg-white/10 p-4 border border-white/10 hover:bg-white/15 transition-colors cursor-default">
+                  <span class="material-symbols-outlined text-mint">architecture</span>
+                  <p class="font-black mt-2">System design</p>
+                  <p class="text-white/65 text-xs mt-1">User flows, data structure, access logic, and scalable layouts.</p>
+                </div>
+                <div class="rounded-2xl bg-white/10 p-4 border border-white/10 hover:bg-white/15 transition-colors cursor-default">
+                  <span class="material-symbols-outlined text-mint">sync_alt</span>
+                  <p class="font-black mt-2">Data integration</p>
+                  <p class="text-white/65 text-xs mt-1">KoBo, Excel, SQL, APIs, spatial files, and automated refreshes.</p>
+                </div>
+                <div class="rounded-2xl bg-white/10 p-4 border border-white/10 hover:bg-white/15 transition-colors cursor-default">
+                  <span class="material-symbols-outlined text-mint">deployed_code</span>
+                  <p class="font-black mt-2">Product delivery</p>
+                  <p class="text-white/65 text-xs mt-1">R Shiny apps, web platforms, dashboards, and reporting tools.</p>
+                </div>
+                <div class="rounded-2xl bg-white/10 p-4 border border-white/10 hover:bg-white/15 transition-colors cursor-default">
+                  <span class="material-symbols-outlined text-mint">verified_user</span>
+                  <p class="font-black mt-2">Quality assurance</p>
+                  <p class="text-white/65 text-xs mt-1">Validation rules, cleaning routines, testing, and documentation.</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div>
-            <h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">dns</span> Backend, APIs & databases</h3>
-            <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand">
-              <span class="px-3 py-1.5 rounded-full bg-brandSoft">Python</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">PHP</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Go</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">SQL</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">REST APIs</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Supabase</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Prisma</span>
-            </div>
-          </div>
-          <div>
-            <h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">analytics</span> Data, BI & GIS</h3>
-            <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand">
-              <span class="px-3 py-1.5 rounded-full bg-brandSoft">R</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">R Shiny</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Power BI</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">KoBoToolbox API</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Leaflet</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">GeoJSON</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Excel automation</span>
+          <div class="bg-white rounded-3xl p-6 border border-line shadow-card reveal reveal-d1">
+            <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Technical stack</p>
+            <h2 class="text-2xl sm:text-3xl font-black mt-2">Developer toolkit</h2>
+            <div class="mt-5 space-y-5">
+              <div>
+                <h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">web</span> Frontend & UI</h3>
+                <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand">
+                  <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">HTML</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">CSS</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">JavaScript</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">React</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Next.js</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Tailwind CSS</span>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">dns</span> Backend, APIs & databases</h3>
+                <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand">
+                  <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Python</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">PHP</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Go</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">SQL</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">REST APIs</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Supabase</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Prisma</span>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">analytics</span> Data, BI & GIS</h3>
+                <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand">
+                  <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">R</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">R Shiny</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Power BI</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">KoBoToolbox</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Leaflet</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">GeoJSON</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Excel automation</span>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">cloud</span> DevOps & deployment</h3>
+                <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand">
+                  <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Shinyapps.io</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Vercel</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Git</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">CI/CD</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Linux</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Dashboards -->
-    <section id="dashboards" data-section-title="Dashboards & Digital Tools">
-      <div class="mb-5">
-        <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Humanitarian dashboards and tools</p>
-        <h2 class="text-2xl sm:text-3xl font-black mt-1">Operational platforms</h2>
+    <!-- ============ DASHBOARDS ============ -->
+    <section id="dashboards" data-section="Dashboards & Tools" class="scroll-mt-20">
+      <div class="section-toolbar no-print" role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Dashboards section">
+        <div class="section-toolbar-title">
+          <span class="section-status-dot"></span>
+          <span class="material-symbols-outlined text-brand" style="font-size:18px">dashboard</span>
+          Dashboards & Tools
+        </div>
+        <div class="section-toggle-icon">
+          <span class="material-symbols-outlined" style="font-size:20px">expand_less</span>
+        </div>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="section-body">
+        <div class="mb-5 reveal">
+          <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Humanitarian dashboards and tools</p>
+          <h2 class="text-2xl sm:text-3xl font-black mt-1">Operational platforms</h2>
+        </div>
 
-        <a href="https://cccmclustersomalia.org" target="_blank" rel="noopener" class="project-card rounded-3xl bg-white p-5 border border-line shadow-card md:col-span-2 lg:col-span-3">
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand">language</span></div>
-              <div>
-                <h3 class="font-black text-lg">CCCM Cluster Information Management Portal</h3>
-                <p class="text-sm text-muted mt-1 leading-relaxed">Central platform for CCCM Cluster Somalia resources, publications, datasets, dashboards, and coordination information.</p>
+        <!-- Filter buttons -->
+        <div class="flex flex-wrap gap-2 mb-5 reveal reveal-d1">
+          <button class="filter-btn active inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-line text-sm font-bold" data-filter="all">
+            <span class="material-symbols-outlined" style="font-size:16px">apps</span> All
+          </button>
+          <button class="filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-line text-sm font-bold text-muted" data-filter="shiny">
+            <span class="material-symbols-outlined" style="font-size:16px">analytics</span> R Shiny
+          </button>
+          <button class="filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-line text-sm font-bold text-muted" data-filter="web">
+            <span class="material-symbols-outlined" style="font-size:16px">language</span> Web Apps
+          </button>
+          <button class="filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-line text-sm font-bold text-muted" data-filter="gis">
+            <span class="material-symbols-outlined" style="font-size:16px">map</span> GIS / Maps
+          </button>
+        </div>
+
+        <div id="dashboardGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 relative">
+
+          <a href="https://cccmclustersomalia.org" target="_blank" rel="noopener" data-tags="web" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card md:col-span-2 lg:col-span-3 reveal">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand">language</span></div>
+                <div>
+                  <h3 class="font-black text-lg">CCCM Cluster Information Management Portal</h3>
+                  <p class="text-sm text-muted mt-1 leading-relaxed">Central platform for CCCM Cluster Somalia resources, publications, datasets, dashboards, and coordination information.</p>
+                </div>
               </div>
+              <span class="inline-flex items-center gap-1 text-sm font-black text-brand shrink-0">Visit portal <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
             </div>
-            <span class="inline-flex items-center gap-1 text-sm font-black text-brand shrink-0">Visit portal <span class="material-symbols-outlined" style="font-size:16px">arrow_outward</span></span>
-          </div>
-        </a>
+          </a>
 
-        <a href="https://imcccmcluster.shinyapps.io/IncidentReport/" target="_blank" rel="noopener" class="project-card rounded-3xl bg-white p-5 border border-line shadow-card">
-          <span class="material-symbols-outlined text-brand">report</span>
-          <h3 class="font-black mt-3">Incident Reporting Dashboard</h3>
-          <p class="text-sm text-muted mt-2 leading-relaxed">Real-time incident analysis with KoBo API sync, heatmaps, demographic breakdowns, temporal trends, and geographic distribution.</p>
-          <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined" style="font-size:16px">arrow_outward</span></span>
-        </a>
+          <a href="https://imcccmcluster.shinyapps.io/IncidentReport/" target="_blank" rel="noopener" data-tags="shiny,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d1">
+            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">report</span></div>
+            <h3 class="font-black">Incident Reporting Dashboard</h3>
+            <p class="text-sm text-muted mt-2 leading-relaxed">Real-time incident analysis with KoBo API sync, heatmaps, demographic breakdowns, and geographic distribution.</p>
+            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
+          </a>
 
-        <a href="https://imcccmcluster.shinyapps.io/FacilityMap_Baydhaba/" target="_blank" rel="noopener" class="project-card rounded-3xl bg-white p-5 border border-line shadow-card">
-          <span class="material-symbols-outlined text-brand">map</span>
-          <h3 class="font-black mt-3">Baydhaba Facility Map</h3>
-          <p class="text-sm text-muted mt-2 leading-relaxed">GIS dashboard mapping health, education, WASH, nutrition, protection, and CCCM facilities across Baydhaba catchment areas.</p>
-          <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined" style="font-size:16px">arrow_outward</span></span>
-        </a>
+          <a href="https://imcccmcluster.shinyapps.io/FacilityMap_Baydhaba/" target="_blank" rel="noopener" data-tags="shiny,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d2">
+            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">map</span></div>
+            <h3 class="font-black">Baydhaba Facility Map</h3>
+            <p class="text-sm text-muted mt-2 leading-relaxed">GIS dashboard mapping health, education, WASH, nutrition, protection, and CCCM facilities across Baydhaba catchment areas.</p>
+            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
+          </a>
 
-        <a href="https://imcccmcluster.shinyapps.io/somalia-arrivals-dashboard/" target="_blank" rel="noopener" class="project-card rounded-3xl bg-white p-5 border border-line shadow-card">
-          <span class="material-symbols-outlined text-brand">group_add</span>
-          <h3 class="font-black mt-3">Somalia Arrivals Dashboard</h3>
-          <p class="text-sm text-muted mt-2 leading-relaxed">National IDP arrivals tracker with heatmaps, choropleth views, catchment-level displacement trends, and district-level summaries.</p>
-          <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined" style="font-size:16px">arrow_outward</span></span>
-        </a>
+          <a href="https://imcccmcluster.shinyapps.io/somalia-arrivals-dashboard/" target="_blank" rel="noopener" data-tags="shiny,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d3">
+            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">group_add</span></div>
+            <h3 class="font-black">Somalia Arrivals Dashboard</h3>
+            <p class="text-sm text-muted mt-2 leading-relaxed">National IDP arrivals tracker with heatmaps, choropleth views, catchment-level displacement trends, and district summaries.</p>
+            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
+          </a>
 
-        <a href="https://imcccmcluster.shinyapps.io/cccm-site-monitoring/" target="_blank" rel="noopener" class="project-card rounded-3xl bg-white p-5 border border-line shadow-card">
-          <span class="material-symbols-outlined text-brand">monitoring</span>
-          <h3 class="font-black mt-3">CCCM Site Monitoring</h3>
-          <p class="text-sm text-muted mt-2 leading-relaxed">Site monitoring platform with severity scoring, service gap analysis, and multisectoral coverage metrics across CCCM-managed sites.</p>
-          <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined" style="font-size:16px">arrow_outward</span></span>
-        </a>
+          <a href="https://imcccmcluster.shinyapps.io/cccm-site-monitoring/" target="_blank" rel="noopener" data-tags="shiny" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal">
+            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">monitoring</span></div>
+            <h3 class="font-black">CCCM Site Monitoring</h3>
+            <p class="text-sm text-muted mt-2 leading-relaxed">Site monitoring platform with severity scoring, service gap analysis, and multisectoral coverage metrics.</p>
+            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
+          </a>
 
-        <a href="https://imcccmcluster.shinyapps.io/CatchmentMap/" target="_blank" rel="noopener" class="project-card rounded-3xl bg-white p-5 border border-line shadow-card">
-          <span class="material-symbols-outlined text-brand">layers</span>
-          <h3 class="font-black mt-3">Catchment Map Dashboard</h3>
-          <p class="text-sm text-muted mt-2 leading-relaxed">CCCM catchment area mapping with population data, agency oversight, district filters, and multi-format data exports.</p>
-          <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined" style="font-size:16px">arrow_outward</span></span>
-        </a>
+          <a href="https://imcccmcluster.shinyapps.io/CatchmentMap/" target="_blank" rel="noopener" data-tags="shiny,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d1">
+            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">layers</span></div>
+            <h3 class="font-black">Catchment Map Dashboard</h3>
+            <p class="text-sm text-muted mt-2 leading-relaxed">CCCM catchment area mapping with population data, agency oversight, district filters, and data exports.</p>
+            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
+          </a>
 
-        <a href="https://imsom.shinyapps.io/Dashabord_ZM/" target="_blank" rel="noopener" class="project-card rounded-3xl bg-white p-5 border border-line shadow-card">
-          <span class="material-symbols-outlined text-brand">domain</span>
-          <h3 class="font-black mt-3">Site Manager Dashboard</h3>
-          <p class="text-sm text-muted mt-2 leading-relaxed">Site-level coordination and management dashboard supporting CCCM operations and partner reporting.</p>
-          <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined" style="font-size:16px">arrow_outward</span></span>
-        </a>
+          <a href="https://imsom.shinyapps.io/Dashabord_ZM/" target="_blank" rel="noopener" data-tags="shiny" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d2">
+            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">domain</span></div>
+            <h3 class="font-black">Site Manager Dashboard</h3>
+            <p class="text-sm text-muted mt-2 leading-relaxed">Site-level coordination and management dashboard supporting CCCM operations and partner reporting.</p>
+            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
+          </a>
 
-        <a href="https://imsom.shinyapps.io/ExcelMerger_App/" target="_blank" rel="noopener" class="project-card rounded-3xl bg-white p-5 border border-line shadow-card">
-          <span class="material-symbols-outlined text-brand">merge_type</span>
-          <h3 class="font-black mt-3">Excel Workbooks Merger</h3>
-          <p class="text-sm text-muted mt-2 leading-relaxed">Automated R Shiny tool for merging, validating, and preparing Excel datasets with built-in quality checks.</p>
-          <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined" style="font-size:16px">arrow_outward</span></span>
-        </a>
+          <a href="https://imsom.shinyapps.io/ExcelMerger_App/" target="_blank" rel="noopener" data-tags="shiny" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d3">
+            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">merge_type</span></div>
+            <h3 class="font-black">Excel Workbooks Merger</h3>
+            <p class="text-sm text-muted mt-2 leading-relaxed">Automated R Shiny tool for merging, validating, and preparing Excel datasets with built-in quality checks.</p>
+            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
+          </a>
 
-        <a href="https://floods-banadir.som-imcccmcluster.com/" target="_blank" rel="noopener" class="project-card rounded-3xl bg-white p-5 border border-line shadow-card md:col-span-2 lg:col-span-3">
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand">flood</span></div>
-              <div>
-                <h3 class="font-black text-lg">Flood Risk Dashboard | Banadir</h3>
-                <p class="text-sm text-muted mt-1 leading-relaxed">Interactive flash flood risk mapping supporting emergency response planning, preparedness, and spatial risk communication across Banadir region.</p>
+          <a href="https://floods-banadir.som-imcccmcluster.com/" target="_blank" rel="noopener" data-tags="web,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card md:col-span-2 lg:col-span-3 reveal">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand">flood</span></div>
+                <div>
+                  <h3 class="font-black text-lg">Flood Risk Dashboard | Banadir</h3>
+                  <p class="text-sm text-muted mt-1 leading-relaxed">Interactive flash flood risk mapping supporting emergency response planning and spatial risk communication across Banadir region.</p>
+                </div>
               </div>
+              <span class="inline-flex items-center gap-1 text-sm font-black text-brand shrink-0">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
             </div>
-            <span class="inline-flex items-center gap-1 text-sm font-black text-brand shrink-0">View live <span class="material-symbols-outlined" style="font-size:16px">arrow_outward</span></span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" data-section-title="Technical Skills" class="grid lg:grid-cols-[.75fr_1.25fr] gap-6">
-      <div class="bg-brand text-white rounded-3xl p-6 shadow-card">
-        <p class="text-xs uppercase tracking-[.22em] font-black text-white/70">Capabilities</p>
-        <h2 class="text-2xl font-black mt-2">Core competencies</h2>
-        <p class="text-sm text-white/75 leading-relaxed mt-4">A senior technical skillset across software development, humanitarian IM, analytics, digital transformation, dashboard engineering, GIS, API integration, and partner capacity strengthening.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div class="bg-white rounded-3xl p-5 border border-line shadow-card">
-          <h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">data_object</span> Data engineering & analytics</h3>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand">
-            <span class="px-3 py-1.5 rounded-full bg-brandSoft">R</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Python</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">SQL</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">ETL</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Data cleaning</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Quality checks</span>
-          </div>
-        </div>
-        <div class="bg-white rounded-3xl p-5 border border-line shadow-card">
-          <h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">dashboard</span> Visualization</h3>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand">
-            <span class="px-3 py-1.5 rounded-full bg-brandSoft">R Shiny</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Power BI</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Leaflet</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Chart.js</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Dashboards</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Reports</span>
-          </div>
-        </div>
-        <div class="bg-white rounded-3xl p-5 border border-line shadow-card">
-          <h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">public</span> Humanitarian IM</h3>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand">
-            <span class="px-3 py-1.5 rounded-full bg-brandSoft">CCCM</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Service mapping</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Site monitoring</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">KoBo/ODK</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Partner training</span>
-          </div>
-        </div>
-        <div class="bg-white rounded-3xl p-5 border border-line shadow-card">
-          <h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">code_blocks</span> Web & systems</h3>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand">
-            <span class="px-3 py-1.5 rounded-full bg-brandSoft">HTML/CSS</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">JavaScript</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">React/Next.js</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">APIs</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Backend logic</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Automation</span><span class="px-3 py-1.5 rounded-full bg-brandSoft">Digital products</span>
-          </div>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Experience and Credentials -->
-    <section id="experience" data-section-title="Experience & Credentials" class="grid lg:grid-cols-[1.1fr_.9fr] gap-6 items-start">
-      <div class="bg-white rounded-3xl p-6 border border-line shadow-card">
-        <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Career history</p>
-        <h2 class="text-2xl font-black mt-2 mb-6">Professional experience</h2>
-
-        <div class="space-y-6">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div>
-              <div class="flex flex-wrap items-center gap-2">
-                <h3 class="font-black">Senior Developer & CCCM Cluster Information Management Associate</h3>
-                <span class="px-2.5 py-1 rounded-full bg-brand text-white text-[10px] font-black uppercase">Current</span>
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" data-section="Technical Skills" class="scroll-mt-20">
+      <div class="section-toolbar no-print" role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Skills section">
+        <div class="section-toolbar-title">
+          <span class="section-status-dot"></span>
+          <span class="material-symbols-outlined text-brand" style="font-size:18px">psychology</span>
+          Technical Skills
+        </div>
+        <div class="section-toggle-icon">
+          <span class="material-symbols-outlined" style="font-size:20px">expand_less</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="grid lg:grid-cols-[.75fr_1.25fr] gap-6">
+          <div class="bg-brand text-white rounded-3xl p-6 shadow-card relative overflow-hidden reveal">
+            <div class="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-2xl translate-x-10 -translate-y-10"></div>
+            <div class="relative">
+              <p class="text-xs uppercase tracking-[.22em] font-black text-white/70">Capabilities</p>
+              <h2 class="text-2xl font-black mt-2">Core competencies</h2>
+              <p class="text-sm text-white/75 leading-relaxed mt-4">A senior technical skillset across software development, humanitarian IM, analytics, digital transformation, dashboard engineering, GIS, API integration, and partner capacity strengthening.</p>
+              <div class="mt-6 pt-5 border-t border-white/15 flex items-center gap-2 text-sm text-white/60">
+                <span class="material-symbols-outlined" style="font-size:18px">trending_up</span>
+                <span>Continuously expanding technical breadth</span>
               </div>
-              <p class="text-xs text-muted mt-1">IOM | UN Migration, Mogadishu | Aug 2023 to Present</p>
-              <ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed">
-                <li>• Lead national-level CCCM information management workflows, dashboard architecture, spatial analysis, and digital data products.</li>
-                <li>• Develop and maintain R Shiny, Power BI, GIS, API-connected tools, and automated reporting systems to support coordination and response planning.</li>
-                <li>• Translate operational requirements into usable technical solutions, including data models, dashboards, validation routines, and partner-facing tools.</li>
-                <li>• Strengthen partner reporting quality through training, data validation, templates, technical guidance, and system documentation.</li>
-              </ul>
             </div>
           </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div>
-              <h3 class="font-black">Senior AME / Information Management & Dashboard Developer</h3>
-              <p class="text-xs text-muted mt-1">ACTED Somalia, Mogadishu | Jan 2022 to Jul 2023</p>
-              <ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed">
-                <li>• Improved data quality and reporting speed through automated validation, dashboard development, and standardized workflows.</li>
-                <li>• Built analytical tools and visualization products for multi-project reporting, donor analysis, and operational decision-making.</li>
-                <li>• Supported technical supervision of IM processes, database structures, mobile data collection tools, and reporting pipelines.</li>
-              </ul>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-white rounded-3xl p-5 border border-line shadow-card reveal">
+              <h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">data_object</span> Data engineering</h3>
+              <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand">
+                <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">R</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Python</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">SQL</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">ETL</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Data cleaning</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Quality checks</span>
+              </div>
             </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div>
-              <h3 class="font-black">AME / Information Management Officer</h3>
-              <p class="text-xs text-muted mt-1">ACTED, Hargeisa / Puntland | Jan 2021 to Jan 2022</p>
-              <ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed">
-                <li>• Established AME data systems, mobile data collection protocols, feedback mechanisms, and data quality routines.</li>
-              </ul>
+            <div class="bg-white rounded-3xl p-5 border border-line shadow-card reveal reveal-d1">
+              <h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">dashboard</span> Visualization</h3>
+              <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand">
+                <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">R Shiny</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Power BI</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Leaflet</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Chart.js</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Dashboards</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Reports</span>
+              </div>
             </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div>
-              <h3 class="font-black">AME / Information Management Assistant</h3>
-              <p class="text-xs text-muted mt-1">ACTED, Garowe | Mar 2018 to Dec 2020</p>
-              <ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed">
-                <li>• Supported field data collection, quality control, KoBo/ODK training, and reporting for program teams.</li>
-              </ul>
+            <div class="bg-white rounded-3xl p-5 border border-line shadow-card reveal reveal-d2">
+              <h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">public</span> Humanitarian IM</h3>
+              <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand">
+                <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">CCCM</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Service mapping</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Site monitoring</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">KoBo/ODK</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Partner training</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-3xl p-5 border border-line shadow-card reveal reveal-d3">
+              <h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">code_blocks</span> Web & systems</h3>
+              <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand">
+                <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">HTML/CSS</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">JavaScript</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">React/Next.js</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">APIs</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Automation</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Digital products</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <aside class="space-y-6">
-        <div class="bg-white rounded-3xl p-6 border border-line shadow-card">
-          <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Education</p>
-          <h2 class="text-2xl font-black mt-2 mb-5">Academic background</h2>
-          <div class="space-y-4">
-            <div class="flex gap-3">
-              <div class="w-11 h-11 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand">school</span></div>
-              <div>
-                <p class="text-sm font-black">MSc Computer Science | Information Management & Technology</p>
-                <p class="text-xs text-muted mt-1">Accord University, Mogadishu | Oct 2024 to Present</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <div class="w-11 h-11 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand">school</span></div>
-              <div>
-                <p class="text-sm font-black">BSc Computer Science | Information Management & Technology</p>
-                <p class="text-xs text-muted mt-1">Puntland State University, Garowe | Nov 2019</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <div class="w-11 h-11 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand">workspace_premium</span></div>
-              <div>
-                <p class="text-sm font-black">Diploma in Accountability, Monitoring & Evaluation</p>
-                <p class="text-xs text-muted mt-1">UNHCR / ACTED / Concern Worldwide | Feb 2022</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-3xl p-6 border border-line shadow-card">
-          <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Highlights</p>
-          <h2 class="text-2xl font-black mt-2 mb-4">Key achievements</h2>
-          <ul class="space-y-3 text-sm text-muted leading-relaxed">
-            <li class="flex gap-2"><span class="text-accent font-black">✓</span><span>Developed 10+ dashboards and web-based tools supporting national-level humanitarian coordination.</span></li>
-            <li class="flex gap-2"><span class="text-accent font-black">✓</span><span>Trained 250+ staff in IM tools, data collection, GIS, and visualization.</span></li>
-            <li class="flex gap-2"><span class="text-accent font-black">✓</span><span>Improved reporting speed and data quality through API integration, automation, and validation workflows.</span></li>
-            <li class="flex gap-2"><span class="text-accent font-black">✓</span><span>Produced GIS maps, factsheets, analytical reports, interactive response products, and digital market tools.</span></li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-3xl p-6 border border-line shadow-card">
-          <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Languages</p>
-          <div class="mt-4 grid grid-cols-2 gap-3 text-center">
-            <div class="rounded-2xl bg-page p-3"><p class="font-black text-sm">Somali</p><p class="text-xs text-muted">Native</p></div>
-            <div class="rounded-2xl bg-page p-3"><p class="font-black text-sm">English</p><p class="text-xs text-muted">Fluent</p></div>
-            <div class="rounded-2xl bg-page p-3"><p class="font-black text-sm">Arabic</p><p class="text-xs text-muted">Intermediate</p></div>
-            <div class="rounded-2xl bg-page p-3"><p class="font-black text-sm">German</p><p class="text-xs text-muted">Basic</p></div>
-          </div>
-        </div>
-      </aside>
     </section>
 
-    <!-- CTA -->
-    <section id="contact" data-section-title="Contact" class="rounded-[2rem] bg-ink text-white p-7 sm:p-10 shadow-soft overflow-hidden relative">
-      <div class="absolute right-0 top-0 w-64 h-64 bg-brand/30 rounded-full blur-3xl translate-x-20 -translate-y-20"></div>
-      <div class="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
-        <div>
-          <p class="text-xs uppercase tracking-[.22em] font-black text-white/55">Contact</p>
-          <h2 class="text-2xl sm:text-3xl font-black mt-2">Let’s connect on software development, data systems, dashboards, and humanitarian IM.</h2>
-          <p class="text-sm text-white/70 mt-3 max-w-2xl">Available for senior developer work, information management systems, dashboard development, data analysis, GIS mapping, API integration, reporting automation, and digital product development.</p>
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience" data-section="Experience & Credentials" class="scroll-mt-20">
+      <div class="section-toolbar no-print" role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Experience section">
+        <div class="section-toolbar-title">
+          <span class="section-status-dot"></span>
+          <span class="material-symbols-outlined text-brand" style="font-size:18px">work_history</span>
+          Experience & Credentials
         </div>
-        <div class="flex flex-wrap gap-3 shrink-0">
-          <a href="mailto:abdullahi.nur@iom.int" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-ink font-black hover:bg-cream transition"><span class="material-symbols-outlined">mail</span>Email me</a>
-          <a href="tel:+252619601895" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 border border-white/20 font-black hover:bg-white/20 transition"><span class="material-symbols-outlined">phone</span>Call</a>
+        <div class="section-toggle-icon">
+          <span class="material-symbols-outlined" style="font-size:20px">expand_less</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-6 items-start">
+          <div class="bg-white rounded-3xl p-6 border border-line shadow-card reveal">
+            <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Career history</p>
+            <h2 class="text-2xl font-black mt-2 mb-6">Professional experience</h2>
+            <div class="space-y-6">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <h3 class="font-black">Senior Developer & CCCM Cluster IM Associate</h3>
+                    <span class="px-2.5 py-1 rounded-full bg-brand text-white text-[10px] font-black uppercase">Current</span>
+                  </div>
+                  <p class="text-xs text-muted mt-1">IOM | UN Migration, Mogadishu | Aug 2023 – Present</p>
+                  <ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed">
+                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Lead national-level CCCM information management workflows, dashboard architecture, spatial analysis, and digital data products.</span></li>
+                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Develop and maintain R Shiny, Power BI, GIS, API-connected tools, and automated reporting systems.</span></li>
+                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Translate operational requirements into usable technical solutions, including data models, dashboards, and partner-facing tools.</span></li>
+                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Strengthen partner reporting quality through training, data validation, templates, and system documentation.</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                  <h3 class="font-black">Senior AME / IM & Dashboard Developer</h3>
+                  <p class="text-xs text-muted mt-1">ACTED Somalia, Mogadishu | Jan 2022 – Jul 2023</p>
+                  <ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed">
+                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Improved data quality and reporting speed through automated validation, dashboard development, and standardized workflows.</span></li>
+                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Built analytical tools and visualization products for multi-project reporting, donor analysis, and operational decision-making.</span></li>
+                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Supported technical supervision of IM processes, database structures, mobile data collection, and reporting pipelines.</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                  <h3 class="font-black">AME / Information Management Officer</h3>
+                  <p class="text-xs text-muted mt-1">ACTED, Hargeisa / Puntland | Jan 2021 – Jan 2022</p>
+                  <ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed">
+                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Established AME data systems, mobile data collection protocols, feedback mechanisms, and data quality routines.</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                  <h3 class="font-black">AME / Information Management Assistant</h3>
+                  <p class="text-xs text-muted mt-1">ACTED, Garowe | Mar 2018 – Dec 2020</p>
+                  <ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed">
+                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Supported field data collection, quality control, KoBo/ODK training, and reporting for program teams.</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="space-y-6">
+            <div class="bg-white rounded-3xl p-6 border border-line shadow-card reveal reveal-d1">
+              <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Education</p>
+              <h2 class="text-2xl font-black mt-2 mb-5">Academic background</h2>
+              <div class="space-y-4">
+                <div class="flex gap-3 group">
+                  <div class="w-11 h-11 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0 group-hover:bg-brand transition-colors"><span class="material-symbols-outlined text-brand group-hover:text-white transition-colors">school</span></div>
+                  <div>
+                    <p class="text-sm font-black">MSc Computer Science | IM & Technology</p>
+                    <p class="text-xs text-muted mt-1">Accord University, Mogadishu | Oct 2024 – Present</p>
+                    <span class="inline-flex items-center gap-1 mt-1 text-[10px] font-bold text-accent uppercase"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>In progress</span>
+                  </div>
+                </div>
+                <div class="flex gap-3 group">
+                  <div class="w-11 h-11 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0 group-hover:bg-brand transition-colors"><span class="material-symbols-outlined text-brand group-hover:text-white transition-colors">school</span></div>
+                  <div>
+                    <p class="text-sm font-black">BSc Computer Science | IM & Technology</p>
+                    <p class="text-xs text-muted mt-1">Puntland State University, Garowe | Nov 2019</p>
+                  </div>
+                </div>
+                <div class="flex gap-3 group">
+                  <div class="w-11 h-11 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0 group-hover:bg-brand transition-colors"><span class="material-symbols-outlined text-brand group-hover:text-white transition-colors">workspace_premium</span></div>
+                  <div>
+                    <p class="text-sm font-black">Diploma in Accountability, Monitoring & Evaluation</p>
+                    <p class="text-xs text-muted mt-1">UNHCR / ACTED / Concern Worldwide | Feb 2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 border border-line shadow-card reveal reveal-d2">
+              <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Highlights</p>
+              <h2 class="text-2xl font-black mt-2 mb-4">Key achievements</h2>
+              <ul class="space-y-3 text-sm text-muted leading-relaxed">
+                <li class="flex gap-2.5"><span class="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center shrink-0 mt-0.5"><span class="material-symbols-outlined text-accent" style="font-size:14px">check</span></span><span>Developed 10+ dashboards and web-based tools supporting national-level humanitarian coordination.</span></li>
+                <li class="flex gap-2.5"><span class="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center shrink-0 mt-0.5"><span class="material-symbols-outlined text-accent" style="font-size:14px">check</span></span><span>Trained 250+ staff in IM tools, data collection, GIS, and visualization.</span></li>
+                <li class="flex gap-2.5"><span class="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center shrink-0 mt-0.5"><span class="material-symbols-outlined text-accent" style="font-size:14px">check</span></span><span>Improved reporting speed and data quality through API integration, automation, and validation workflows.</span></li>
+                <li class="flex gap-2.5"><span class="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center shrink-0 mt-0.5"><span class="material-symbols-outlined text-accent" style="font-size:14px">check</span></span><span>Produced GIS maps, factsheets, analytical reports, interactive response products, and digital market tools.</span></li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 border border-line shadow-card reveal reveal-d3">
+              <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Languages</p>
+              <div class="mt-4 grid grid-cols-2 gap-3 text-center">
+                <div class="rounded-2xl bg-page p-3 hover:bg-brandSoft transition-colors cursor-default"><p class="font-black text-sm">Somali</p><p class="text-xs text-muted">Native</p></div>
+                <div class="rounded-2xl bg-page p-3 hover:bg-brandSoft transition-colors cursor-default"><p class="font-black text-sm">English</p><p class="text-xs text-muted">Fluent</p></div>
+                <div class="rounded-2xl bg-page p-3 hover:bg-brandSoft transition-colors cursor-default"><p class="font-black text-sm">Arabic</p><p class="text-xs text-muted">Intermediate</p></div>
+                <div class="rounded-2xl bg-page p-3 hover:bg-brandSoft transition-colors cursor-default"><p class="font-black text-sm">German</p><p class="text-xs text-muted">Basic</p></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" data-section="Contact" class="scroll-mt-20">
+      <div class="section-toolbar no-print" role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Contact section">
+        <div class="section-toolbar-title">
+          <span class="section-status-dot"></span>
+          <span class="material-symbols-outlined text-brand" style="font-size:18px">mail</span>
+          Contact
+        </div>
+        <div class="section-toggle-icon">
+          <span class="material-symbols-outlined" style="font-size:20px">expand_less</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="rounded-[2rem] bg-ink text-white p-7 sm:p-10 shadow-soft overflow-hidden relative reveal">
+          <div class="absolute right-0 top-0 w-64 h-64 bg-brand/30 rounded-full blur-3xl translate-x-20 -translate-y-20"></div>
+          <div class="absolute left-0 bottom-0 w-48 h-48 bg-accent/15 rounded-full blur-3xl -translate-x-10 translate-y-10"></div>
+          <div class="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div>
+              <p class="text-xs uppercase tracking-[.22em] font-black text-white/55">Contact</p>
+              <h2 class="text-2xl sm:text-3xl font-black mt-2">Let's build something impactful together.</h2>
+              <p class="text-sm text-white/70 mt-3 max-w-2xl leading-relaxed">Available for senior developer work, information management systems, dashboard development, data analysis, GIS mapping, API integration, reporting automation, and digital product development.</p>
+            </div>
+            <div class="flex flex-wrap gap-3 shrink-0">
+              <a href="mailto:abdullahi.nur@iom.int" class="ripple inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white text-ink font-black hover:bg-cream transition-all hover:shadow-lg"><span class="material-symbols-outlined">mail</span>Email me</a>
+              <a href="tel:+252619601895" class="ripple inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 border border-white/20 font-black hover:bg-white/20 transition-all"><span class="material-symbols-outlined">phone</span>Call</a>
+              <a href="https://so.linkedin.com/in/abdullahi-n-519674174" target="_blank" rel="noopener" class="ripple inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 border border-white/20 font-black hover:bg-white/20 transition-all"><span class="material-symbols-outlined">group</span>LinkedIn</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -652,132 +905,296 @@
   </main>
 
   <footer class="border-t border-line bg-white">
-    <div class="max-w-6xl mx-auto px-5 py-6 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-sm text-muted">
+    <div class="max-w-6xl mx-auto px-5 py-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-sm text-muted">
       <p>© <span id="year"></span> Abdullahi Nur Ahmad. Portfolio.</p>
-      <p>Designed for senior developer, data systems, humanitarian IM, and dashboard showcase.</p>
+      <p class="text-xs">Senior Developer | Data Systems | Humanitarian IM | Dashboard Engineering</p>
     </div>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  (function(){
+    'use strict';
 
-    const sectionStorageKey = 'abdullahi-portfolio-section-visibility-v1';
+    // ===== UTILITIES =====
+    const $ = s => document.querySelector(s);
+    const $$ = s => document.querySelectorAll(s);
+    const STORAGE_KEY = 'abdullahi-portfolio-sections-v2';
 
-    function getSavedSectionState() {
-      try {
-        return JSON.parse(localStorage.getItem(sectionStorageKey)) || {};
-      } catch (error) {
-        return {};
-      }
+    function saveState(state){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){} }
+    function loadState(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ return {}; } }
+
+    // ===== YEAR =====
+    $('#year').textContent = new Date().getFullYear();
+
+    // ===== SCROLL PROGRESS =====
+    const progressBar = $('#scrollProgress');
+    function updateProgress(){
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
     }
 
-    function saveSectionState(state) {
-      try {
-        localStorage.setItem(sectionStorageKey, JSON.stringify(state));
-      } catch (error) {
-        // Local storage may be unavailable in private browsing. The controls still work for the current page view.
+    // ===== BACK TO TOP =====
+    const backToTop = $('#backToTop');
+    function updateBackToTop(){
+      backToTop.classList.toggle('visible', window.scrollY > 500);
+    }
+    backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+    // ===== SCROLL HANDLER =====
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if(!ticking){
+        requestAnimationFrame(() => {
+          updateProgress();
+          updateBackToTop();
+          updateActiveNav();
+          updateQuickNav();
+          ticking = false;
+        });
+        ticking = true;
       }
+    });
+
+    // ===== ACTIVE NAV =====
+    const navLinks = $$('[data-nav]');
+    function updateActiveNav(){
+      let current = '';
+      $$('main > section[id], header[id]').forEach(s => {
+        if(s.getBoundingClientRect().top <= 150) current = s.id;
+      });
+      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+current));
     }
 
-    function setSectionState(section, collapsed, persist = true) {
-      const content = section.querySelector(':scope > .section-content');
-      const button = section.querySelector(':scope > .section-toolbar .section-toggle-btn');
-      const icon = button ? button.querySelector('.material-symbols-outlined') : null;
-      const title = section.dataset.sectionTitle || 'Section';
+    // ===== QUICK NAV =====
+    const quickDots = $$('.quick-nav-dot');
+    quickDots.forEach(dot => dot.addEventListener('click', () => {
+      const target = dot.dataset.target;
+      if(target) document.getElementById(target)?.scrollIntoView({ behavior:'smooth' });
+    }));
+    function updateQuickNav(){
+      let current = '';
+      $$('main > section[id]').forEach(s => {
+        if(s.getBoundingClientRect().top <= 200) current = s.id;
+      });
+      quickDots.forEach(d => d.classList.toggle('active', d.dataset.target === current));
+    }
 
-      section.classList.toggle('is-collapsed', collapsed);
-      section.setAttribute('aria-expanded', String(!collapsed));
+    // ===== MOBILE NAV =====
+    const mobileNav = $('#mobileNav');
+    $('#openMobileNav')?.addEventListener('click', () => { mobileNav.classList.add('open'); document.body.style.overflow='hidden'; });
+    $('#closeMobileNav')?.addEventListener('click', closeMobile);
+    $$('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMobile));
+    function closeMobile(){ mobileNav.classList.remove('open'); document.body.style.overflow=''; }
 
-      if (content) {
-        if (!collapsed) {
-          content.hidden = false;
-          content.style.maxHeight = content.scrollHeight + 'px';
-          window.setTimeout(() => {
-            if (!section.classList.contains('is-collapsed')) content.style.maxHeight = 'none';
-          }, 380);
-        } else {
-          content.style.maxHeight = content.scrollHeight + 'px';
-          requestAnimationFrame(() => {
-            content.style.maxHeight = '0px';
-          });
-          window.setTimeout(() => {
-            if (section.classList.contains('is-collapsed')) content.hidden = true;
-          }, 380);
+    // ===== SCROLL REVEAL =====
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('revealed'); revealObs.unobserve(e.target); }});
+    }, { threshold:0.06, rootMargin:'0px 0px -30px 0px' });
+    $$('.reveal').forEach(el => revealObs.observe(el));
+
+    // ===== ANIMATED COUNTERS =====
+    let countersRan = false;
+    const counterObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting && !countersRan){ countersRan=true; runCounters(); counterObs.unobserve(e.target); }});
+    }, { threshold:0.4 });
+    const statParent = $('[data-count]')?.closest('.grid');
+    if(statParent) counterObs.observe(statParent);
+
+    function runCounters(){
+      $$('[data-count]').forEach(el => {
+        const target = parseInt(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1600;
+        const start = performance.now();
+        function tick(now){
+          const p = Math.min((now-start)/duration, 1);
+          const eased = 1 - Math.pow(1-p, 3);
+          el.textContent = Math.round(eased*target) + suffix;
+          if(p<1) requestAnimationFrame(tick);
+          else { el.textContent = target+suffix; el.classList.add('count-animated'); setTimeout(()=>el.classList.remove('count-animated'),400); }
         }
-      }
-
-      if (button) {
-        button.setAttribute('aria-label', collapsed ? `Open ${title}` : `Hide ${title}`);
-        button.setAttribute('aria-expanded', String(!collapsed));
-        const label = button.querySelector('.toggle-label');
-        if (label) label.textContent = collapsed ? 'Open section' : 'Hide section';
-        if (icon) icon.textContent = collapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up';
-      }
-
-      if (persist) {
-        const state = getSavedSectionState();
-        state[section.id] = collapsed;
-        saveSectionState(state);
-      }
-    }
-
-    function buildSectionToggles() {
-      const savedState = getSavedSectionState();
-      const sections = Array.from(document.querySelectorAll('main > section[data-section-title]'));
-
-      sections.forEach((section, index) => {
-        if (!section.id) section.id = `portfolio-section-${index + 1}`;
-        if (section.querySelector(':scope > .section-toolbar')) return;
-
-        const title = section.dataset.sectionTitle || section.querySelector('h2')?.textContent?.trim() || `Section ${index + 1}`;
-        const originalNodes = Array.from(section.childNodes);
-        const content = document.createElement('div');
-        content.className = 'section-content';
-        originalNodes.forEach(node => content.appendChild(node));
-
-        const toolbar = document.createElement('div');
-        toolbar.className = 'section-toolbar no-print';
-        toolbar.innerHTML = `
-          <div class="section-toolbar-title">
-            <span class="section-status-pill"><span class="material-symbols-outlined" style="font-size:16px">visibility</span>${title}</span>
-          </div>
-          <button type="button" class="section-toggle-btn" aria-expanded="true">
-            <span class="toggle-label">Hide section</span>
-            <span class="material-symbols-outlined" style="font-size:18px">keyboard_arrow_up</span>
-          </button>
-        `;
-
-        section.appendChild(toolbar);
-        section.appendChild(content);
-        section.setAttribute('aria-expanded', 'true');
-
-        const shouldCollapse = savedState[section.id] === true;
-        const button = toolbar.querySelector('.section-toggle-btn');
-        button.addEventListener('click', () => setSectionState(section, !section.classList.contains('is-collapsed')));
-
-        if (shouldCollapse) {
-          content.hidden = true;
-          content.style.maxHeight = '0px';
-          setSectionState(section, true, false);
-        } else {
-          content.style.maxHeight = 'none';
-        }
+        requestAnimationFrame(tick);
       });
     }
 
-    function setAllSections(collapsed) {
-      const sections = Array.from(document.querySelectorAll('main > section[data-section-title]'));
-      const state = getSavedSectionState();
-      sections.forEach(section => {
-        setSectionState(section, collapsed, false);
-        state[section.id] = collapsed;
-      });
-      saveSectionState(state);
+    // ===== TYPING ANIMATION =====
+    const typingText = 'Senior developer building data systems, dashboards, APIs, GIS tools, and digital products.';
+    const typingTarget = $('#typingTarget');
+    let charIndex = 0;
+    function typeChar(){
+      if(charIndex < typingText.length){
+        typingTarget.textContent += typingText[charIndex];
+        charIndex++;
+        setTimeout(typeChar, 28 + Math.random()*30);
+      }
+    }
+    setTimeout(typeChar, 600);
+
+    // ===== TOAST NOTIFICATIONS =====
+    const toastContainer = $('#toastContainer');
+    function showToast(message, icon='info'){
+      const toast = document.createElement('div');
+      toast.className = 'toast pointer-events-auto flex items-center gap-2 px-4 py-3 rounded-xl bg-ink text-white text-sm font-bold shadow-lg';
+      toast.innerHTML = `<span class="material-symbols-outlined" style="font-size:18px">${icon}</span>${message}`;
+      toastContainer.appendChild(toast);
+      setTimeout(()=>{ toast.classList.add('hiding'); setTimeout(()=>toast.remove(), 250); }, 2500);
     }
 
-    buildSectionToggles();
-    document.getElementById('expandAllSections')?.addEventListener('click', () => setAllSections(false));
-    document.getElementById('collapseAllSections')?.addEventListener('click', () => setAllSections(true));
+    // ===== SECTION TOGGLE SYSTEM (FIXED) =====
+    const saved = loadState();
+
+    $$('main > section[data-section]').forEach(section => {
+      const toolbar = section.querySelector(':scope > .section-toolbar');
+      const body = section.querySelector(':scope > .section-body');
+      if(!toolbar || !body) return;
+
+      // Set initial max-height to auto (expanded)
+      body.style.maxHeight = 'none';
+
+      // Check saved state
+      const sectionId = section.id;
+      if(saved[sectionId] === true){
+        // Should be collapsed
+        collapseSection(section, body, toolbar, false);
+      }
+
+      // Click handler
+      toolbar.addEventListener('click', () => {
+        const isCollapsed = section.classList.contains('is-collapsed');
+        if(isCollapsed){
+          expandSection(section, body, toolbar, true);
+        } else {
+          collapseSection(section, body, toolbar, true);
+        }
+      });
+
+      // Keyboard handler
+      toolbar.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          toolbar.click();
+        }
+      });
+    });
+
+    function expandSection(section, body, toolbar, persist){
+      section.classList.remove('is-collapsed');
+      toolbar.setAttribute('aria-expanded', 'true');
+
+      // Measure content height
+      body.style.maxHeight = '0px';
+      body.style.opacity = '0';
+      body.offsetHeight; // Force reflow
+      body.style.maxHeight = body.scrollHeight + 'px';
+      body.style.opacity = '1';
+
+      const onEnd = () => {
+        body.style.maxHeight = 'none';
+        body.removeEventListener('transitionend', onEnd);
+      };
+      body.addEventListener('transitionend', onEnd);
+
+      // Re-observe reveal elements inside
+      body.querySelectorAll('.reveal:not(.revealed)').forEach(el => revealObs.observe(el));
+
+      if(persist){
+        const state = loadState();
+        delete state[section.id];
+        saveState(state);
+        showToast(`${section.dataset.section} section opened`, 'visibility');
+      }
+    }
+
+    function collapseSection(section, body, toolbar, persist){
+      // Set explicit height first
+      body.style.maxHeight = body.scrollHeight + 'px';
+      body.offsetHeight; // Force reflow
+      body.style.maxHeight = '0px';
+      body.style.opacity = '0';
+
+      section.classList.add('is-collapsed');
+      toolbar.setAttribute('aria-expanded', 'false');
+
+      if(persist){
+        const state = loadState();
+        state[section.id] = true;
+        saveState(state);
+        showToast(`${section.dataset.section} section hidden`, 'visibility_off');
+      }
+    }
+
+    // Expand/Collapse all
+    $('#expandAll')?.addEventListener('click', () => {
+      const state = {};
+      $$('main > section[data-section]').forEach(section => {
+        const body = section.querySelector(':scope > .section-body');
+        const toolbar = section.querySelector(':scope > .section-toolbar');
+        if(body && toolbar && section.classList.contains('is-collapsed')){
+          expandSection(section, body, toolbar, false);
+        }
+      });
+      saveState(state);
+      showToast('All sections expanded', 'unfold_more');
+    });
+
+    $('#collapseAll')?.addEventListener('click', () => {
+      const state = {};
+      $$('main > section[data-section]').forEach(section => {
+        const body = section.querySelector(':scope > .section-body');
+        const toolbar = section.querySelector(':scope > .section-toolbar');
+        if(body && toolbar && !section.classList.contains('is-collapsed')){
+          collapseSection(section, body, toolbar, false);
+        }
+        state[section.id] = true;
+      });
+      saveState(state);
+      showToast('All sections collapsed', 'unfold_less');
+    });
+
+    // ===== DASHBOARD FILTERS =====
+    const filterBtns = $$('.filter-btn');
+    const dashCards = $$('.dash-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Filter cards
+        dashCards.forEach(card => {
+          const tags = (card.dataset.tags || '').split(',');
+          const show = filter === 'all' || tags.includes(filter);
+          if(show){
+            card.classList.remove('hidden-by-filter');
+            card.style.position = '';
+            card.style.visibility = '';
+          } else {
+            card.classList.add('hidden-by-filter');
+            // Delay hiding for animation
+            setTimeout(() => {
+              if(card.classList.contains('hidden-by-filter')){
+                card.style.position = 'absolute';
+                card.style.visibility = 'hidden';
+              }
+            }, 350);
+          }
+        });
+
+        const count = dashCards.length - $$('.dash-card.hidden-by-filter').length;
+        showToast(`Showing ${count} platform${count!==1?'s':''}`, 'filter_list');
+      });
+    });
+
+    // ===== INITIAL CALLS =====
+    updateProgress();
+    updateBackToTop();
+    updateActiveNav();
+    updateQuickNav();
+
+  })();
   </script>
 </body>
 </html>
