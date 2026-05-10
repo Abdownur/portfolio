@@ -42,10 +42,8 @@
     .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
     .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
 
-    /* Scroll Progress */
     #scrollProgress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #0EA5B7, #0F4C5C, #67E8F9); z-index: 9999; width: 0%; transition: width 80ms linear; border-radius: 0 2px 2px 0; }
 
-    /* Hero */
     .hero-grid {
       background-image:
         radial-gradient(circle at 16% 18%, rgba(14,165,183,0.24), transparent 32%),
@@ -55,7 +53,6 @@
     .hero-grid::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 30px 30px; pointer-events: none; }
     .glass { background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(16px); }
 
-    /* Floating orbs */
     @keyframes floatOrb1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-20px) scale(1.05)} 66%{transform:translate(-15px,15px) scale(.97)} }
     @keyframes floatOrb2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-25px,25px) scale(1.08)} }
     @keyframes floatOrb3 { 0%,100%{transform:translate(0,0)} 40%{transform:translate(20px,15px)} 80%{transform:translate(-10px,-10px)} }
@@ -63,135 +60,203 @@
     .orb-2 { animation: floatOrb2 10s ease-in-out infinite; }
     .orb-3 { animation: floatOrb3 12s ease-in-out infinite; }
 
-    /* Profile glow */
     @keyframes profileGlow { 0%,100%{box-shadow:0 0 20px rgba(14,165,183,0.3),0 0 60px rgba(14,165,183,0.1)} 50%{box-shadow:0 0 30px rgba(14,165,183,0.5),0 0 80px rgba(14,165,183,0.2)} }
     .profile-glow { animation: profileGlow 4s ease-in-out infinite; }
 
-    /* Typing cursor */
     @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
     .typing-cursor { display: inline-block; width: 3px; height: 1em; background: #67E8F9; margin-left: 4px; animation: blink 1s step-end infinite; vertical-align: text-bottom; border-radius: 2px; }
 
-    /* Counter pulse */
     @keyframes countPulse { 0%{transform:scale(1)} 50%{transform:scale(1.06)} 100%{transform:scale(1)} }
     .count-animated { animation: countPulse 0.4s ease-out; }
 
-    /* Scroll reveal */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
     .reveal.revealed { opacity: 1; transform: translateY(0); }
     .reveal-d1{transition-delay:.07s} .reveal-d2{transition-delay:.14s} .reveal-d3{transition-delay:.21s} .reveal-d4{transition-delay:.28s} .reveal-d5{transition-delay:.35s} .reveal-d6{transition-delay:.42s}
 
-    /* Project cards */
     .project-card { transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease, border-color .3s ease; }
     .project-card:hover { transform: translateY(-5px); box-shadow: 0 22px 48px rgba(15,23,42,.12); border-color: rgba(15,76,92,.3); }
     .project-card:hover .card-arrow { transform: translate(3px,-3px); }
     .card-arrow { transition: transform .3s cubic-bezier(.16,1,.3,1); }
 
-    /* Animated gradient border */
     @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
     .gradient-border { position: relative; }
     .gradient-border::before { content:''; position:absolute; inset:-2px; border-radius:inherit; padding:2px; background:linear-gradient(135deg,#0EA5B7,#0F4C5C,#67E8F9,#0F4C5C); background-size:300% 300%; animation:gradientShift 6s ease infinite; -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; opacity:0; transition:opacity .3s ease; }
     .gradient-border:hover::before { opacity:1; }
 
-    /* Skill pill */
     .skill-pill { transition: all .2s ease; cursor: default; }
     .skill-pill:hover { background: #0F4C5C !important; color: #fff !important; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(15,76,92,.2); }
 
-    /* Timeline */
     .timeline-item { position: relative; padding-left: 2rem; }
     .timeline-item::before { content:''; position:absolute; left:.45rem; top:1.8rem; bottom:-1rem; width:2px; background:linear-gradient(180deg,#CBD5E1,#E2E8F0); }
     .timeline-item:last-child::before { display:none; }
     .timeline-dot { position:absolute; left:0; top:.35rem; width:1rem; height:1rem; border-radius:999px; background:white; border:3px solid #0F4C5C; transition:all .3s ease; }
     .timeline-item:hover .timeline-dot { background:#0F4C5C; box-shadow:0 0 0 4px rgba(15,76,92,.15); }
 
-    /* Nav active */
     .nav-link { position:relative; transition:color .2s ease; padding-bottom:2px; }
     .nav-link::after { content:''; position:absolute; bottom:-4px; left:50%; width:0; height:2px; background:#0F4C5C; border-radius:2px; transition:all .3s cubic-bezier(.16,1,.3,1); transform:translateX(-50%); }
     .nav-link.active { color:#0F4C5C; font-weight:700; }
     .nav-link.active::after { width:100%; }
     .nav-link:hover::after { width:60%; }
 
-    /* Section toggle system */
+    /* ===== SECTION TOGGLE SYSTEM ===== */
     .section-toolbar { display:flex; align-items:center; justify-content:space-between; gap:.75rem; padding:.7rem .9rem; border:1px solid #E2E8F0; background:rgba(255,255,255,.85); border-radius:1rem; margin-bottom:1rem; transition:all .3s ease; cursor:pointer; user-select:none; }
     .section-toolbar:hover { border-color:rgba(15,76,92,.25); background:rgba(234,246,248,.6); }
     .section-toolbar-title { display:inline-flex; align-items:center; gap:.5rem; color:#0F172A; font-size:.8rem; font-weight:900; }
     .section-toggle-icon { transition:transform .3s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:8px; background:#EAF6F8; color:#0F4C5C; }
     .is-collapsed .section-toggle-icon { transform:rotate(180deg); }
-    .section-body { overflow:hidden; transition:max-height .4s cubic-bezier(.16,1,.3,1), opacity .3s ease, padding .3s ease; opacity:1; }
-    .is-collapsed .section-body { max-height:0 !important; opacity:0; padding-top:0; padding-bottom:0; }
-    .section-status-dot { width:8px; height:8px; border-radius:50%; background:#0EA5B7; transition:background .3s ease; }
+    .section-body { overflow:hidden; transition:max-height .4s cubic-bezier(.16,1,.3,1), opacity .3s ease; opacity:1; }
+    .is-collapsed .section-body { max-height:0 !important; opacity:0; }
+    .section-status-dot { width:8px; height:8px; border-radius:50%; background:#0EA5B7; transition:background .3s ease; flex-shrink:0; }
     .is-collapsed .section-status-dot { background:#CBD5E1; }
 
-    /* Filter buttons */
     .filter-btn { transition:all .2s ease; }
     .filter-btn.active { background:#0F4C5C; color:#fff; border-color:#0F4C5C; }
     .filter-btn:not(.active):hover { background:#EAF6F8; border-color:rgba(15,76,92,.3); }
-
-    /* Dashboard card enter animation */
     .dash-card { transition:all .35s cubic-bezier(.16,1,.3,1); }
     .dash-card.hidden-by-filter { opacity:0; transform:scale(.92); pointer-events:none; position:absolute; visibility:hidden; }
 
-    /* Toast */
     @keyframes toastIn { from{transform:translateY(20px) scale(.95);opacity:0} to{transform:translateY(0) scale(1);opacity:1} }
     @keyframes toastOut { from{transform:translateY(0) scale(1);opacity:1} to{transform:translateY(20px) scale(.95);opacity:0} }
     .toast { animation:toastIn .3s cubic-bezier(.16,1,.3,1) forwards; }
     .toast.hiding { animation:toastOut .25s ease forwards; }
 
-    /* Back to top */
     #backToTop { position:fixed; bottom:2rem; right:2rem; z-index:50; width:48px; height:48px; border-radius:50%; background:#0F4C5C; color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(15,76,92,.3); opacity:0; transform:translateY(20px); transition:all .3s cubic-bezier(.16,1,.3,1); pointer-events:none; cursor:pointer; border:none; }
     #backToTop.visible { opacity:1; transform:translateY(0); pointer-events:all; }
     #backToTop:hover { background:#083344; transform:translateY(-3px); box-shadow:0 12px 32px rgba(15,76,92,.4); }
 
-    /* Mobile nav */
     .mobile-nav { position:fixed; inset:0; z-index:100; background:rgba(8,51,68,.97); backdrop-filter:blur(20px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; opacity:0; pointer-events:none; transition:opacity .3s ease; }
     .mobile-nav.open { opacity:1; pointer-events:all; }
     .mobile-nav a { color:#fff; font-size:1.25rem; font-weight:700; opacity:0; transform:translateY(15px); transition:all .3s ease; }
     .mobile-nav.open a { opacity:1; transform:translateY(0); }
 
-    /* Stat hover */
     .stat-card { transition:all .3s cubic-bezier(.16,1,.3,1); }
     .stat-card:hover { transform:scale(1.04); background:rgba(255,255,255,.18); }
-
-    /* Cap card */
     .cap-card { transition:all .3s cubic-bezier(.16,1,.3,1); }
     .cap-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(15,23,42,.08); border-color:rgba(15,76,92,.2); }
 
-    /* Quick nav floating */
-    .quick-nav { position:fixed; left:1.5rem; top:50%; transform:translateY(-50%); z-index:45; display:flex; flex-direction:column; gap:.5rem; }
-    .quick-nav-dot { width:10px; height:10px; border-radius:50%; background:#CBD5E1; transition:all .3s ease; cursor:pointer; border:none; padding:0; }
-    .quick-nav-dot:hover { background:#0EA5B7; transform:scale(1.3); }
-    .quick-nav-dot.active { background:#0F4C5C; transform:scale(1.4); box-shadow:0 0 0 3px rgba(15,76,92,.15); }
-    .quick-nav-dot .quick-tooltip { position:absolute; left:1.5rem; top:50%; transform:translateY(-50%); background:#0F172A; color:#fff; font-size:.7rem; font-weight:700; padding:.3rem .6rem; border-radius:.5rem; white-space:nowrap; opacity:0; pointer-events:none; transition:all .2s ease; }
-    .quick-nav-dot:hover .quick-tooltip { opacity:1; left:2rem; }
+    /* ===== FLOATING SIDE NAVIGATION ===== */
+    .side-nav {
+      position: fixed;
+      left: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 45;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(226,232,240,0.8);
+      border-radius: 1rem;
+      padding: 0.5rem 0.4rem;
+      box-shadow: 0 8px 32px rgba(15,23,42,0.08);
+    }
+    .side-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 0.6rem;
+      transition: all .25s cubic-bezier(.16,1,.3,1);
+      position: relative;
+      overflow: hidden;
+      min-height: 36px;
+    }
+    .side-nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #CBD5E1;
+      transition: all .3s cubic-bezier(.16,1,.3,1);
+      flex-shrink: 0;
+      margin: 0 8px;
+    }
+    .side-nav-item:hover .side-nav-dot {
+      background: #0EA5B7;
+      transform: scale(1.3);
+    }
+    .side-nav-item.active .side-nav-dot {
+      background: #0F4C5C;
+      width: 10px;
+      height: 24px;
+      border-radius: 5px;
+      box-shadow: 0 0 0 3px rgba(15,76,92,0.12);
+    }
+    .side-nav-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #0F172A;
+      white-space: nowrap;
+      max-width: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all .3s cubic-bezier(.16,1,.3,1);
+      padding-right: 0;
+    }
+    .side-nav-item:hover .side-nav-label,
+    .side-nav-item.active .side-nav-label {
+      max-width: 100px;
+      opacity: 1;
+      padding-right: 8px;
+    }
+    .side-nav-item:hover,
+    .side-nav-item.active {
+      background: rgba(234,246,248,0.7);
+    }
 
-    /* Ripple effect */
+    @media(max-width:1140px) {
+      .side-nav { display: none; }
+    }
+
     .ripple { position:relative; overflow:hidden; }
     .ripple::after { content:''; position:absolute; top:50%; left:50%; width:0; height:0; border-radius:50%; background:rgba(255,255,255,.3); transform:translate(-50%,-50%); transition:width .5s ease,height .5s ease,opacity .5s ease; opacity:0; }
     .ripple:active::after { width:200px; height:200px; opacity:1; transition:0s; }
 
-    @media(max-width:1024px) { .quick-nav{display:none} }
     @media print { .no-print{display:none!important} body{background:#fff!important} section{break-inside:avoid} }
   </style>
 </head>
 <body class="bg-page text-ink">
 
   <div id="scrollProgress" class="no-print"></div>
-
   <button type="button" id="backToTop" class="no-print" aria-label="Back to top">
     <span class="material-symbols-outlined" style="font-size:24px">keyboard_arrow_up</span>
   </button>
 
-  <!-- Toast container -->
   <div id="toastContainer" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[200] flex flex-col items-center gap-2 pointer-events-none"></div>
 
-  <!-- Quick side navigation -->
-  <nav class="quick-nav no-print" aria-label="Quick section navigation">
-    <button class="quick-nav-dot" data-target="profile"><span class="quick-tooltip">Profile</span></button>
-    <button class="quick-nav-dot" data-target="featured"><span class="quick-tooltip">Featured</span></button>
-    <button class="quick-nav-dot" data-target="dashboards"><span class="quick-tooltip">Dashboards</span></button>
-    <button class="quick-nav-dot" data-target="developer"><span class="quick-tooltip">Developer</span></button>
-    <button class="quick-nav-dot" data-target="skills"><span class="quick-tooltip">Skills</span></button>
-    <button class="quick-nav-dot" data-target="experience"><span class="quick-tooltip">Experience</span></button>
-    <button class="quick-nav-dot" data-target="contact"><span class="quick-tooltip">Contact</span></button>
+  <!-- ===== FLOATING SIDE NAV ===== -->
+  <nav class="side-nav no-print" aria-label="Quick section navigation">
+    <button class="side-nav-item" data-target="profile">
+      <span class="side-nav-dot"></span>
+      <span class="side-nav-label">Profile</span>
+    </button>
+    <button class="side-nav-item" data-target="featured">
+      <span class="side-nav-dot"></span>
+      <span class="side-nav-label">Featured</span>
+    </button>
+    <button class="side-nav-item" data-target="dashboards">
+      <span class="side-nav-dot"></span>
+      <span class="side-nav-label">Dashboards</span>
+    </button>
+    <button class="side-nav-item" data-target="developer">
+      <span class="side-nav-dot"></span>
+      <span class="side-nav-label">Developer</span>
+    </button>
+    <button class="side-nav-item" data-target="skills">
+      <span class="side-nav-dot"></span>
+      <span class="side-nav-label">Skills</span>
+    </button>
+    <button class="side-nav-item" data-target="experience">
+      <span class="side-nav-dot"></span>
+      <span class="side-nav-label">Experience</span>
+    </button>
+    <button class="side-nav-item" data-target="contact">
+      <span class="side-nav-dot"></span>
+      <span class="side-nav-label">Contact</span>
+    </button>
   </nav>
 
   <!-- Mobile nav -->
@@ -243,7 +308,6 @@
       <div class="orb-2 absolute bottom-[5%] right-[10%] w-96 h-96 bg-mint/8 rounded-full blur-3xl"></div>
       <div class="orb-3 absolute top-[50%] left-[60%] w-64 h-64 bg-brand/15 rounded-full blur-3xl"></div>
     </div>
-
     <div class="relative max-w-6xl mx-auto px-5 py-14 lg:py-20 grid lg:grid-cols-[1.15fr_.85fr] gap-8 items-center">
       <div>
         <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full glass text-sm font-semibold mb-6 reveal">
@@ -271,14 +335,13 @@
           </a>
         </div>
       </div>
-
       <aside class="glass rounded-[2rem] p-5 sm:p-6 shadow-soft reveal reveal-d4">
         <div class="flex items-center gap-4">
           <div class="w-24 h-24 rounded-3xl bg-cover bg-center ring-4 ring-white/20 profile-glow shrink-0" style="background-image:url('https://imagizer.imageshack.com/img922/3194/40Cqh4.jpg')"></div>
           <div class="min-w-0">
             <h2 class="text-2xl font-black truncate">Abdullahi Nur Ahmad</h2>
             <p class="text-white/75 text-sm mt-1">Senior Developer | IOM | CCCM Cluster</p>
-            <div class="flex items-center gap-1.5 mt-1">
+            <div class="flex items-center gap-1.5 mt-1.5">
               <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <p class="text-white/75 text-xs">Available for collaboration</p>
             </div>
@@ -350,14 +413,10 @@
           <div class="bg-white rounded-3xl p-6 shadow-card border border-line reveal">
             <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Professional focus</p>
             <h2 class="mt-2 text-2xl font-black text-ink">Senior developer profile with humanitarian impact</h2>
-            <p class="mt-4 text-sm text-muted leading-relaxed">
-              My work combines software development, humanitarian information management, data engineering, GIS, dashboard design, and reporting automation. I build tools that help teams collect better data, automate analysis, identify service gaps, monitor response quality, and communicate evidence clearly.
-            </p>
+            <p class="mt-4 text-sm text-muted leading-relaxed">My work combines software development, humanitarian information management, data engineering, GIS, dashboard design, and reporting automation. I build tools that help teams collect better data, automate analysis, identify service gaps, monitor response quality, and communicate evidence clearly.</p>
             <div class="mt-6 pt-5 border-t border-line/60">
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center">
-                  <span class="material-symbols-outlined text-brand" style="font-size:20px">location_on</span>
-                </div>
+                <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center"><span class="material-symbols-outlined text-brand" style="font-size:20px">location_on</span></div>
                 <div>
                   <p class="text-sm font-bold">Based in Mogadishu, Somalia</p>
                   <p class="text-xs text-muted">Available for remote & on-site engagement</p>
@@ -367,9 +426,7 @@
           </div>
           <div class="bg-white rounded-3xl p-6 shadow-card border border-line reveal reveal-d1">
             <h3 class="text-lg font-black mb-3">Senior developer summary</h3>
-            <p class="text-sm text-muted leading-relaxed">
-              Senior Developer and Data Systems Specialist with a strong record designing and deploying operational platforms for humanitarian coordination and digital services. Skilled across R Shiny, Power BI, Python, SQL, JavaScript, APIs, GIS, KoBoToolbox, automation, data validation, and visualization. Experienced in translating business requirements into usable systems, building live dashboards, integrating field data sources, strengthening data quality, and delivering tools that support evidence-based decision-making across Somalia.
-            </p>
+            <p class="text-sm text-muted leading-relaxed">Senior Developer and Data Systems Specialist with a strong record designing and deploying operational platforms for humanitarian coordination and digital services. Skilled across R Shiny, Power BI, Python, SQL, JavaScript, APIs, GIS, KoBoToolbox, automation, data validation, and visualization. Experienced in translating business requirements into usable systems, building live dashboards, integrating field data sources, strengthening data quality, and delivering tools that support evidence-based decision-making across Somalia.</p>
             <div class="mt-5 grid sm:grid-cols-3 gap-3">
               <div class="cap-card p-4 rounded-2xl bg-brandSoft border border-transparent cursor-default">
                 <span class="material-symbols-outlined text-brand">dashboard</span>
@@ -417,13 +474,10 @@
             <div class="absolute -right-16 -top-16 w-44 h-44 bg-mint/20 rounded-full"></div>
             <div class="absolute right-0 bottom-0 w-32 h-32 bg-accent/5 rounded-full translate-x-8 translate-y-8"></div>
             <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-brand text-white text-xs font-black uppercase tracking-wider">
-              <span class="material-symbols-outlined filled" style="font-size:14px">bolt</span>
-              Latest dashboard
+              <span class="material-symbols-outlined filled" style="font-size:14px">bolt</span> Latest dashboard
             </span>
             <div class="mt-5 flex items-start gap-4">
-              <div class="w-14 h-14 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-brand" style="font-size:28px">hub</span>
-              </div>
+              <div class="w-14 h-14 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand" style="font-size:28px">hub</span></div>
               <div>
                 <h3 class="text-xl font-black">CCCM Cluster Service Mapping Dashboard 2026</h3>
                 <p class="mt-2 text-sm text-muted leading-relaxed">Interactive service mapping dashboard for Somalia CCCM coordination, supporting analysis of service availability, partner coverage, site-level gaps, and cluster-level operational planning.</p>
@@ -437,15 +491,11 @@
               </div>
             </div>
           </a>
-
           <a href="https://www.som-imcccmcluster.com/" target="_blank" rel="noopener" class="project-card gradient-border rounded-3xl border border-line bg-white p-6 shadow-card relative overflow-hidden reveal reveal-d2">
             <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-accent text-white text-xs font-black uppercase tracking-wider">
-              <span class="material-symbols-outlined filled" style="font-size:14px">language</span>
-              Digital product
+              <span class="material-symbols-outlined filled" style="font-size:14px">language</span> Digital product
             </span>
-            <div class="mt-5 w-14 h-14 rounded-2xl bg-cyan-50 flex items-center justify-center">
-              <span class="material-symbols-outlined text-accent" style="font-size:28px">monitoring</span>
-            </div>
+            <div class="mt-5 w-14 h-14 rounded-2xl bg-cyan-50 flex items-center justify-center"><span class="material-symbols-outlined text-accent" style="font-size:28px">monitoring</span></div>
             <h3 class="mt-4 text-xl font-black">Somalia Price Index</h3>
             <p class="mt-2 text-sm text-muted leading-relaxed">A full web product developed to help users compare market prices, track essential items, view vendor information, manage vendor submissions, and improve price transparency across Somalia.</p>
             <div class="mt-4 flex flex-wrap gap-2">
@@ -459,7 +509,7 @@
       </div>
     </section>
 
-    <!-- ============ IMPACT ============ -->
+    <!-- ============ CAPABILITIES ============ -->
     <section id="impact" data-section="Capabilities" class="scroll-mt-20">
       <div class="section-toolbar no-print" role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Capabilities section">
         <div class="section-toolbar-title">
@@ -519,26 +569,10 @@
               <h2 class="text-2xl sm:text-3xl font-black mt-2">From requirements to deployed systems</h2>
               <p class="text-sm text-white/75 leading-relaxed mt-4">I work across the full delivery cycle: understanding operational needs, designing the data model, connecting APIs, building dashboards or web interfaces, testing data quality, deploying the product, and improving it based on user feedback.</p>
               <div class="mt-6 grid sm:grid-cols-2 gap-3 text-sm">
-                <div class="rounded-2xl bg-white/10 p-4 border border-white/10 hover:bg-white/15 transition-colors cursor-default">
-                  <span class="material-symbols-outlined text-mint">architecture</span>
-                  <p class="font-black mt-2">System design</p>
-                  <p class="text-white/65 text-xs mt-1">User flows, data structure, access logic, and scalable layouts.</p>
-                </div>
-                <div class="rounded-2xl bg-white/10 p-4 border border-white/10 hover:bg-white/15 transition-colors cursor-default">
-                  <span class="material-symbols-outlined text-mint">sync_alt</span>
-                  <p class="font-black mt-2">Data integration</p>
-                  <p class="text-white/65 text-xs mt-1">KoBo, Excel, SQL, APIs, spatial files, and automated refreshes.</p>
-                </div>
-                <div class="rounded-2xl bg-white/10 p-4 border border-white/10 hover:bg-white/15 transition-colors cursor-default">
-                  <span class="material-symbols-outlined text-mint">deployed_code</span>
-                  <p class="font-black mt-2">Product delivery</p>
-                  <p class="text-white/65 text-xs mt-1">R Shiny apps, web platforms, dashboards, and reporting tools.</p>
-                </div>
-                <div class="rounded-2xl bg-white/10 p-4 border border-white/10 hover:bg-white/15 transition-colors cursor-default">
-                  <span class="material-symbols-outlined text-mint">verified_user</span>
-                  <p class="font-black mt-2">Quality assurance</p>
-                  <p class="text-white/65 text-xs mt-1">Validation rules, cleaning routines, testing, and documentation.</p>
-                </div>
+                <div class="rounded-2xl bg-white/10 p-4 border border-white/10 hover:bg-white/15 transition-colors cursor-default"><span class="material-symbols-outlined text-mint">architecture</span><p class="font-black mt-2">System design</p><p class="text-white/65 text-xs mt-1">User flows, data structure, access logic, and scalable layouts.</p></div>
+                <div class="rounded-2xl bg-white/10 p-4 border border-white/10 hover:bg-white/15 transition-colors cursor-default"><span class="material-symbols-outlined text-mint">sync_alt</span><p class="font-black mt-2">Data integration</p><p class="text-white/65 text-xs mt-1">KoBo, Excel, SQL, APIs, spatial files, and automated refreshes.</p></div>
+                <div class="rounded-2xl bg-white/10 p-4 border border-white/10 hover:bg-white/15 transition-colors cursor-default"><span class="material-symbols-outlined text-mint">deployed_code</span><p class="font-black mt-2">Product delivery</p><p class="text-white/65 text-xs mt-1">R Shiny apps, web platforms, dashboards, and reporting tools.</p></div>
+                <div class="rounded-2xl bg-white/10 p-4 border border-white/10 hover:bg-white/15 transition-colors cursor-default"><span class="material-symbols-outlined text-mint">verified_user</span><p class="font-black mt-2">Quality assurance</p><p class="text-white/65 text-xs mt-1">Validation rules, cleaning routines, testing, and documentation.</p></div>
               </div>
             </div>
           </div>
@@ -546,30 +580,10 @@
             <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Technical stack</p>
             <h2 class="text-2xl sm:text-3xl font-black mt-2">Developer toolkit</h2>
             <div class="mt-5 space-y-5">
-              <div>
-                <h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">web</span> Frontend & UI</h3>
-                <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand">
-                  <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">HTML</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">CSS</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">JavaScript</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">React</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Next.js</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Tailwind CSS</span>
-                </div>
-              </div>
-              <div>
-                <h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">dns</span> Backend, APIs & databases</h3>
-                <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand">
-                  <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Python</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">PHP</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Go</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">SQL</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">REST APIs</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Supabase</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Prisma</span>
-                </div>
-              </div>
-              <div>
-                <h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">analytics</span> Data, BI & GIS</h3>
-                <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand">
-                  <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">R</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">R Shiny</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Power BI</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">KoBoToolbox</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Leaflet</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">GeoJSON</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Excel automation</span>
-                </div>
-              </div>
-              <div>
-                <h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">cloud</span> DevOps & deployment</h3>
-                <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand">
-                  <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Shinyapps.io</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Vercel</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Git</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">CI/CD</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Linux</span>
-                </div>
-              </div>
+              <div><h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">web</span> Frontend & UI</h3><div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand"><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">HTML</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">CSS</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">JavaScript</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">React</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Next.js</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Tailwind CSS</span></div></div>
+              <div><h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">dns</span> Backend, APIs & databases</h3><div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand"><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Python</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">PHP</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Go</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">SQL</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">REST APIs</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Supabase</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Prisma</span></div></div>
+              <div><h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">analytics</span> Data, BI & GIS</h3><div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand"><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">R</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">R Shiny</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Power BI</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">KoBoToolbox</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Leaflet</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">GeoJSON</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Excel automation</span></div></div>
+              <div><h3 class="font-black text-sm flex items-center gap-2"><span class="material-symbols-outlined text-brand">cloud</span> DevOps & deployment</h3><div class="mt-2 flex flex-wrap gap-2 text-xs font-bold text-brand"><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Shinyapps.io</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Vercel</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Git</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">CI/CD</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Linux</span></div></div>
             </div>
           </div>
         </div>
@@ -593,99 +607,22 @@
           <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Humanitarian dashboards and tools</p>
           <h2 class="text-2xl sm:text-3xl font-black mt-1">Operational platforms</h2>
         </div>
-
-        <!-- Filter buttons -->
         <div class="flex flex-wrap gap-2 mb-5 reveal reveal-d1">
-          <button class="filter-btn active inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-line text-sm font-bold" data-filter="all">
-            <span class="material-symbols-outlined" style="font-size:16px">apps</span> All
-          </button>
-          <button class="filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-line text-sm font-bold text-muted" data-filter="shiny">
-            <span class="material-symbols-outlined" style="font-size:16px">analytics</span> R Shiny
-          </button>
-          <button class="filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-line text-sm font-bold text-muted" data-filter="web">
-            <span class="material-symbols-outlined" style="font-size:16px">language</span> Web Apps
-          </button>
-          <button class="filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-line text-sm font-bold text-muted" data-filter="gis">
-            <span class="material-symbols-outlined" style="font-size:16px">map</span> GIS / Maps
-          </button>
+          <button class="filter-btn active inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-line text-sm font-bold" data-filter="all"><span class="material-symbols-outlined" style="font-size:16px">apps</span> All</button>
+          <button class="filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-line text-sm font-bold text-muted" data-filter="shiny"><span class="material-symbols-outlined" style="font-size:16px">analytics</span> R Shiny</button>
+          <button class="filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-line text-sm font-bold text-muted" data-filter="web"><span class="material-symbols-outlined" style="font-size:16px">language</span> Web Apps</button>
+          <button class="filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-line text-sm font-bold text-muted" data-filter="gis"><span class="material-symbols-outlined" style="font-size:16px">map</span> GIS / Maps</button>
         </div>
-
         <div id="dashboardGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 relative">
-
-          <a href="https://cccmclustersomalia.org" target="_blank" rel="noopener" data-tags="web" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card md:col-span-2 lg:col-span-3 reveal">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand">language</span></div>
-                <div>
-                  <h3 class="font-black text-lg">CCCM Cluster Information Management Portal</h3>
-                  <p class="text-sm text-muted mt-1 leading-relaxed">Central platform for CCCM Cluster Somalia resources, publications, datasets, dashboards, and coordination information.</p>
-                </div>
-              </div>
-              <span class="inline-flex items-center gap-1 text-sm font-black text-brand shrink-0">Visit portal <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
-            </div>
-          </a>
-
-          <a href="https://imcccmcluster.shinyapps.io/IncidentReport/" target="_blank" rel="noopener" data-tags="shiny,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d1">
-            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">report</span></div>
-            <h3 class="font-black">Incident Reporting Dashboard</h3>
-            <p class="text-sm text-muted mt-2 leading-relaxed">Real-time incident analysis with KoBo API sync, heatmaps, demographic breakdowns, and geographic distribution.</p>
-            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
-          </a>
-
-          <a href="https://imcccmcluster.shinyapps.io/FacilityMap_Baydhaba/" target="_blank" rel="noopener" data-tags="shiny,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d2">
-            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">map</span></div>
-            <h3 class="font-black">Baydhaba Facility Map</h3>
-            <p class="text-sm text-muted mt-2 leading-relaxed">GIS dashboard mapping health, education, WASH, nutrition, protection, and CCCM facilities across Baydhaba catchment areas.</p>
-            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
-          </a>
-
-          <a href="https://imcccmcluster.shinyapps.io/somalia-arrivals-dashboard/" target="_blank" rel="noopener" data-tags="shiny,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d3">
-            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">group_add</span></div>
-            <h3 class="font-black">Somalia Arrivals Dashboard</h3>
-            <p class="text-sm text-muted mt-2 leading-relaxed">National IDP arrivals tracker with heatmaps, choropleth views, catchment-level displacement trends, and district summaries.</p>
-            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
-          </a>
-
-          <a href="https://imcccmcluster.shinyapps.io/cccm-site-monitoring/" target="_blank" rel="noopener" data-tags="shiny" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal">
-            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">monitoring</span></div>
-            <h3 class="font-black">CCCM Site Monitoring</h3>
-            <p class="text-sm text-muted mt-2 leading-relaxed">Site monitoring platform with severity scoring, service gap analysis, and multisectoral coverage metrics.</p>
-            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
-          </a>
-
-          <a href="https://imcccmcluster.shinyapps.io/CatchmentMap/" target="_blank" rel="noopener" data-tags="shiny,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d1">
-            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">layers</span></div>
-            <h3 class="font-black">Catchment Map Dashboard</h3>
-            <p class="text-sm text-muted mt-2 leading-relaxed">CCCM catchment area mapping with population data, agency oversight, district filters, and data exports.</p>
-            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
-          </a>
-
-          <a href="https://imsom.shinyapps.io/Dashabord_ZM/" target="_blank" rel="noopener" data-tags="shiny" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d2">
-            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">domain</span></div>
-            <h3 class="font-black">Site Manager Dashboard</h3>
-            <p class="text-sm text-muted mt-2 leading-relaxed">Site-level coordination and management dashboard supporting CCCM operations and partner reporting.</p>
-            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
-          </a>
-
-          <a href="https://imsom.shinyapps.io/ExcelMerger_App/" target="_blank" rel="noopener" data-tags="shiny" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d3">
-            <div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">merge_type</span></div>
-            <h3 class="font-black">Excel Workbooks Merger</h3>
-            <p class="text-sm text-muted mt-2 leading-relaxed">Automated R Shiny tool for merging, validating, and preparing Excel datasets with built-in quality checks.</p>
-            <span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
-          </a>
-
-          <a href="https://floods-banadir.som-imcccmcluster.com/" target="_blank" rel="noopener" data-tags="web,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card md:col-span-2 lg:col-span-3 reveal">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand">flood</span></div>
-                <div>
-                  <h3 class="font-black text-lg">Flood Risk Dashboard | Banadir</h3>
-                  <p class="text-sm text-muted mt-1 leading-relaxed">Interactive flash flood risk mapping supporting emergency response planning and spatial risk communication across Banadir region.</p>
-                </div>
-              </div>
-              <span class="inline-flex items-center gap-1 text-sm font-black text-brand shrink-0">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span>
-            </div>
-          </a>
+          <a href="https://cccmclustersomalia.org" target="_blank" rel="noopener" data-tags="web" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card md:col-span-2 lg:col-span-3 reveal"><div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"><div class="flex items-start gap-4"><div class="w-12 h-12 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand">language</span></div><div><h3 class="font-black text-lg">CCCM Cluster Information Management Portal</h3><p class="text-sm text-muted mt-1 leading-relaxed">Central platform for CCCM Cluster Somalia resources, publications, datasets, dashboards, and coordination information.</p></div></div><span class="inline-flex items-center gap-1 text-sm font-black text-brand shrink-0">Visit portal <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span></div></a>
+          <a href="https://imcccmcluster.shinyapps.io/IncidentReport/" target="_blank" rel="noopener" data-tags="shiny,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d1"><div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">report</span></div><h3 class="font-black">Incident Reporting Dashboard</h3><p class="text-sm text-muted mt-2 leading-relaxed">Real-time incident analysis with KoBo API sync, heatmaps, demographic breakdowns, and geographic distribution.</p><span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span></a>
+          <a href="https://imcccmcluster.shinyapps.io/FacilityMap_Baydhaba/" target="_blank" rel="noopener" data-tags="shiny,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d2"><div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">map</span></div><h3 class="font-black">Baydhaba Facility Map</h3><p class="text-sm text-muted mt-2 leading-relaxed">GIS dashboard mapping health, education, WASH, nutrition, protection, and CCCM facilities across Baydhaba catchment areas.</p><span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span></a>
+          <a href="https://imcccmcluster.shinyapps.io/somalia-arrivals-dashboard/" target="_blank" rel="noopener" data-tags="shiny,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d3"><div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">group_add</span></div><h3 class="font-black">Somalia Arrivals Dashboard</h3><p class="text-sm text-muted mt-2 leading-relaxed">National IDP arrivals tracker with heatmaps, choropleth views, catchment-level displacement trends, and district summaries.</p><span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span></a>
+          <a href="https://imcccmcluster.shinyapps.io/cccm-site-monitoring/" target="_blank" rel="noopener" data-tags="shiny" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal"><div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">monitoring</span></div><h3 class="font-black">CCCM Site Monitoring</h3><p class="text-sm text-muted mt-2 leading-relaxed">Site monitoring platform with severity scoring, service gap analysis, and multisectoral coverage metrics.</p><span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span></a>
+          <a href="https://imcccmcluster.shinyapps.io/CatchmentMap/" target="_blank" rel="noopener" data-tags="shiny,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d1"><div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">layers</span></div><h3 class="font-black">Catchment Map Dashboard</h3><p class="text-sm text-muted mt-2 leading-relaxed">CCCM catchment area mapping with population data, agency oversight, district filters, and data exports.</p><span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span></a>
+          <a href="https://imsom.shinyapps.io/Dashabord_ZM/" target="_blank" rel="noopener" data-tags="shiny" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d2"><div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">domain</span></div><h3 class="font-black">Site Manager Dashboard</h3><p class="text-sm text-muted mt-2 leading-relaxed">Site-level coordination and management dashboard supporting CCCM operations and partner reporting.</p><span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span></a>
+          <a href="https://imsom.shinyapps.io/ExcelMerger_App/" target="_blank" rel="noopener" data-tags="shiny" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card reveal reveal-d3"><div class="w-10 h-10 rounded-xl bg-brandSoft flex items-center justify-center mb-3"><span class="material-symbols-outlined text-brand">merge_type</span></div><h3 class="font-black">Excel Workbooks Merger</h3><p class="text-sm text-muted mt-2 leading-relaxed">Automated R Shiny tool for merging, validating, and preparing Excel datasets with built-in quality checks.</p><span class="inline-flex items-center gap-1 mt-4 text-sm font-black text-brand">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span></a>
+          <a href="https://floods-banadir.som-imcccmcluster.com/" target="_blank" rel="noopener" data-tags="web,gis" class="dash-card project-card rounded-3xl bg-white p-5 border border-line shadow-card md:col-span-2 lg:col-span-3 reveal"><div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"><div class="flex items-start gap-4"><div class="w-12 h-12 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand">flood</span></div><div><h3 class="font-black text-lg">Flood Risk Dashboard | Banadir</h3><p class="text-sm text-muted mt-1 leading-relaxed">Interactive flash flood risk mapping supporting emergency response planning and spatial risk communication across Banadir region.</p></div></div><span class="inline-flex items-center gap-1 text-sm font-black text-brand shrink-0">View live <span class="material-symbols-outlined card-arrow" style="font-size:16px">arrow_outward</span></span></div></a>
         </div>
       </div>
     </section>
@@ -710,37 +647,14 @@
               <p class="text-xs uppercase tracking-[.22em] font-black text-white/70">Capabilities</p>
               <h2 class="text-2xl font-black mt-2">Core competencies</h2>
               <p class="text-sm text-white/75 leading-relaxed mt-4">A senior technical skillset across software development, humanitarian IM, analytics, digital transformation, dashboard engineering, GIS, API integration, and partner capacity strengthening.</p>
-              <div class="mt-6 pt-5 border-t border-white/15 flex items-center gap-2 text-sm text-white/60">
-                <span class="material-symbols-outlined" style="font-size:18px">trending_up</span>
-                <span>Continuously expanding technical breadth</span>
-              </div>
+              <div class="mt-6 pt-5 border-t border-white/15 flex items-center gap-2 text-sm text-white/60"><span class="material-symbols-outlined" style="font-size:18px">trending_up</span><span>Continuously expanding technical breadth</span></div>
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-4">
-            <div class="bg-white rounded-3xl p-5 border border-line shadow-card reveal">
-              <h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">data_object</span> Data engineering</h3>
-              <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand">
-                <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">R</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Python</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">SQL</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">ETL</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Data cleaning</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Quality checks</span>
-              </div>
-            </div>
-            <div class="bg-white rounded-3xl p-5 border border-line shadow-card reveal reveal-d1">
-              <h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">dashboard</span> Visualization</h3>
-              <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand">
-                <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">R Shiny</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Power BI</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Leaflet</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Chart.js</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Dashboards</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Reports</span>
-              </div>
-            </div>
-            <div class="bg-white rounded-3xl p-5 border border-line shadow-card reveal reveal-d2">
-              <h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">public</span> Humanitarian IM</h3>
-              <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand">
-                <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">CCCM</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Service mapping</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Site monitoring</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">KoBo/ODK</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Partner training</span>
-              </div>
-            </div>
-            <div class="bg-white rounded-3xl p-5 border border-line shadow-card reveal reveal-d3">
-              <h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">code_blocks</span> Web & systems</h3>
-              <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand">
-                <span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">HTML/CSS</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">JavaScript</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">React/Next.js</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">APIs</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Automation</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Digital products</span>
-              </div>
-            </div>
+            <div class="bg-white rounded-3xl p-5 border border-line shadow-card reveal"><h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">data_object</span> Data engineering</h3><div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand"><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">R</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Python</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">SQL</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">ETL</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Data cleaning</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Quality checks</span></div></div>
+            <div class="bg-white rounded-3xl p-5 border border-line shadow-card reveal reveal-d1"><h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">dashboard</span> Visualization</h3><div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand"><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">R Shiny</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Power BI</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Leaflet</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Chart.js</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Dashboards</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Reports</span></div></div>
+            <div class="bg-white rounded-3xl p-5 border border-line shadow-card reveal reveal-d2"><h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">public</span> Humanitarian IM</h3><div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand"><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">CCCM</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Service mapping</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Site monitoring</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">KoBo/ODK</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Partner training</span></div></div>
+            <div class="bg-white rounded-3xl p-5 border border-line shadow-card reveal reveal-d3"><h3 class="font-black flex items-center gap-2"><span class="material-symbols-outlined text-brand">code_blocks</span> Web & systems</h3><div class="mt-3 flex flex-wrap gap-2 text-xs font-bold text-brand"><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">HTML/CSS</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">JavaScript</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">React/Next.js</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">APIs</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Automation</span><span class="skill-pill px-3 py-1.5 rounded-full bg-brandSoft">Digital products</span></div></div>
           </div>
         </div>
       </div>
@@ -764,87 +678,22 @@
             <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Career history</p>
             <h2 class="text-2xl font-black mt-2 mb-6">Professional experience</h2>
             <div class="space-y-6">
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div>
-                  <div class="flex flex-wrap items-center gap-2">
-                    <h3 class="font-black">Senior Developer & CCCM Cluster IM Associate</h3>
-                    <span class="px-2.5 py-1 rounded-full bg-brand text-white text-[10px] font-black uppercase">Current</span>
-                  </div>
-                  <p class="text-xs text-muted mt-1">IOM | UN Migration, Mogadishu | Aug 2023 – Present</p>
-                  <ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed">
-                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Lead national-level CCCM information management workflows, dashboard architecture, spatial analysis, and digital data products.</span></li>
-                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Develop and maintain R Shiny, Power BI, GIS, API-connected tools, and automated reporting systems.</span></li>
-                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Translate operational requirements into usable technical solutions, including data models, dashboards, and partner-facing tools.</span></li>
-                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Strengthen partner reporting quality through training, data validation, templates, and system documentation.</span></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div>
-                  <h3 class="font-black">Senior AME / IM & Dashboard Developer</h3>
-                  <p class="text-xs text-muted mt-1">ACTED Somalia, Mogadishu | Jan 2022 – Jul 2023</p>
-                  <ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed">
-                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Improved data quality and reporting speed through automated validation, dashboard development, and standardized workflows.</span></li>
-                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Built analytical tools and visualization products for multi-project reporting, donor analysis, and operational decision-making.</span></li>
-                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Supported technical supervision of IM processes, database structures, mobile data collection, and reporting pipelines.</span></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div>
-                  <h3 class="font-black">AME / Information Management Officer</h3>
-                  <p class="text-xs text-muted mt-1">ACTED, Hargeisa / Puntland | Jan 2021 – Jan 2022</p>
-                  <ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed">
-                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Established AME data systems, mobile data collection protocols, feedback mechanisms, and data quality routines.</span></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div>
-                  <h3 class="font-black">AME / Information Management Assistant</h3>
-                  <p class="text-xs text-muted mt-1">ACTED, Garowe | Mar 2018 – Dec 2020</p>
-                  <ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed">
-                    <li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Supported field data collection, quality control, KoBo/ODK training, and reporting for program teams.</span></li>
-                  </ul>
-                </div>
-              </div>
+              <div class="timeline-item"><div class="timeline-dot"></div><div><div class="flex flex-wrap items-center gap-2"><h3 class="font-black">Senior Developer & CCCM Cluster IM Associate</h3><span class="px-2.5 py-1 rounded-full bg-brand text-white text-[10px] font-black uppercase">Current</span></div><p class="text-xs text-muted mt-1">IOM | UN Migration, Mogadishu | Aug 2023 – Present</p><ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed"><li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Lead national-level CCCM information management workflows, dashboard architecture, spatial analysis, and digital data products.</span></li><li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Develop and maintain R Shiny, Power BI, GIS, API-connected tools, and automated reporting systems.</span></li><li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Translate operational requirements into usable technical solutions, including data models, dashboards, and partner-facing tools.</span></li><li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Strengthen partner reporting quality through training, data validation, templates, and system documentation.</span></li></ul></div></div>
+              <div class="timeline-item"><div class="timeline-dot"></div><div><h3 class="font-black">Senior AME / IM & Dashboard Developer</h3><p class="text-xs text-muted mt-1">ACTED Somalia, Mogadishu | Jan 2022 – Jul 2023</p><ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed"><li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Improved data quality and reporting speed through automated validation, dashboard development, and standardized workflows.</span></li><li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Built analytical tools and visualization products for multi-project reporting, donor analysis, and operational decision-making.</span></li><li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Supported technical supervision of IM processes, database structures, mobile data collection, and reporting pipelines.</span></li></ul></div></div>
+              <div class="timeline-item"><div class="timeline-dot"></div><div><h3 class="font-black">AME / Information Management Officer</h3><p class="text-xs text-muted mt-1">ACTED, Hargeisa / Puntland | Jan 2021 – Jan 2022</p><ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed"><li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Established AME data systems, mobile data collection protocols, feedback mechanisms, and data quality routines.</span></li></ul></div></div>
+              <div class="timeline-item"><div class="timeline-dot"></div><div><h3 class="font-black">AME / Information Management Assistant</h3><p class="text-xs text-muted mt-1">ACTED, Garowe | Mar 2018 – Dec 2020</p><ul class="mt-3 space-y-2 text-sm text-muted leading-relaxed"><li class="flex gap-2"><span class="text-accent font-bold shrink-0">•</span><span>Supported field data collection, quality control, KoBo/ODK training, and reporting for program teams.</span></li></ul></div></div>
             </div>
           </div>
-
           <aside class="space-y-6">
             <div class="bg-white rounded-3xl p-6 border border-line shadow-card reveal reveal-d1">
               <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Education</p>
               <h2 class="text-2xl font-black mt-2 mb-5">Academic background</h2>
               <div class="space-y-4">
-                <div class="flex gap-3 group">
-                  <div class="w-11 h-11 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0 group-hover:bg-brand transition-colors"><span class="material-symbols-outlined text-brand group-hover:text-white transition-colors">school</span></div>
-                  <div>
-                    <p class="text-sm font-black">MSc Computer Science | IM & Technology</p>
-                    <p class="text-xs text-muted mt-1">Accord University, Mogadishu | Oct 2024 – Present</p>
-                    <span class="inline-flex items-center gap-1 mt-1 text-[10px] font-bold text-accent uppercase"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>In progress</span>
-                  </div>
-                </div>
-                <div class="flex gap-3 group">
-                  <div class="w-11 h-11 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0 group-hover:bg-brand transition-colors"><span class="material-symbols-outlined text-brand group-hover:text-white transition-colors">school</span></div>
-                  <div>
-                    <p class="text-sm font-black">BSc Computer Science | IM & Technology</p>
-                    <p class="text-xs text-muted mt-1">Puntland State University, Garowe | Nov 2019</p>
-                  </div>
-                </div>
-                <div class="flex gap-3 group">
-                  <div class="w-11 h-11 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0 group-hover:bg-brand transition-colors"><span class="material-symbols-outlined text-brand group-hover:text-white transition-colors">workspace_premium</span></div>
-                  <div>
-                    <p class="text-sm font-black">Diploma in Accountability, Monitoring & Evaluation</p>
-                    <p class="text-xs text-muted mt-1">UNHCR / ACTED / Concern Worldwide | Feb 2022</p>
-                  </div>
-                </div>
+                <div class="flex gap-3 group"><div class="w-11 h-11 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0 group-hover:bg-brand transition-colors"><span class="material-symbols-outlined text-brand group-hover:text-white transition-colors">school</span></div><div><p class="text-sm font-black">MSc Computer Science | IM & Technology</p><p class="text-xs text-muted mt-1">Accord University, Mogadishu | Oct 2024 – Present</p><span class="inline-flex items-center gap-1 mt-1 text-[10px] font-bold text-accent uppercase"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>In progress</span></div></div>
+                <div class="flex gap-3 group"><div class="w-11 h-11 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0 group-hover:bg-brand transition-colors"><span class="material-symbols-outlined text-brand group-hover:text-white transition-colors">school</span></div><div><p class="text-sm font-black">BSc Computer Science | IM & Technology</p><p class="text-xs text-muted mt-1">Puntland State University, Garowe | Nov 2019</p></div></div>
+                <div class="flex gap-3 group"><div class="w-11 h-11 rounded-2xl bg-brandSoft flex items-center justify-center shrink-0 group-hover:bg-brand transition-colors"><span class="material-symbols-outlined text-brand group-hover:text-white transition-colors">workspace_premium</span></div><div><p class="text-sm font-black">Diploma in Accountability, Monitoring & Evaluation</p><p class="text-xs text-muted mt-1">UNHCR / ACTED / Concern Worldwide | Feb 2022</p></div></div>
               </div>
             </div>
-
             <div class="bg-white rounded-3xl p-6 border border-line shadow-card reveal reveal-d2">
               <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Highlights</p>
               <h2 class="text-2xl font-black mt-2 mb-4">Key achievements</h2>
@@ -855,7 +704,6 @@
                 <li class="flex gap-2.5"><span class="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center shrink-0 mt-0.5"><span class="material-symbols-outlined text-accent" style="font-size:14px">check</span></span><span>Produced GIS maps, factsheets, analytical reports, interactive response products, and digital market tools.</span></li>
               </ul>
             </div>
-
             <div class="bg-white rounded-3xl p-6 border border-line shadow-card reveal reveal-d3">
               <p class="text-xs uppercase tracking-[.22em] font-black text-accent">Languages</p>
               <div class="mt-4 grid grid-cols-2 gap-3 text-center">
@@ -914,286 +762,118 @@
   <script>
   (function(){
     'use strict';
+    const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+    const STORAGE_KEY='abdullahi-portfolio-sections-v2';
+    function saveState(s){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(s))}catch(e){}}
+    function loadState(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||{}}catch(e){return{}}}
 
-    // ===== UTILITIES =====
-    const $ = s => document.querySelector(s);
-    const $$ = s => document.querySelectorAll(s);
-    const STORAGE_KEY = 'abdullahi-portfolio-sections-v2';
+    $('#year').textContent=new Date().getFullYear();
 
-    function saveState(state){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){} }
-    function loadState(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ return {}; } }
+    // Scroll progress
+    const progressBar=$('#scrollProgress');
+    function updateProgress(){const h=document.documentElement.scrollHeight-window.innerHeight;progressBar.style.width=(h>0?(window.scrollY/h)*100:0)+'%'}
 
-    // ===== YEAR =====
-    $('#year').textContent = new Date().getFullYear();
+    // Back to top
+    const backToTop=$('#backToTop');
+    function updateBackToTop(){backToTop.classList.toggle('visible',window.scrollY>500)}
+    backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-    // ===== SCROLL PROGRESS =====
-    const progressBar = $('#scrollProgress');
-    function updateProgress(){
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      progressBar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
-    }
+    // Scroll handler
+    let ticking=false;
+    window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{updateProgress();updateBackToTop();updateActiveNav();updateSideNav();ticking=false});ticking=true}});
 
-    // ===== BACK TO TOP =====
-    const backToTop = $('#backToTop');
-    function updateBackToTop(){
-      backToTop.classList.toggle('visible', window.scrollY > 500);
-    }
-    backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+    // Active nav
+    const navLinks=$$('[data-nav]');
+    function updateActiveNav(){let c='';$$('main > section[id], header[id]').forEach(s=>{if(s.getBoundingClientRect().top<=150)c=s.id});navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+c))}
 
-    // ===== SCROLL HANDLER =====
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-      if(!ticking){
-        requestAnimationFrame(() => {
-          updateProgress();
-          updateBackToTop();
-          updateActiveNav();
-          updateQuickNav();
-          ticking = false;
-        });
-        ticking = true;
-      }
+    // Side nav
+    const sideItems=$$('.side-nav-item');
+    sideItems.forEach(item=>item.addEventListener('click',()=>{const t=item.dataset.target;if(t)document.getElementById(t)?.scrollIntoView({behavior:'smooth'})}));
+    function updateSideNav(){let c='';$$('main > section[id]').forEach(s=>{if(s.getBoundingClientRect().top<=200)c=s.id});sideItems.forEach(d=>d.classList.toggle('active',d.dataset.target===c))}
+
+    // Mobile nav
+    const mobileNav=$('#mobileNav');
+    $('#openMobileNav')?.addEventListener('click',()=>{mobileNav.classList.add('open');document.body.style.overflow='hidden'});
+    $('#closeMobileNav')?.addEventListener('click',closeMobile);
+    $$('.mobile-nav-link').forEach(l=>l.addEventListener('click',closeMobile));
+    function closeMobile(){mobileNav.classList.remove('open');document.body.style.overflow=''}
+
+    // Scroll reveal
+    const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');revealObs.unobserve(e.target)}})},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+    $$('.reveal').forEach(el=>revealObs.observe(el));
+
+    // Counters
+    let countersRan=false;
+    const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&!countersRan){countersRan=true;runCounters();counterObs.unobserve(e.target)}})},{threshold:0.4});
+    const statParent=$('[data-count]')?.closest('.grid');
+    if(statParent)counterObs.observe(statParent);
+    function runCounters(){$$('[data-count]').forEach(el=>{const target=parseInt(el.dataset.count),suffix=el.dataset.suffix||'',duration=1600,start=performance.now();function tick(now){const p=Math.min((now-start)/duration,1),eased=1-Math.pow(1-p,3);el.textContent=Math.round(eased*target)+suffix;if(p<1)requestAnimationFrame(tick);else{el.textContent=target+suffix;el.classList.add('count-animated');setTimeout(()=>el.classList.remove('count-animated'),400)}}requestAnimationFrame(tick)})}
+
+    // Typing
+    const typingText='Senior developer building data systems, dashboards, APIs, GIS tools, and digital products.';
+    const typingTarget=$('#typingTarget');let charIndex=0;
+    function typeChar(){if(charIndex<typingText.length){typingTarget.textContent+=typingText[charIndex];charIndex++;setTimeout(typeChar,28+Math.random()*30)}}
+    setTimeout(typeChar,600);
+
+    // Toast
+    const toastContainer=$('#toastContainer');
+    function showToast(message,icon='info'){const toast=document.createElement('div');toast.className='toast pointer-events-auto flex items-center gap-2 px-4 py-3 rounded-xl bg-ink text-white text-sm font-bold shadow-lg';toast.innerHTML=`<span class="material-symbols-outlined" style="font-size:18px">${icon}</span>${message}`;toastContainer.appendChild(toast);setTimeout(()=>{toast.classList.add('hiding');setTimeout(()=>toast.remove(),250)},2500)}
+
+    // ===== SECTION TOGGLES (FIXED) =====
+    const saved=loadState();
+    $$('main > section[data-section]').forEach(section=>{
+      const toolbar=section.querySelector(':scope > .section-toolbar');
+      const body=section.querySelector(':scope > .section-body');
+      if(!toolbar||!body)return;
+      body.style.maxHeight='none';
+      if(saved[section.id]===true){collapseSection(section,body,toolbar,false)}
+      toolbar.addEventListener('click',()=>{
+        if(section.classList.contains('is-collapsed'))expandSection(section,body,toolbar,true);
+        else collapseSection(section,body,toolbar,true);
+      });
+      toolbar.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toolbar.click()}});
     });
 
-    // ===== ACTIVE NAV =====
-    const navLinks = $$('[data-nav]');
-    function updateActiveNav(){
-      let current = '';
-      $$('main > section[id], header[id]').forEach(s => {
-        if(s.getBoundingClientRect().top <= 150) current = s.id;
-      });
-      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+current));
-    }
-
-    // ===== QUICK NAV =====
-    const quickDots = $$('.quick-nav-dot');
-    quickDots.forEach(dot => dot.addEventListener('click', () => {
-      const target = dot.dataset.target;
-      if(target) document.getElementById(target)?.scrollIntoView({ behavior:'smooth' });
-    }));
-    function updateQuickNav(){
-      let current = '';
-      $$('main > section[id]').forEach(s => {
-        if(s.getBoundingClientRect().top <= 200) current = s.id;
-      });
-      quickDots.forEach(d => d.classList.toggle('active', d.dataset.target === current));
-    }
-
-    // ===== MOBILE NAV =====
-    const mobileNav = $('#mobileNav');
-    $('#openMobileNav')?.addEventListener('click', () => { mobileNav.classList.add('open'); document.body.style.overflow='hidden'; });
-    $('#closeMobileNav')?.addEventListener('click', closeMobile);
-    $$('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMobile));
-    function closeMobile(){ mobileNav.classList.remove('open'); document.body.style.overflow=''; }
-
-    // ===== SCROLL REVEAL =====
-    const revealObs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('revealed'); revealObs.unobserve(e.target); }});
-    }, { threshold:0.06, rootMargin:'0px 0px -30px 0px' });
-    $$('.reveal').forEach(el => revealObs.observe(el));
-
-    // ===== ANIMATED COUNTERS =====
-    let countersRan = false;
-    const counterObs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if(e.isIntersecting && !countersRan){ countersRan=true; runCounters(); counterObs.unobserve(e.target); }});
-    }, { threshold:0.4 });
-    const statParent = $('[data-count]')?.closest('.grid');
-    if(statParent) counterObs.observe(statParent);
-
-    function runCounters(){
-      $$('[data-count]').forEach(el => {
-        const target = parseInt(el.dataset.count);
-        const suffix = el.dataset.suffix || '';
-        const duration = 1600;
-        const start = performance.now();
-        function tick(now){
-          const p = Math.min((now-start)/duration, 1);
-          const eased = 1 - Math.pow(1-p, 3);
-          el.textContent = Math.round(eased*target) + suffix;
-          if(p<1) requestAnimationFrame(tick);
-          else { el.textContent = target+suffix; el.classList.add('count-animated'); setTimeout(()=>el.classList.remove('count-animated'),400); }
-        }
-        requestAnimationFrame(tick);
-      });
-    }
-
-    // ===== TYPING ANIMATION =====
-    const typingText = 'Senior developer building data systems, dashboards, APIs, GIS tools, and digital products.';
-    const typingTarget = $('#typingTarget');
-    let charIndex = 0;
-    function typeChar(){
-      if(charIndex < typingText.length){
-        typingTarget.textContent += typingText[charIndex];
-        charIndex++;
-        setTimeout(typeChar, 28 + Math.random()*30);
-      }
-    }
-    setTimeout(typeChar, 600);
-
-    // ===== TOAST NOTIFICATIONS =====
-    const toastContainer = $('#toastContainer');
-    function showToast(message, icon='info'){
-      const toast = document.createElement('div');
-      toast.className = 'toast pointer-events-auto flex items-center gap-2 px-4 py-3 rounded-xl bg-ink text-white text-sm font-bold shadow-lg';
-      toast.innerHTML = `<span class="material-symbols-outlined" style="font-size:18px">${icon}</span>${message}`;
-      toastContainer.appendChild(toast);
-      setTimeout(()=>{ toast.classList.add('hiding'); setTimeout(()=>toast.remove(), 250); }, 2500);
-    }
-
-    // ===== SECTION TOGGLE SYSTEM (FIXED) =====
-    const saved = loadState();
-
-    $$('main > section[data-section]').forEach(section => {
-      const toolbar = section.querySelector(':scope > .section-toolbar');
-      const body = section.querySelector(':scope > .section-body');
-      if(!toolbar || !body) return;
-
-      // Set initial max-height to auto (expanded)
-      body.style.maxHeight = 'none';
-
-      // Check saved state
-      const sectionId = section.id;
-      if(saved[sectionId] === true){
-        // Should be collapsed
-        collapseSection(section, body, toolbar, false);
-      }
-
-      // Click handler
-      toolbar.addEventListener('click', () => {
-        const isCollapsed = section.classList.contains('is-collapsed');
-        if(isCollapsed){
-          expandSection(section, body, toolbar, true);
-        } else {
-          collapseSection(section, body, toolbar, true);
-        }
-      });
-
-      // Keyboard handler
-      toolbar.addEventListener('keydown', e => {
-        if(e.key === 'Enter' || e.key === ' '){
-          e.preventDefault();
-          toolbar.click();
-        }
-      });
-    });
-
-    function expandSection(section, body, toolbar, persist){
+    function expandSection(section,body,toolbar,persist){
       section.classList.remove('is-collapsed');
-      toolbar.setAttribute('aria-expanded', 'true');
-
-      // Measure content height
-      body.style.maxHeight = '0px';
-      body.style.opacity = '0';
-      body.offsetHeight; // Force reflow
-      body.style.maxHeight = body.scrollHeight + 'px';
-      body.style.opacity = '1';
-
-      const onEnd = () => {
-        body.style.maxHeight = 'none';
-        body.removeEventListener('transitionend', onEnd);
-      };
-      body.addEventListener('transitionend', onEnd);
-
-      // Re-observe reveal elements inside
-      body.querySelectorAll('.reveal:not(.revealed)').forEach(el => revealObs.observe(el));
-
-      if(persist){
-        const state = loadState();
-        delete state[section.id];
-        saveState(state);
-        showToast(`${section.dataset.section} section opened`, 'visibility');
-      }
+      toolbar.setAttribute('aria-expanded','true');
+      body.style.maxHeight='0px';body.style.opacity='0';
+      body.offsetHeight;
+      body.style.maxHeight=body.scrollHeight+'px';body.style.opacity='1';
+      const onEnd=()=>{body.style.maxHeight='none';body.removeEventListener('transitionend',onEnd)};
+      body.addEventListener('transitionend',onEnd);
+      body.querySelectorAll('.reveal:not(.revealed)').forEach(el=>revealObs.observe(el));
+      if(persist){const state=loadState();delete state[section.id];saveState(state);showToast(`${section.dataset.section} section opened`,'visibility')}
     }
 
-    function collapseSection(section, body, toolbar, persist){
-      // Set explicit height first
-      body.style.maxHeight = body.scrollHeight + 'px';
-      body.offsetHeight; // Force reflow
-      body.style.maxHeight = '0px';
-      body.style.opacity = '0';
-
+    function collapseSection(section,body,toolbar,persist){
+      body.style.maxHeight=body.scrollHeight+'px';
+      body.offsetHeight;
+      body.style.maxHeight='0px';body.style.opacity='0';
       section.classList.add('is-collapsed');
-      toolbar.setAttribute('aria-expanded', 'false');
-
-      if(persist){
-        const state = loadState();
-        state[section.id] = true;
-        saveState(state);
-        showToast(`${section.dataset.section} section hidden`, 'visibility_off');
-      }
+      toolbar.setAttribute('aria-expanded','false');
+      if(persist){const state=loadState();state[section.id]=true;saveState(state);showToast(`${section.dataset.section} section hidden`,'visibility_off')}
     }
 
-    // Expand/Collapse all
-    $('#expandAll')?.addEventListener('click', () => {
-      const state = {};
-      $$('main > section[data-section]').forEach(section => {
-        const body = section.querySelector(':scope > .section-body');
-        const toolbar = section.querySelector(':scope > .section-toolbar');
-        if(body && toolbar && section.classList.contains('is-collapsed')){
-          expandSection(section, body, toolbar, false);
-        }
-      });
-      saveState(state);
-      showToast('All sections expanded', 'unfold_more');
-    });
-
-    $('#collapseAll')?.addEventListener('click', () => {
-      const state = {};
-      $$('main > section[data-section]').forEach(section => {
-        const body = section.querySelector(':scope > .section-body');
-        const toolbar = section.querySelector(':scope > .section-toolbar');
-        if(body && toolbar && !section.classList.contains('is-collapsed')){
-          collapseSection(section, body, toolbar, false);
-        }
-        state[section.id] = true;
-      });
-      saveState(state);
-      showToast('All sections collapsed', 'unfold_less');
-    });
+    $('#expandAll')?.addEventListener('click',()=>{const state={};$$('main > section[data-section]').forEach(s=>{const b=s.querySelector(':scope > .section-body'),t=s.querySelector(':scope > .section-toolbar');if(b&&t&&s.classList.contains('is-collapsed'))expandSection(s,b,t,false)});saveState(state);showToast('All sections expanded','unfold_more')});
+    $('#collapseAll')?.addEventListener('click',()=>{const state={};$$('main > section[data-section]').forEach(s=>{const b=s.querySelector(':scope > .section-body'),t=s.querySelector(':scope > .section-toolbar');if(b&&t&&!s.classList.contains('is-collapsed'))collapseSection(s,b,t,false);state[s.id]=true});saveState(state);showToast('All sections collapsed','unfold_less')});
 
     // ===== DASHBOARD FILTERS =====
-    const filterBtns = $$('.filter-btn');
-    const dashCards = $$('.dash-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.dataset.filter;
-
-        // Update active button
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        // Filter cards
-        dashCards.forEach(card => {
-          const tags = (card.dataset.tags || '').split(',');
-          const show = filter === 'all' || tags.includes(filter);
-          if(show){
-            card.classList.remove('hidden-by-filter');
-            card.style.position = '';
-            card.style.visibility = '';
-          } else {
-            card.classList.add('hidden-by-filter');
-            // Delay hiding for animation
-            setTimeout(() => {
-              if(card.classList.contains('hidden-by-filter')){
-                card.style.position = 'absolute';
-                card.style.visibility = 'hidden';
-              }
-            }, 350);
-          }
-        });
-
-        const count = dashCards.length - $$('.dash-card.hidden-by-filter').length;
-        showToast(`Showing ${count} platform${count!==1?'s':''}`, 'filter_list');
+    const filterBtns=$$('.filter-btn');
+    const dashCards=$$('.dash-card');
+    filterBtns.forEach(btn=>{btn.addEventListener('click',()=>{
+      const filter=btn.dataset.filter;
+      filterBtns.forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+      dashCards.forEach(card=>{const tags=(card.dataset.tags||'').split(',');const show=filter==='all'||tags.includes(filter);
+        if(show){card.classList.remove('hidden-by-filter');card.style.position='';card.style.visibility=''}
+        else{card.classList.add('hidden-by-filter');setTimeout(()=>{if(card.classList.contains('hidden-by-filter')){card.style.position='absolute';card.style.visibility='hidden'}},350)}
       });
-    });
+      const count=dashCards.length-$$('.dash-card.hidden-by-filter').length;
+      showToast(`Showing ${count} platform${count!==1?'s':''}`,'filter_list');
+    })});
 
-    // ===== INITIAL CALLS =====
-    updateProgress();
-    updateBackToTop();
-    updateActiveNav();
-    updateQuickNav();
-
+    // Init
+    updateProgress();updateBackToTop();updateActiveNav();updateSideNav();
   })();
   </script>
 </body>
