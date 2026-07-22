@@ -36,7 +36,6 @@
     body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; background: #F1F5F9; }
     .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24; vertical-align: middle; font-size: 20px; }
     .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
-
     /* Refined Hero Section Theme - clean professional portfolio */
     .cv-header {
       background:
@@ -73,7 +72,6 @@
     .cv-header .ring-white\/20 {
       --tw-ring-color: rgba(15,76,92,0.16) !important;
     }
-
     /* CV Page */
     .cv-page { 
       max-width: 850px; 
@@ -89,7 +87,6 @@
       text-transform: uppercase; color: #0F4C5C;
       border-bottom: 2px solid #0F4C5C; padding-bottom: 0.4rem; margin-bottom: 1rem;
     }
-
     .skill-tag { 
       display: inline-block; padding: 0.2rem 0.5rem; border-radius: 0.25rem; 
       font-size: 0.65rem; font-weight: 700; margin: 0.1rem; 
@@ -97,11 +94,9 @@
       transition: all 0.2s ease;
     }
     .skill-tag:hover { background: #0F4C5C; color: white; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(15,76,92,0.2); }
-
     .project-item { padding: 0.75rem 0; border-bottom: 1px solid #F1F5F9; transition: all 0.2s ease; }
     .project-item:last-child { border-bottom: none; }
     .project-item:hover { background: #FAFCFE; transform: translateX(4px); }
-
     .timeline-cv { position: relative; padding-left: 1.25rem; }
     .timeline-cv::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; background: #E2E8F0; border-radius: 2px; }
     .timeline-dot-cv { position: absolute; left: -4px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: white; border: 3px solid #0F4C5C; transition: all 0.3s ease; }
@@ -109,7 +104,6 @@
     
     a.cv-link { color: #0EA5B7; text-decoration: none; font-weight: 700; transition: color .2s; }
     a.cv-link:hover { color: #0F4C5C; text-decoration: underline; }
-
     /* Sticky Navigation Bar */
     .cv-nav {
       position: sticky; top: 0; z-index: 40;
@@ -129,24 +123,19 @@
       box-shadow: 0 4px 12px rgba(15,76,92,0.25); transform: translateY(-1px); 
     }
     .nav-pill .material-symbols-outlined { font-size: 16px; }
-
     /* Scroll Reveal Animation */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal.revealed { opacity: 1; transform: translateY(0); }
     .reveal-d1{transition-delay:.08s} .reveal-d2{transition-delay:.16s} .reveal-d3{transition-delay:.24s}
-
     /* Header Animation */
     @keyframes floatOrb1 { 0%,100%{transform:translate3d(0,0,0)} 50%{transform:translate3d(20px,-15px,0)} }
     @keyframes floatOrb2 { 0%,100%{transform:translate3d(0,0,0)} 50%{transform:translate3d(-15px,20px,0)} }
     .orb-1 { animation: floatOrb1 8s ease-in-out infinite; }
     .orb-2 { animation: floatOrb2 10s ease-in-out infinite; }
-
     @keyframes profileGlow { 0%,100%{box-shadow:0 0 20px rgba(14,165,183,0.2)} 50%{box-shadow:0 0 35px rgba(14,165,183,0.5)} }
     .profile-glow { animation: profileGlow 4s ease-in-out infinite; }
-
     /* 3D Tilt on specific elements */
     .tilt-3d { transition: transform 0.3s ease; transform-style: preserve-3d; }
-
     /* Print Styles */
     @page { size: A4 portrait; margin: 0; }
     @media print {
@@ -159,7 +148,6 @@
   </style>
 </head>
 <body class="bg-page text-ink">
-
   <!-- Print Button -->
   <div class="no-print fixed top-5 right-5 z-50 flex gap-2">
     <button onclick="window.print()" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-brand text-white text-xs font-bold hover:bg-brandDark transition-colors shadow-lg">
@@ -167,7 +155,6 @@
       Save as PDF
     </button>
   </div>
-
   <div class="cv-page">
     
     <!-- ===== HEADER ===== -->
@@ -215,7 +202,6 @@
               LinkedIn Profile
             </a>
           </div>
-
         </div>
         <div class="grid grid-cols-2 gap-2 text-center shrink-0">
           <div class="bg-white/10 px-3 py-2 rounded-lg border border-white/10 hover:bg-white/20 transition-all hover:scale-105"><p class="text-xl font-black text-mint">8+</p><p class="text-[9px] text-white/50 uppercase tracking-wider">Years IM Exp</p></div>
@@ -225,7 +211,6 @@
         </div>
       </div>
     </header>
-
     <!-- ===== STICKY TOP NAVIGATION ===== -->
     <nav class="cv-nav no-print">
       <div class="flex items-center gap-1.5 overflow-x-auto scrollbar-hide">
@@ -237,10 +222,8 @@
         <button class="nav-pill" data-target="cv-education"><span class="material-symbols-outlined">school</span>Education</button>
       </div>
     </nav>
-
     <!-- ===== MAIN CONTENT ===== -->
     <main class="p-8 md:p-10 bg-white space-y-8">
-
       <!-- Professional Summary -->
       <section id="cv-summary" class="scroll-mt-20 reveal">
         <h2 class="section-title">Professional Summary</h2>
@@ -248,7 +231,6 @@
           Information Management and Dashboard Development professional with 8+ years of experience designing, building, and deploying data systems, dashboards, GIS products, databases, APIs, and web applications for humanitarian coordination and digital services. Skilled in R Shiny, Power BI, Python, SQL, JavaScript, KoBoToolbox, Leaflet, and modern web technologies. Proven ability to turn operational requirements into reliable tools, automate reporting workflows, improve data quality, and deliver systems that support evidence-based decision-making across Somalia. Founder and owner of <span class="font-semibold text-brand">Enigma Tech</span>, a Somali technology venture studio behind two live platforms — <span class="font-semibold text-brand">SomaliPrice Index</span> and <span class="font-semibold text-brand">ShaqoSmart</span>.
         </p>
       </section>
-
       <!-- Technical Skills -->
       <section id="cv-skills" class="scroll-mt-20 reveal">
         <h2 class="section-title">Technical Skills</h2>
@@ -271,7 +253,6 @@
           </div>
         </div>
       </section>
-
       <!-- Work Experience -->
       <section id="cv-experience" class="scroll-mt-20 reveal">
         <h2 class="section-title">Work Experience</h2>
@@ -281,7 +262,7 @@
             <div class="timeline-dot-cv"></div>
             <div>
               <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
-                <div><h3 class="font-bold text-sm text-ink">Sr. Information Management & Dashboard Developer</h3><p class="text-xs font-semibold text-brand">IOM | UN Migration</p></div>
+                <div><h3 class="font-bold text-sm text-ink">Senior Data Analyst, Information Management & M&E Specialist</h3><p class="text-xs font-semibold text-brand">IOM | UN Migration (CCCM Cluster)</p></div>
                 <div class="flex items-center gap-2"><span class="text-[10px] font-black text-white bg-brand px-2 py-0.5 rounded shrink-0">Current</span><span class="text-xs text-muted shrink-0">Aug 2023 – Present</span></div>
               </div>
               <p class="text-xs text-muted mb-1">Mogadishu, Somalia</p>
@@ -294,15 +275,14 @@
               </ul>
             </div>
           </div>
-
           <div class="timeline-cv relative reveal reveal-d2">
             <div class="timeline-dot-cv"></div>
             <div>
               <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
-                <div><h3 class="font-bold text-sm text-ink">Sr. Information Management & Dashboard Developer</h3><p class="text-xs font-semibold text-brand">ACTED Somalia</p></div>
+                <div><h3 class="font-bold text-sm text-ink">Senior Data Analyst & Information Management Officer</h3><p class="text-xs font-semibold text-brand">ACTED Somalia</p></div>
                 <span class="text-xs text-muted shrink-0">Jan 2022 – Jul 2023</span>
               </div>
-              <p class="text-xs text-muted mb-1">Mogadishu, Somalia</p>
+              <p class="text-xs text-muted mb-1">Mogadishu / Hargeisa / Puntland</p>
               <ul class="space-y-1 text-xs text-muted leading-relaxed">
                 <li class="flex gap-2"><span class="text-brand font-bold shrink-0">•</span>Improved data quality and reporting speed through automated validation and dashboard development.</li>
                 <li class="flex gap-2"><span class="text-brand font-bold shrink-0">•</span>Built analytical tools and visualization products for multi-project reporting and donor analysis.</li>
@@ -310,34 +290,31 @@
               </ul>
             </div>
           </div>
-
           <div class="timeline-cv relative reveal reveal-d3">
             <div class="timeline-dot-cv"></div>
             <div>
               <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
-                <div><h3 class="font-bold text-sm text-ink">Information Management & Data Systems</h3><p class="text-xs font-semibold text-brand">ACTED</p></div>
-                <span class="text-xs text-muted shrink-0">Jan 2021 – Jan 2022</span>
+                <div><h3 class="font-bold text-sm text-ink">Data Analyst & Information Management Officer</h3><p class="text-xs font-semibold text-brand">ACTED Somalia</p></div>
+                <span class="text-xs text-muted shrink-0">Jan 2021 – Dec 2021</span>
               </div>
-              <p class="text-xs text-muted mb-1">Hargeisa / Puntland</p>
+              <p class="text-xs text-muted mb-1">Mogadishu / Hargeisa / Puntland</p>
               <ul class="space-y-1 text-xs text-muted leading-relaxed">
                 <li class="flex gap-2"><span class="text-brand font-bold shrink-0">•</span>Established information management systems, mobile data collection protocols, feedback databases, and data quality routines.</li>
               </ul>
             </div>
           </div>
-
           <div class="timeline-cv relative reveal">
             <div class="timeline-dot-cv"></div>
             <div>
               <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
-                <div><h3 class="font-bold text-sm text-ink">Information Management Assistant</h3><p class="text-xs font-semibold text-brand">ACTED</p></div>
+                <div><h3 class="font-bold text-sm text-ink">Data & Information Management Assistant</h3><p class="text-xs font-semibold text-brand">ACTED Somalia</p></div>
                 <span class="text-xs text-muted shrink-0">Mar 2018 – Dec 2020</span>
               </div>
-              <p class="text-xs text-muted">Garowe</p>
+              <p class="text-xs text-muted">Garowe, Somalia</p>
             </div>
           </div>
         </div>
       </section>
-
       <!-- Sr. Information Management & Dashboard Developer Portfolio -->
       <section id="cv-projects" class="scroll-mt-20 reveal">
         <h2 class="section-title">Sr. Information Management & Dashboard Developer Portfolio</h2>
@@ -349,9 +326,16 @@
               <span class="text-[9px] font-black uppercase bg-brand text-white px-1.5 py-0.5 rounded shrink-0 self-start">Latest</span>
             </div>
             <p class="text-xs text-muted leading-relaxed mb-1">Interactive service mapping dashboard for Somalia CCCM coordination, supporting analysis of service availability, partner coverage, and site-level gaps.</p>
-            <a href="https://imcccmcluster.shinyapps.io/CCCM-ServiceMap-Somalia-2026/" target="_blank" rel="noopener" class="cv-link text-[11px]">View Live Dashboard →</a>
+            <a href="https://service-mapping-dashboard.cccmclustersomalia.org/" target="_blank" rel="noopener" class="cv-link text-[11px]">View Live Dashboard →</a>
           </div>
-
+          <div class="project-item reveal reveal-d1">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
+              <h3 class="font-bold text-sm text-ink flex items-center gap-1.5"><span class="material-symbols-outlined text-brand" style="font-size:16px">location_on</span>CCCM Cluster Site Monitoring Dashboard</h3>
+              <span class="text-[9px] font-black uppercase bg-brand text-white px-1.5 py-0.5 rounded shrink-0 self-start">Latest</span>
+            </div>
+            <p class="text-xs text-muted leading-relaxed mb-1">Live site-monitoring dashboard tracking IDP site-level indicators, population figures, and service gaps across CCCM Cluster locations — feeds monthly cluster snapshots and OCHA 5Ws reporting.</p>
+            <a href="https://site-monitoring.cccmclustersomalia.org/" target="_blank" rel="noopener" class="cv-link text-[11px]">View Live Dashboard →</a>
+          </div>
           <div class="project-item reveal reveal-d2">
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
               <h3 class="font-bold text-sm text-ink flex items-center gap-1.5"><span class="material-symbols-outlined text-brand" style="font-size:16px">flag</span>Somalia CCCM Cluster Web App | IDP Site Masterlist</h3>
@@ -360,13 +344,11 @@
             <p class="text-xs text-muted leading-relaxed mb-1">Built the national CCCM Cluster Web App that fixes how humanitarian partners track IDP (Internally Displaced Persons) site information across Somalia — consolidating site master lists, partner coverage, and site-level details into a single, one-click platform that replaced fragmented spreadsheets and emails.</p>
             <a href="https://masterlist.cccmclustersomalia.org" target="_blank" rel="noopener" class="cv-link text-[11px]">Visit Platform →</a>
           </div>
-
           <div class="project-item reveal reveal-d2">
             <h3 class="font-bold text-sm text-ink flex items-center gap-1.5 mb-1"><span class="material-symbols-outlined text-brand" style="font-size:16px">language</span>CCCM Cluster Information Management Portal</h3>
             <p class="text-xs text-muted leading-relaxed mb-1">Central platform for CCCM Cluster Somalia resources, publications, datasets, and coordination information.</p>
-            <a href="https://cccmclustersomalia.org" target="_blank" rel="noopener" class="cv-link text-[11px]">Visit Portal →</a>
+            <a href="https://hub.cccmclustersomalia.org/" target="_blank" rel="noopener" class="cv-link text-[11px]">Visit Portal →</a>
           </div>
-
           <div class="project-item reveal reveal-d3">
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
               <h3 class="font-bold text-sm text-ink flex items-center gap-1.5"><span class="material-symbols-outlined text-brand" style="font-size:16px">monitoring</span>Somali Price Index</h3>
@@ -375,7 +357,6 @@
             <p class="text-xs text-muted leading-relaxed mb-1">Full-stack web product for comparing market prices, tracking essential items, and managing vendor submissions. A proprietary platform owned and operated by Enigma Tech.</p>
             <a href="https://www.somalipriceindex.com/" target="_blank" rel="noopener" class="cv-link text-[11px]">Visit Platform →</a>
           </div>
-
           <div class="project-item reveal">
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
               <h3 class="font-bold text-sm text-ink flex items-center gap-1.5"><span class="material-symbols-outlined text-brand" style="font-size:16px">work</span>ShaqoSmart</h3>
@@ -384,13 +365,11 @@
             <p class="text-xs text-muted leading-relaxed mb-1">Smart jobs and opportunities platform connecting Somali talent with employers through an intelligent matching engine, verified listings, and a clean, mobile-first user experience. A proprietary product owned and operated by Enigma Tech.</p>
             <a href="https://www.shaqosmart.com/" target="_blank" rel="noopener" class="cv-link text-[11px]">Visit Platform →</a>
           </div>
-
           <div class="project-item reveal reveal-d1">
             <h3 class="font-bold text-sm text-ink flex items-center gap-1.5 mb-1"><span class="material-symbols-outlined text-brand" style="font-size:16px">flood</span>Flood Risk Dashboard | Banadir</h3>
             <p class="text-xs text-muted leading-relaxed mb-1">Interactive flash flood risk mapping supporting emergency response planning and spatial risk communication.</p>
             <a href="https://floods-banadir.som-imcccmcluster.com/" target="_blank" rel="noopener" class="cv-link text-[11px]">View Live Dashboard →</a>
           </div>
-
           <div class="project-item reveal reveal-d1">
             <h3 class="font-bold text-sm text-ink flex items-center gap-1.5 mb-1"><span class="material-symbols-outlined text-brand" style="font-size:16px">dashboard</span>Operational R Shiny Dashboards</h3>
             <p class="text-xs text-muted leading-relaxed mb-2">Designed and deployed multiple R Shiny applications for humanitarian operations:</p>
@@ -398,7 +377,6 @@
               <div class="flex items-center gap-1"><span class="text-brand">•</span><a href="https://imcccmcluster.shinyapps.io/IncidentReport/" target="_blank" class="cv-link">Incident Reporting</a></div>
               <div class="flex items-center gap-1"><span class="text-brand">•</span><a href="https://imcccmcluster.shinyapps.io/FacilityMap_Baydhaba/" target="_blank" class="cv-link">Baydhaba Facility Map</a></div>
               <div class="flex items-center gap-1"><span class="text-brand">•</span><a href="https://imcccmcluster.shinyapps.io/somalia-arrivals-dashboard/" target="_blank" class="cv-link">Arrivals Tracker</a></div>
-              <div class="flex items-center gap-1"><span class="text-brand">•</span><a href="https://imcccmcluster.shinyapps.io/cccm-site-monitoring/" target="_blank" class="cv-link">Site Monitoring</a></div>
               <div class="flex items-center gap-1"><span class="text-brand">•</span><a href="https://imcccmcluster.shinyapps.io/CatchmentMap/" target="_blank" class="cv-link">Catchment Map</a></div>
               <div class="flex items-center gap-1"><span class="text-brand">•</span><a href="https://imsom.shinyapps.io/Dashabord_ZM/" target="_blank" class="cv-link">Site Manager</a></div>
               <div class="flex items-center gap-1"><span class="text-brand">•</span><a href="https://imsom.shinyapps.io/ExcelMerger_App/" target="_blank" class="cv-link">Excel Merger</a></div>
@@ -406,11 +384,9 @@
           </div>
         </div>
       </section>
-
       <!-- ===== Enigma Tech Ventures ===== -->
       <section id="cv-ventures" class="scroll-mt-20 reveal">
         <h2 class="section-title">Founder & Owner | Enigma Tech</h2>
-
         <!-- Company intro card -->
         <div class="bg-gradient-to-br from-brandSoft to-white border border-brand/15 rounded-xl p-5 mb-4 reveal reveal-d1">
           <div class="flex items-start gap-3">
@@ -425,10 +401,8 @@
             </div>
           </div>
         </div>
-
         <!-- Product portfolio -->
         <div class="grid sm:grid-cols-2 gap-4">
-
           <!-- SomaliPrice Index -->
           <a href="https://www.somalipriceindex.com/" target="_blank" rel="noopener" class="group block border border-line rounded-xl p-4 hover:border-brand hover:shadow-lg transition-all reveal reveal-d2">
             <div class="flex items-center gap-2 mb-2">
@@ -443,7 +417,6 @@
             <p class="text-xs text-muted leading-relaxed mb-2">A full-stack market intelligence platform comparing commodity prices, tracking essential goods, and managing vendor submissions across Somalia — bringing price transparency to consumers and structured data to vendors.</p>
             <span class="inline-flex items-center gap-1 text-[11px] font-bold text-brand group-hover:gap-2 transition-all">Visit Platform <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></span>
           </a>
-
           <!-- ShaqoSmart -->
           <a href="https://www.shaqosmart.com/" target="_blank" rel="noopener" class="group block border border-line rounded-xl p-4 hover:border-brand hover:shadow-lg transition-all reveal reveal-d3">
             <div class="flex items-center gap-2 mb-2">
@@ -458,16 +431,13 @@
             <p class="text-xs text-muted leading-relaxed mb-2">A smart jobs and opportunities platform connecting Somali talent with employers through an intelligent matching engine, verified listings, and a clean, mobile-first experience built for the local market.</p>
             <span class="inline-flex items-center gap-1 text-[11px] font-bold text-brand group-hover:gap-2 transition-all">Visit Platform <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></span>
           </a>
-
         </div>
-
         <!-- Founder note -->
         <div class="mt-4 flex items-start gap-2 text-xs text-muted bg-page rounded-lg p-3 reveal reveal-d1">
           <span class="material-symbols-outlined text-brand shrink-0" style="font-size:16px">lightbulb</span>
           <p><span class="font-bold text-ink">Founder & Owner:</span> As the founder and owner of Enigma Tech, Abdullahi leads product vision, architecture, and engineering across both platforms — applying the same information-management rigor from his humanitarian work to scalable, public-facing digital products. Business inquiries: <a href="mailto:enigmatechsomalia@gmail.com" class="cv-link">enigmatechsomalia@gmail.com</a>.</p>
         </div>
       </section>
-
       <!-- Education & Achievements -->
       <section id="cv-education" class="scroll-mt-20 grid sm:grid-cols-2 gap-8 reveal">
         <div>
@@ -484,13 +454,12 @@
               <p class="text-muted mt-0.5">Nov 2019</p>
             </div>
             <div class="reveal reveal-d3">
-              <h3 class="font-bold text-sm">Diploma in Information Management & Data Systems</h3>
+              <h3 class="font-bold text-sm">Diploma in Data Management, Monitoring & Evaluation</h3>
               <p class="text-muted">Professional training portfolio | UNHCR / ACTED / Concern Worldwide</p>
               <p class="text-muted mt-0.5">Feb 2022</p>
             </div>
           </div>
         </div>
-
         <div>
           <h2 class="section-title">Key Achievements</h2>
           <ul class="space-y-1.5 text-xs text-muted leading-relaxed reveal reveal-d1">
@@ -510,24 +479,19 @@
           </div>
         </div>
       </section>
-
     </main>
   </div>
-
   <script>
   (function(){
     'use strict';
-
     // ===== SCROLL REVEAL ANIMATION =====
     const revealObs = new IntersectionObserver(entries => {
       entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('revealed'); revealObs.unobserve(e.target); }});
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
     // ===== ACTIVE SECTION TRACKING (TOP NAV) =====
     const navPills = document.querySelectorAll('.nav-pill');
     const sections = document.querySelectorAll('main > section[id]');
-
     // Click to scroll
     navPills.forEach(pill => {
       pill.addEventListener('click', () => {
@@ -538,7 +502,6 @@
         }
       });
     });
-
     // Intersection Observer for Active State
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -553,11 +516,9 @@
       rootMargin: '-30% 0px -60% 0px', 
       threshold: 0 
     });
-
     sections.forEach(section => {
       sectionObserver.observe(section);
     });
-
     // ===== 3D TILT EFFECT ON CARDS =====
     const hasHover = window.matchMedia('(hover: hover)').matches;
     if(hasHover) {
@@ -578,7 +539,6 @@
         });
       });
     }
-
   })();
   </script>
 </body>
